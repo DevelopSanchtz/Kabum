@@ -21,7 +21,7 @@ export const Navbar = () => {
                         activeClassName="active"
                         className="nav-item nav-link"
                         exact
-                        to="/crear">
+                        to="/create">
                         Crear kabum
                     </NavLink>
                 </div>

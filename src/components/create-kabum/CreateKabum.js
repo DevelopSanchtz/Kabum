@@ -1,9 +1,9 @@
 import React from 'react'
 
-export const KabumsScreen = () => {
+export const CreateKabum = () => {
     return (
         <div>
-            <h1>Kabums</h1>
+            <h1>Crear kabum</h1>
         </div>
     )
 }
