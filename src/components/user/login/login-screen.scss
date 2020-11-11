@@ -1,0 +1,218 @@
+
+.body-login{
+	overflow: hidden;
+	height: 100%;
+	width: 100%;
+}
+
+.fondo{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	background: #2c2c2b;
+	width: 100%;
+	height: 100%;
+	animation-name: fondo;
+	animation-duration: 20s;
+	animation-iteration-count: infinite;
+
+}
+.sol{ 
+	background: #FFA500;
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	left: -110px;
+	top: 30%;
+	border-radius: 100px;
+	box-shadow: 0px 0px 0px 10px rgba(255,140,0,0.5);
+	animation-name: sol;
+	animation-duration: 20s;
+	animation-iteration-count:infinite;
+}
+
+.nubes1{
+	background-image: url('./../../../assets/images/fondo1.png');
+	background-repeat: repeat-x;
+	position: absolute; 
+	top: 10%;
+	left: 0px;
+	width: 100%;
+	height: 100px;	
+	animation-name: nubes;
+	animation-duration: 150s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
+.nubes2{
+	background-image: url('./../../../assets/images/nube3.png');
+	background-repeat: repeat-x;
+	position: absolute; 
+	top: 5%;
+	left: 0px;
+	width: 100%;
+	height: 174px;	
+	animation-name: nubes;
+	animation-duration: 100s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
+.nubes3{
+	background-image: url('./../../../assets/images/fondo1.png');
+	background-repeat: repeat-x;
+	position: absolute; 
+	top: 10%;
+	left: 0px;
+	width: 100%;
+	height: 174px;	
+	animation-name: nubes;
+	animation-duration: 100s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
+.montañas{
+	background-image: url('./../../../assets/images/tierra.png');	
+	background-repeat: repeat-x;
+	background-position: 0px 100%;
+	position: absolute; 
+	top: 10%;
+	left: 0px;
+	width: 100%;
+	height: 90%;	
+	animation-name: montaña;
+	animation-duration: 150s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
+
+.pasto{
+	background-image: url('./../../../assets/images/pasto1.png');	
+	background-repeat: repeat-x;
+	background-position: 0px 100%;
+	position: absolute; 
+	top: 10%;
+	left: 0px;
+	width: 100%;
+	height: 90%;	
+	animation-name: montaña;
+	animation-duration: 90s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
+.pasto-verde{
+	background-image: url('./../../../assets/images/pasto2.png');	
+	background-repeat: repeat-x;
+	background-position: 0px 100%;
+	position: absolute; 
+	top: 10%;
+	left: 0px;
+	width: 100%;
+	height: 90%;	
+	animation-name: montaña;
+	animation-duration: 70s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
+ 
+.logo-burrito{
+    z-index: 101;
+    position: absolute;
+    width: 400px;
+    height: 200px;
+    top:35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+ a{
+	 text-decoration: none;
+ }
+
+.button-play{
+	z-index: 101;
+    position: absolute;
+    width: 400px;
+    height: 200px;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(255, 238, 0);
+    color: rgb(0, 0, 0);
+    transform: translate(-50%, -50%);
+	cursor: pointer;
+	display: inline-block;
+ 	height: 35px; 
+    width: 200px;
+    background-repeat: no-repeat;
+    font-family: 'Kidspace DEMO', Courier, monospace;
+    border-radius: 100px;
+    border: none;
+    font-size: 20px;
+    text-align: center;
+    -webkit-box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
+    -moz-box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
+    box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
+    transition: all 0.5s;
+}
+
+.button-play:hover{
+	background-color: #103D42;
+	color: #fff;
+}
+ 
+
+ 
+ 
+@keyframes sol{
+	0%{ left: -110px; top: 30%; }
+	50%{ left: 50%; top: 5%; background: #FF4500; }
+	100%{  top: 30%; background: #bee2e6; box-shadow: 0px 0px 0px 10px rgba(73,92,95,0.5); }
+}
+
+@keyframes fondo{
+	50%{ background: #A3D6DB; }
+	100%{ background: #103D42; }
+}
+
+@keyframes nubes{
+	from{ background-position: 0 0; }
+	to{ background-position: 100% 0; }
+}
+
+@keyframes montaña{
+	from{ background-position: 0 100%; }
+	to{ background-position: 100% 100%; }
+}
+
+
+
+@keyframes stopNubes{
+	from{ background-position: 0 0; }
+	to{ background-position: 0 0; }
+}
+@keyframes stopFondo{
+	from{ background: #A3D6DB; }
+	to{ background: #A3D6DB; }
+}
+
+@keyframes stopSol{
+	from{ left: -110px; }
+	to{ left: -110px; }
+}
+@keyframes stopCiudad{
+	from{ background-position: 0 100%; }
+	to{ background-position: 0 100%; }
+}
+@keyframes stopLlantas{
+	from{ transform: rotate(0deg); }
+	to{ transform: rotate(0deg); }
+}
+
+
+

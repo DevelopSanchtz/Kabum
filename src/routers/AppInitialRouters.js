@@ -21,11 +21,15 @@ export class AppInitialRouters extends Component {
                 <Navbar />
                 <div>
                     <Switch>
+                        {/* user */}
+                        <Route exact path="/showplayers" component={ ShowPlayersScreen } />
+                        <Route exact path="/answer" component={AnswerQuestion}/>
+
+                        {/* admin */}
                         <Route exact path="/home" component={HomeScreen} />
                         <Route exact path="/kabums" component={KabumsScreen} />
                         <Route exact path="/create" component={CreateKabumScreen}/>
-                        <Route exact path="/answer" component={AnswerQuestion}/>
-                        <Redirect exact path="/showplayers" component={ ShowPlayersScreen } />
+                        
                     </Switch>
                 </div>
             </>
