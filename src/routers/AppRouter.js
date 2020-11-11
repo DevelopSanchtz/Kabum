@@ -1,42 +1,28 @@
+
 import React, { Component } from 'react'
 import {
     BrowserRouter as Router,
     Switch,
     Route,
     Redirect,
-} from "react-router-dom";
-import { CreateKabum } from '../components/create-kabum/CreateKabum';
-import { HomeScreen } from '../components/home/HomeScreen';
-import { KabumsScreen } from '../components/kabums/KabumsScreen';
-import { loginScreen } from '../components/login/LoginScreen';
-import { Navbar } from '../components/ui/Navbar';
+} from 'react-router-dom';
+import { LoginScreen } from '../components/user/login/LoginScreen';
+import { AppInitialRouters } from '../routers/AppInitialRouters';
+ 
 
 
-export class AppRouter extends Component {
-    render() {
-        return (
+export const AppRouter = () => {
+    return (
 
-            <Router>
-
-                <div>
-                    <Navbar />
-
-                    <Switch>
-
-                        {/* <Route exact path="/kabums" component={HomeScreen} /> */}
-                        <Route exact path="/login" component={loginScreen} />
-                        <Route exact path="/kabums" component={KabumsScreen} />
-                        <Route exact path="/home" component={HomeScreen}/>
-                        <Route exact path="/create" component={ CreateKabum }/>
-                        <Redirect path="/kabums" component={ KabumsScreen }/>
-                    </Switch>
-
-                </div>
-
-            </Router>
-
-        )
-    }
+        <Router>
+            <div>
+                <Switch>
+                    <Route exact path="/login" component={LoginScreen} />
+                    
+                    <Route  path="/" component={AppInitialRouters} />
+                    
+                </Switch>
+            </div>
+        </Router>
+    )
 }
-
-

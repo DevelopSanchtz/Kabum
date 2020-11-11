@@ -1,7 +1,7 @@
 import React from 'react'
 import { AppRouter } from './routers/AppRouter'
 
-export const PinApp = () => {
+export const KabumApp = () => {
     return (
         <div>
             <AppRouter/>

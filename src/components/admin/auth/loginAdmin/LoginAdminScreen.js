@@ -1,9 +1,9 @@
 import React from 'react'
 
-export const CreateKabum = () => {
+export const LoginAdminScreen = () => {
     return (
         <div>
-            <h1>Crear kabum</h1>
+            
         </div>
     )
 }
