@@ -1,7 +1,7 @@
 import React from 'react'
 import './login-screen.scss'
 import logo from './../../../assets/images/logo-nuevo-kabum.png'
-
+import { Link } from 'react-router-dom';
 
 export const LoginScreen = () => {
     return (
@@ -16,8 +16,6 @@ export const LoginScreen = () => {
                 <div className="montañas"></div>
                 <div className="pasto"></div>
                 <div className="pasto-verde"></div>
-
-
         </div>
 
       

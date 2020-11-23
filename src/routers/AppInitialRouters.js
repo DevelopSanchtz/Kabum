@@ -12,13 +12,14 @@ import { KabumsScreen } from '../components/admin/kabums/KabumsScreen';
 import { Navbar } from '../components/admin/shared/navbar/Navbar';
 import { ShowPlayersScreen } from '../components/user/players/ShowPlayersScreen';
 import { AnswerQuestion } from '../components/user/questions/AnswerQuestionScreen';
- 
+import { LoginAdminScreen } from '../components/admin/auth/loginAdmin/LoginAdminScreen'
 
 export class AppInitialRouters extends Component {
     render() {
         return (
             <>
                 <Navbar />
+
                 <div>
                     <Switch>
                         {/* user */}
@@ -29,7 +30,9 @@ export class AppInitialRouters extends Component {
                         <Route exact path="/home" component={HomeScreen} />
                         <Route exact path="/kabums" component={KabumsScreen} />
                         <Route exact path="/create" component={CreateKabumScreen}/>
+
                         
+                        <Redirect to="/kabums" />
                     </Switch>
                 </div>
             </>
