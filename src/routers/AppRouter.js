@@ -22,9 +22,9 @@ export const AppRouter = () => {
         <Router>
             <div>
                 <Switch>
-                    {/* <Route exact path="/login" component={LoginScreen} />
+                    <Route exact path="/login" component={LoginScreen} />
                     <Route exact path="/pin" component={PinScreen} />
-                    <Route exact path="/gamertag" component={UsernameScreen} /> */}
+                    <Route exact path="/gamertag" component={UsernameScreen} />
 
                     <Route exact path="/loginadmin" component={LoginAdminScreen} />
                     <Route exact path="/create" component={CreateKabumScreen}/>
