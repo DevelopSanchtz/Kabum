@@ -13,11 +13,13 @@ export class StartScreen extends Component {
             <div>
                 <div className="fondo-start">
                     <div className="fondo-start-color">
-                        <div className="container mt-2">
+                    <button className="btn p-1 m-1 btn-salir" >Salir</button>
+
+                        <div className="container">
                             <div className="row justify-content-center">
                                 <img src={logo} width="300" height="150" alt=""></img>
                             </div>
-                        </div>
+                        </div>                           
 
                         <div className="container-fluid mt-1 color-pin">
                             <div className="row justify-content-center">

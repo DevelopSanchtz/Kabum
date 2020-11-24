@@ -35,10 +35,14 @@
  .numero-pin{
      font-size: 80px;
      font-weight: bolder;
+     cursor: default;
+
  }
 
  .pin{
      font-weight: bold;
+     cursor: default;
+
  }
 
  
@@ -73,6 +77,7 @@
 
 .icon-user{
     color: #fff;
+
 }
 
 .num-jugadores{
@@ -80,6 +85,7 @@
     background-color: #263377;
     padding: 5px;
     border-radius: 8px;
+    cursor: default;
 }
 
 .quitar-jugador{
@@ -88,3 +94,8 @@
     cursor: pointer;
 }
 
+
+.btn-salir{
+    background-color: #FB6566;
+    color: #fff;
+}

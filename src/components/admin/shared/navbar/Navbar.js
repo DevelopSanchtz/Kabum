@@ -7,7 +7,7 @@ export const Navbar = () => {
     return (
 
         <nav className="navbar navbar-expand-lg fondo-navbar">
-            <a className="navbar-brand" href="#">
+            <a className="navbar-brand">
                 <img src={logo} width="80" height="30" alt=""></img>
             </a>
 

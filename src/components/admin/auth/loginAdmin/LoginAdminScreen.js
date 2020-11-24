@@ -27,7 +27,7 @@ export const LoginAdminScreen = ({history}) => {
                                         <label>Contraseña:</label>
                                         <input type="email" className="form-control" placeholder="Ingrese la contraseña"></input>
                                     </div>
-                                    <button onClick={ handleLogin }  type="submit" className="btn btn-outline-primary btn-border btn-block">Iniciar sesión</button>
+                                    <button onClick={ handleLogin }  type="submit" className="btn btn-login-admin btn-border btn-block">Iniciar sesión</button>
                                 </form>
 
                             </div>

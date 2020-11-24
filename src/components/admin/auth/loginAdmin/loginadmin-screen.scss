@@ -24,3 +24,17 @@
  .btn-border{
      border-radius: 100px;
  }
+
+ .btn-login-admin{
+     background-color: #33428a;
+     color: #fff;
+    -webkit-box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
+    -moz-box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
+    box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
+    transition: all 0.5s;
+ }
+
+ .btn-login-admin:hover{
+    background-color: #3c4fac;
+    color: #fff;
+ }
