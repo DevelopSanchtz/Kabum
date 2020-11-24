@@ -1,5 +1,7 @@
 import React from 'react'
 import './kabums-screen.scss'
+import { Link } from 'react-router-dom';
+
 
 export const KabumsScreen = () => {
     return (
@@ -50,6 +52,7 @@ export const KabumsScreen = () => {
         </div>
 
 
+{/* lista de kabums */}
         <div class="container">
             <div class="col-12">
                 <div class="card">
@@ -92,7 +95,7 @@ export const KabumsScreen = () => {
         <div class="container">
             <div class="row justify-content-center">
 
-                <h6>&copy; Kabum</h6>
+                <h6>Kabum&reg;</h6>
 
             </div>
         </div>

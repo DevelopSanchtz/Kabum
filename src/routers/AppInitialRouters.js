@@ -29,7 +29,6 @@ export class AppInitialRouters extends Component {
                         {/* admin */}
                         <Route exact path="/home" component={HomeScreen} />
                         <Route exact path="/kabums" component={KabumsScreen} />
-                        <Route exact path="/create" component={CreateKabumScreen}/>
 
                         
                         <Redirect to="/kabums" />

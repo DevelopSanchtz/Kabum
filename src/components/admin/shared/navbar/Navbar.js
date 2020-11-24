@@ -5,7 +5,7 @@ import logo from '../../../../assets/images/logo-nuevo-kabum.png'
 
 export const Navbar = () => {
     return (
-        
+
         <nav className="navbar navbar-expand-lg fondo-navbar">
             <a className="navbar-brand" href="#">
                 <img src={logo} width="80" height="30" alt=""></img>
@@ -31,8 +31,6 @@ export const Navbar = () => {
                     <Link to="/loginadmin" className="btn btn-light my-2 my-sm-0 ml-2" type="submit"> Cerrar sesión </Link>
                 </form>
             </div>
-
-
         </nav>
     )
 }
