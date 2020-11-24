@@ -1,14 +1,31 @@
 import React, { Component } from 'react'
 import './start-screen.scss'
 import logo from './../../../assets/images/logo-nuevo-kabum.png'
+import Swal from 'sweetalert2'
 
 export class StartScreen extends Component {
     render() {
-        
-        const hola = () =>{
-        console.log("hola");
-    }
 
+        const borrarJugador= ()=>{
+            Swal.fire({
+                title: "Eliminar",
+                icon: "warning",
+                text:"¿Estás seguro que desea eliminar al jugador?",
+                buttons: ["No","Si"]
+            }).then(respuesta=>{
+                if(respuesta){
+                    Swal.fire({
+                        icon:"success",
+                        title:"Eliminado",
+                        text:"El jugador se ha eliminado con éxito",
+                        buttons:"Aceptar",
+                        // timer:"5000"
+                    })
+                }
+            })
+        }
+        
+      
         return (
             <div>
                 <div className="fondo-start">
@@ -38,14 +55,14 @@ export class StartScreen extends Component {
 
                         <div className="container mt-2">
                             <div className="row justify-content-center">
-                                <h2 className="num-jugadores ml-2">MonoDL <span> <a className="quitar-jugador" onClick={hola} ><i class="fas fa-times-circle"></i></a>  </span> </h2>
-                                <h2 className="num-jugadores ml-2">juanCarlos <span> <a className="quitar-jugador" onClick={hola} ><i class="fas fa-times-circle"></i></a>  </span> </h2>
-                                <h2 className="num-jugadores ml-2">TempìsDev <span> <a className="quitar-jugador" onClick={hola} ><i class="fas fa-times-circle"></i></a>  </span> </h2>
-                                <h2 className="num-jugadores ml-2">Ana <span> <a className="quitar-jugador" onClick={hola} ><i class="fas fa-times-circle"></i></a>  </span> </h2>
-                                <h2 className="num-jugadores ml-2">OrangeDev <span> <a className="quitar-jugador" onClick={hola} ><i class="fas fa-times-circle"></i></a>  </span> </h2>
-                                <h2 className="num-jugadores ml-2">Santi <span> <a className="quitar-jugador" onClick={hola} ><i class="fas fa-times-circle"></i></a>  </span> </h2>
-                                <h2 className="num-jugadores ml-2">El Apis <span> <a className="quitar-jugador" onClick={hola} ><i class="fas fa-times-circle"></i></a>  </span> </h2>
-                                <h2 className="num-jugadores ml-2">El Whoosh <span> <a className="quitar-jugador" onClick={hola} ><i class="fas fa-times-circle"></i></a>  </span> </h2>
+                                <h2 className="num-jugadores ml-2">MonoDL <span> <a className="quitar-jugador" onClick={borrarJugador} ><i class="fas fa-times-circle"></i></a>  </span> </h2>
+                                <h2 className="num-jugadores ml-2">juanCarlos <span> <a className="quitar-jugador" onClick={borrarJugador} ><i class="fas fa-times-circle"></i></a>  </span> </h2>
+                                <h2 className="num-jugadores ml-2">TempìsDev <span> <a className="quitar-jugador" onClick={borrarJugador} ><i class="fas fa-times-circle"></i></a>  </span> </h2>
+                                <h2 className="num-jugadores ml-2">Ana <span> <a className="quitar-jugador" onClick={borrarJugador} ><i class="fas fa-times-circle"></i></a>  </span> </h2>
+                                <h2 className="num-jugadores ml-2">OrangeDev <span> <a className="quitar-jugador" onClick={borrarJugador} ><i class="fas fa-times-circle"></i></a>  </span> </h2>
+                                <h2 className="num-jugadores ml-2">Santi <span> <a className="quitar-jugador" onClick={borrarJugador} ><i class="fas fa-times-circle"></i></a>  </span> </h2>
+                                <h2 className="num-jugadores ml-2">El Apis <span> <a className="quitar-jugador" onClick={borrarJugador} ><i class="fas fa-times-circle"></i></a>  </span> </h2>
+                                <h2 className="num-jugadores ml-2">El Whoosh <span> <a className="quitar-jugador" onClick={borrarJugador} ><i class="fas fa-times-circle"></i></a>  </span> </h2>
 
                             </div>
                         </div>

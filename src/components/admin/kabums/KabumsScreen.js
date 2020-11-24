@@ -1,9 +1,35 @@
 import React from 'react'
 import './kabums-screen.scss'
 import { Link } from 'react-router-dom';
-
+import Swal from 'sweetalert2'
 
 export const KabumsScreen = () => {
+
+    const borrarKabum = ()=>{
+        Swal.fire({
+            title: "Eliminar",
+            icon: "warning",
+            text:"¿Estás seguro que desea eliminar el Kabum?",
+            confirmButtonText:"Eliminar",
+            showCancelButton: true,
+            cancelButtonText:"Cancelar"
+        }).then((result)=>{
+            if(result.isConfirmed){
+                Swal.fire({
+                    icon:"success",
+                    title:"Eliminado",
+                    text:"El Kabum se ha eliminado con éxito",
+                    confirmButtonText:"Aceptar",
+                    timer:"3000"
+                })
+            }
+        })
+    }
+
+
+
+
+
     return (
         <div>
             <div className="portada-kabum">
@@ -72,7 +98,7 @@ export const KabumsScreen = () => {
                                 <div class="col-3">
                                     <div class="row justify-content-end">
                                         <button class="btn btn-light my-2 my-sm-0 ml-2" type="submit"> <i class="far fa-heart"></i> </button>
-                                        <button class="btn btn-light my-2 my-sm-0 ml-2" type="submit"> <i class="fas fa-trash-alt"></i> </button>
+                                        <button onClick={()=>borrarKabum()} class="btn btn-light my-2 my-sm-0 ml-2" type="submit"> <i class="fas fa-trash-alt"></i> </button>
                                     </div>
                                     <div class="row justify-content-end"> <p> <span>3 </span> Jugadores</p> </div>
                                     <div class="row justify-content-end">
