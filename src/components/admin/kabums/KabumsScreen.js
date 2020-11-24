@@ -76,8 +76,8 @@ export const KabumsScreen = () => {
                                     </div>
                                     <div class="row justify-content-end"> <p> <span>3 </span> Jugadores</p> </div>
                                     <div class="row justify-content-end">
-                                        <button class="btn btn-outline-primary"> Editar </button>
-                                        <button class="btn btn-success ml-2"> Jugar </button>
+                                        <Link to="/create" class="btn btn-outline-primary"> Editar </Link>
+                                        <Link to="/start" class="btn btn-success ml-2"> Jugar </Link>
                                     </div>
                                 </div>
                             </div>

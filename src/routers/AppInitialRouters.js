@@ -6,7 +6,6 @@ import {
     Route,
     Redirect,
 } from 'react-router-dom';
-import { HomeScreen } from '../components/admin/home/HomeScreen';
 import { CreateKabumScreen } from '../components/admin/kabums/CreateKabumScreen';
 import { KabumsScreen } from '../components/admin/kabums/KabumsScreen';
 import { Navbar } from '../components/admin/shared/navbar/Navbar';
@@ -27,7 +26,6 @@ export class AppInitialRouters extends Component {
                         <Route exact path="/answer" component={AnswerQuestion}/>
 
                         {/* admin */}
-                        <Route exact path="/home" component={HomeScreen} />
                         <Route exact path="/kabums" component={KabumsScreen} />
 
                         
