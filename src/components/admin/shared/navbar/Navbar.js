@@ -1,43 +1,65 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import './navbar.scss'
+import logo from '../../../../assets/images/logo-nuevo-kabum.png'
+import Swal from 'sweetalert2'
+
+ 
 
 export const Navbar = () => {
+
+    const crearKabum = async ()=>{
+        const { value: text } = await  Swal.fire({
+            input: 'text',
+            inputLabel: 'Nombre',
+            inputPlaceholder: 'Ingrese el titulo del kabum',
+            inputAttributes: {
+              'aria-label': 'Escribe el titulo aquí'
+            },
+            confirmButtonText:"Agregar",
+             showCancelButton: "Cancelar"
+          })
+          
+          if (text) {
+            Swal.fire({
+                title:"Se agregó el Kabum",
+                text,
+                icon:"success",
+                confirmButtonText:"Aceptar"
+            }).then(function(){
+                window.location.href = "/create";
+            })
+          }
+    }
+
     return (
+
         
-        <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
-            <Link className="navbar-brand" to="/"> Kabum </Link>
 
-            <div className="navbar-collapse">
-                <div className="navbar-nav">
+        <nav className="navbar navbar-expand-lg fondo-navbar">
+            <a className="navbar-brand">
+                <img src={logo} width="80" height="30" alt=""></img>
+            </a>
 
-                    <NavLink
-                        activeClassName="active"
-                        className="nav-item nav-link"
-                        exact
-                        to="/kabums">
-                        Kabums
+            <NavLink
+                activeClassName="active"
+                className="nav-item nav-link"
+                exact
+                to="/kabums">
+                Kabums
                     </NavLink>
 
-                    <NavLink
-                        activeClassName="active"
-                        className="nav-item nav-link"
-                        exact
-                        to="/create">
-                        Crear kabum
-                    </NavLink>
-                </div>
-            </div>
 
-            <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
-                <ul className="navbar-nav ml-auto">
-                    <NavLink
-                        activeClassName="active"
-                        className="nav-item nav-link"
-                        exact
-                        to="/login">
-                        Logout
-                    </NavLink>
-                </ul>
+            <a className="navbar-brand">
+            </a>
+
+            <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul className="navbar-nav mr-auto mt-2 mt-lg-0"></ul>
+                <form className="form-inline my-2 my-lg-0">
+                    <Link onClick={crearKabum} className="btn btn-success my-2 my-sm-0" type="submit"> <i class="fas fa-plus-circle"></i> Crear
+                    Kabum</Link>
+                    <Link to="/loginadmin" className="btn btn-light my-2 my-sm-0 ml-2" type="submit"> Cerrar sesión </Link>
+                </form>
             </div>
         </nav>
     )

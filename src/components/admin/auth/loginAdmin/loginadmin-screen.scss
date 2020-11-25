@@ -1,0 +1,40 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+ .fondo-login{
+    overflow: hidden;
+	height: 100%;
+	width: 100%;
+ }
+
+ .fondo-img{
+    position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+    height: 100%;
+    background-position-y: 50%;
+	background-image: url('../../../../assets/images/fondo-signos.png');
+ }
+
+ .container-login-admin{
+     margin-top: 150px;
+ }
+
+ .btn-border{
+     border-radius: 100px;
+ }
+
+ .btn-login-admin{
+     background-color: #33428a;
+     color: #fff;
+    -webkit-box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
+    -moz-box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
+    box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
+    transition: all 0.5s;
+ }
+
+ .btn-login-admin:hover{
+    background-color: #3c4fac;
+    color: #fff;
+ }

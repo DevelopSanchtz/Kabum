@@ -10,7 +10,10 @@ import { LoginScreen } from '../components/user/login/LoginScreen';
 import { PinScreen } from '../components/user/login/PinScreen';
 import { UsernameScreen } from '../components/user/login/UsernameScreen';
 import { AppInitialRouters } from '../routers/AppInitialRouters';
- 
+import { LoginAdminScreen } from '../components/admin/auth/loginAdmin/LoginAdminScreen'
+import { CreateKabumScreen } from '../components/admin/kabums/CreateKabumScreen';
+import { StartScreen } from '../components/admin/start/StartScreen';
+
 
 
 export const AppRouter = () => {
@@ -20,10 +23,15 @@ export const AppRouter = () => {
             <div>
                 <Switch>
                     <Route exact path="/login" component={LoginScreen} />
-                    <Route exact path="/pin" component={ PinScreen } />
-                    <Route exact path="/gamertag" component={ UsernameScreen } />
-                    <Route  path="/" component={AppInitialRouters} />
-                    
+                    <Route exact path="/pin" component={PinScreen} />
+                    <Route exact path="/gamertag" component={UsernameScreen} />
+
+                    <Route exact path="/loginadmin" component={LoginAdminScreen} />
+                    <Route exact path="/create" component={CreateKabumScreen}/>
+                    <Route exact path="/start" component={StartScreen} />
+
+                    <Route path="/" component={AppInitialRouters} />
+
                 </Switch>
             </div>
         </Router>

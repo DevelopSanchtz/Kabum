@@ -1,0 +1,101 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+ .fondo-start{
+    overflow: hidden;
+    height: 100%;
+	width: 100%;
+ }
+
+ .fondo-start-color{
+    background-color: #33428a;
+    position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+    height: 100%;
+    background-size: cover;    
+    background-image: url('../../../assets/images/fondo-signos.png');
+
+  }
+
+ .container-login-admin{
+     margin-top: 150px;
+ }
+
+ .btn-border{
+     border-radius: 100px;
+ }
+
+ .color-pin{
+     background-color: #fff;
+     color: #33428a;
+ }
+
+ .numero-pin{
+     font-size: 80px;
+     font-weight: bolder;
+     cursor: default;
+
+ }
+
+ .pin{
+     font-weight: bold;
+     cursor: default;
+
+ }
+
+ 
+.btn-iniciar-juego{
+    position: absolute;
+    top:90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(255, 255, 255);
+    color: #33428a;
+    transform: translate(-50%, -50%);
+	cursor: pointer;
+	display: inline-block;
+ 	height: 50px; 
+    width: 200px;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    border: none;
+    font-size: 30px;
+    text-align: center;
+    font-weight:bold ;
+    -webkit-box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
+    -moz-box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
+    box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
+    transition: all 0.5s;
+}
+
+.btn-iniciar-juego:hover{
+    background-color: #FB6566;
+    color: #ffffff;
+}
+
+.icon-user{
+    color: #fff;
+
+}
+
+.num-jugadores{
+    color: #fff;
+    background-color: #263377;
+    padding: 5px;
+    border-radius: 8px;
+    cursor: default;
+}
+
+.quitar-jugador{
+    color: #7575756c;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
+.btn-salir{
+    background-color: #FB6566;
+    color: #fff;
+}

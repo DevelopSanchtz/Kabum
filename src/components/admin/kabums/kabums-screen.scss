@@ -1,0 +1,52 @@
+*{
+    font-family: 'Poppins', Courier, monospace;
+}
+
+
+
+.portada-kabum{
+  background-image: url('./../../../assets/images/portada-kabums.png');
+  height: 150px;
+  background-size:  cover;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.form-buscar{
+  padding-top: 50px;
+}
+
+.btn-buscar{
+  background-color: #33418A;
+  color: #fff;
+}
+
+
+.color-badge{
+    background-color: #33418A;
+    color: #fff;
+}
+
+.titulo-kabums{
+    color: #33418A;
+    font-weight: bold;
+}
+
+
+.imagen-pregunta{
+    width: 100%;
+    height: 150px;
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+span{
+    color: #33418A;
+}
+
+.btn-cancelar{
+    background-color: #FB6566;
+    color: #fff;
+}
