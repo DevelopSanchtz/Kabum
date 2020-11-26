@@ -11,7 +11,7 @@ export const QuestionScreen = () => {
                 <div className="fondo-start-color">
                     <div className="container mt-5">
                         <div className="row justify-content-center logo-mov">
-                            <img src={logo}  className="logo-kabum-movimiento" alt=""></img>
+                            <img src={logo} className="logo-kabum-movimiento" alt=""></img>
                         </div>
                     </div>
 
@@ -19,6 +19,10 @@ export const QuestionScreen = () => {
                         <div className="row justify-content-center ">
                             <h1 className="animate__shakeX text-center nombre-pregunta">¿Cuantos estados tiene México? </h1>
                         </div>
+                    </div>
+
+                    <div class="progress">
+                        <div class="progress-value"></div>
                     </div>
 
                 </div>
