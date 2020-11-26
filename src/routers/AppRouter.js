@@ -15,7 +15,7 @@ import { CreateKabumScreen } from '../components/admin/kabums/CreateKabumScreen'
 import { StartScreen } from '../components/admin/start/StartScreen';
 import { NameKabumsScreen } from '../components/admin/nameKabum/NameKabumsScreen'
 import { QuestionScreen } from '../components/admin/nameKabum/QuestionScreen'
-
+import { AnswerQuestionAdminScreen } from '../components/admin/questionsAdmin/AnswerQuestionAdminScreen';
 
 export const AppRouter = () => {
     return (
@@ -32,6 +32,7 @@ export const AppRouter = () => {
                     <Route exact path="/start" component={StartScreen} />
                     <Route exact path="/nameKabum" component={NameKabumsScreen} />
                     <Route exact path="/question" component={QuestionScreen} />
+                    <Route exact path="/answerAdmin" component={AnswerQuestionAdminScreen} />
 
 
                     <Route path="/" component={AppInitialRouters} />

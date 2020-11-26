@@ -5,10 +5,19 @@ import { Link } from 'react-router-dom';
 
 
 export const QuestionScreen = () => {
+
+
     return (
+
+
+
         <div>
             <div className="fondo-start">
                 <div className="fondo-start-color">
+                    <div className="container-contador-preguntas">
+                        <h1 className="contador-preguntas">1 de 5</h1>
+                    </div>
+
                     <div className="container mt-5">
                         <div className="row justify-content-center logo-mov">
                             <img src={logo} className="logo-kabum-movimiento" alt=""></img>
@@ -24,6 +33,9 @@ export const QuestionScreen = () => {
                     <div class="progress">
                         <div class="progress-value"></div>
                     </div>
+
+                    <Link to="/answerAdmin" className="btn-iniciar-juego">Siguiente </Link>
+
 
                 </div>
             </div>
