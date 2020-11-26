@@ -1,0 +1,48 @@
+.nombre-pregunta{
+    font-size: 60px;
+    font-weight: bolder;
+    cursor: default;
+}
+
+.container-pregunta{
+    position: absolute;
+    top:40%;
+    left: 0%;
+}
+
+.cargando{
+    position: absolute;
+    top:60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.logo-mov{
+
+}
+
+.logo-kabum-movimiento{
+    width: 300px;
+    height: 150px;
+    animation: animate;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: animate infinite alternate 600ms;
+}
+
+
+@keyframes animate{
+    from{
+        width: 270px;
+        height: 120px;
+    }
+    to{
+        width: 300px;
+        height: 150px;    
+    }
+}
+
