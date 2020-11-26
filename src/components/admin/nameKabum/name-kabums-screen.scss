@@ -54,8 +54,7 @@ h1{
 }
 
  
-  
-  .progress {
+.progress {
     background: rgba(255,255,255,0.1);
     justify-content: flex-start;
     border-radius: 100px;
@@ -64,13 +63,13 @@ h1{
     padding: 0 5px;
     display: flex;
     height: 40px;
-    width: 700px;
+    width: 800px;
     top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
   
-  .progress-value {
+.progress-value {
     animation: load 3s normal forwards;
     box-shadow: 0 10px 40px -10px #fff;
     border-radius: 100px;
