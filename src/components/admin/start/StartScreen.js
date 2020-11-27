@@ -1,11 +1,37 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect, useState } from 'react'
 import './start-screen.scss'
 import logo from './../../../assets/images/logo-nuevo-kabum.png'
 import Swal from 'sweetalert2'
 import { Link } from 'react-router-dom';
+import Socket from "../../socket";
+import socket from '../../socket';
 
 export class StartScreen extends Component {
+
     render() {
+
+        let pin1 = Math.floor(Math.random()*10);
+        let pin2 = Math.floor(Math.random()*10);
+        let pin3 = Math.floor(Math.random()*10);
+        let pin4 = Math.floor(Math.random()*10);
+        let pin5 = Math.floor(Math.random()*10);
+        let pin6 = Math.floor(Math.random()*10);
+
+        let pin = pin1 + "" + pin2 + "" + pin3 + "" + pin4 + "" + pin5 + "" + pin6;
+
+        socket.emit('nuevo-jugador', {
+            usuario: "host",
+            sala   : pin,
+            tipo   : "host"
+        });
+
+        socket.on('jugadores', function(jugadores) {
+            console.log(jugadores);
+        });
+
+
+
+       
 
         const borrarJugador = ()=>{
             Swal.fire({
@@ -45,6 +71,7 @@ export class StartScreen extends Component {
         
       
         return (
+
             <div>
                 <div className="fondo-start">
                     <div className="fondo-start-color">
@@ -61,7 +88,7 @@ export class StartScreen extends Component {
                                 <h6 className="pin mt-1">PIN</h6>
                             </div>
                             <div className="row justify-content-center ">
-                                <h1 className="numero-pin">944878</h1>
+                                <h1 className="numero-pin">{pin}</h1>
                             </div>
                         </div>
 
