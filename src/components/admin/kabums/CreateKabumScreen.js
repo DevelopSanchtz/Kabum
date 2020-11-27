@@ -34,8 +34,124 @@ export const CreateKabumScreen = () => {
             </nav>
             {/* termina navbar */}
 
-            <div className="container">
-                <h6>Aqui vas a hacer lo de crear kabums santi xd</h6>
+            <div className="container-fluid mt-3 padre">
+                <div className="row">
+                <div className="col-3 columna">
+                    <div className="d-flex justify-content-between ml-5 boton">
+                    <Link className="btn btn-success my-2 my-sm-0" type="submit">Agregar pregunta</Link>
+                    </div>
+                    <div className="navs">
+                    <nav className="sidebar-menu side">
+                        <ul>
+                            <li className="item">
+                                <div className="card-pregunta">
+                                    <img src="" alt="Imgen1"/>
+                                </div>
+                            </li>
+                            <li className="item">
+                                <div className="card-pregunta">
+                                    <img src="" alt="Imgen1"/>
+                                </div>
+                            </li>
+                            <li className="item">
+                                <div className="card-pregunta">
+                                    <img src="" alt="Imgen1"/>
+                                </div>
+                            </li>
+                            <li className="item">
+                                <div className="card-pregunta">
+                                    <img src="" alt="Imgen1"/>
+                                </div>
+                            </li>
+                            <li className="item">
+                                <div className="card-pregunta">
+                                    <img src="" alt="Imgen1"/>
+                                </div>
+                            </li>
+                            <li className="item">
+                                <div className="card-pregunta">
+                                    <img src="" alt="Imgen1"/>
+                                </div>
+                            </li>
+                            <li className="item">
+                                <div className="card-pregunta">
+                                    <img src="" alt="Imgen1"/>
+                                </div>
+                            </li>
+                            <li className="item">
+                                <div className="card-pregunta">
+                                    <img src="" alt="Imgen1"/>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                    
+                    </div>
+
+                    
+                </div>
+                
+                <div className="col-9 columna2">
+                    <div className="row titulo">
+                        <input type="text" placeholder="¿Como se llama el Chino?"></input>
+                    </div>
+                    <div className="row titulo2 mt-5 ml-5 d-flex justify-content-center">
+                        <div className="col-4">
+                            <div>
+                                Tiempo limite:
+                            </div>
+                            <div>
+                                <select className="selector">
+                                    <option>10 segundos</option>
+                                    <option>20 segundos</option>
+                                    <option>30 segundos</option>
+                                </select>
+                            </div>
+                            <div className="mt-4">
+                                Puntos:
+                            </div>
+                            <div>
+                                <select className="selector">
+                                    <option>100 puntos</option>
+                                    <option>500 puntos</option>
+                                    <option>1000 puntos</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div className="8 imagen">
+                            <div className="d-flex justify-content-center im">
+                                <img src={logo} width="400" height="200"></img>
+                            </div>
+                            <div className="logos d-flex justify-content-center">
+                                <span><i className="fas fa-edit edit"></i></span>
+                                <span className="ml-2"><i className="fas fa-trash-alt trash"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row mt-4 ml-5 d-flex justify-content-center align-items-center botones">
+                        <div className="col-6 dos">
+                            <div className="btnPress">
+                                <button className="azul">Raul</button>
+                            </div>
+                            <div className="mt-4 btnPress">
+                                <button className="rojo">Joaquin</button>
+                            </div>
+                            
+                        </div>
+                        <div className="col-6">
+                            <div className="btnPress">
+                                <button className="amarillo">Santi</button>
+                            </div>
+                            <div className="mt-4 btnPress">
+                                <button className="cielo">OrangeDeb</button>
+                            </div>
+                        </div>
+
+                    </div>
+                   
+                </div>
+                </div>
+                
             </div>
 
 
