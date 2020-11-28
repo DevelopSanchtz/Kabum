@@ -1,9 +1,24 @@
 import React from 'react'
 import './loginadmin-screen.scss'
 import { Link } from 'react-router-dom';
-
+import Swal from 'sweetalert2'
 
 export const LoginAdminScreen = ({history}) => {
+
+    const verificarContraseña = ()=>{
+        Swal.fire({
+            title: "Error",
+            icon: "success",
+            text:"La contraseña es incorrecta",
+            confirmButtonText:"Aceptar",
+        }).then(function(result){
+            if(result.isConfirmed){
+                history.replace('/');
+            }
+            
+        })
+    }
+
 
     const handleLogin= () =>{
         history.replace('/');

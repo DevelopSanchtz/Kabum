@@ -85,7 +85,7 @@ export class StartScreen extends Component {
 
                         <div className="container-pin container-fluid mt-1 color-pin">
                             <div className="row justify-content-center">
-                                <h6 className="pin mt-1">PIN</h6>
+                                <h6 className="pin-start mt-1">PIN</h6>
                             </div>
                             <div className="row justify-content-center ">
                                 <h1 className="numero-pin">{pin}</h1>

@@ -29,13 +29,13 @@ export const AnswerQuestionAdminScreen = () => {
             <div className="container-fluid mt-4">
                 <div className="row">
                     <div className="col-6">
-                        <button className="respuesta1 mt-2"> <i class="fas fa-caret-up"></i>  45 </button>
-                        <button className="respuesta2 mt-2"> <i class="fas fa-circle"></i>  32 </button>
+                        <button className="respuesta1 mt-2"> 45 </button>
+                        <button className="respuesta2 mt-2"> 32 </button>
                     </div>
 
                     <div className="col-6">
-                        <button className="respuesta3 mt-2"><i class="fas fa-square"></i> 29 </button>
-                        <button className="respuesta4 mt-2"><i class="fas fa-adjust"></i> 34 </button>
+                        <button className="respuesta3 mt-2"> 29 </button>
+                        <button className="respuesta4 mt-2"> 34 </button>
                     </div>
                 </div>
             </div>

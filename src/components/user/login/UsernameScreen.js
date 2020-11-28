@@ -12,7 +12,6 @@ export const UsernameScreen = () => {
        <p><input type="text" placeholder="GamerTag" name="pin" class="pin" maxLength="12"/></p>
    </form>
    <Link to="/showplayers" class="btn-pin"> Ingresa </Link>
-   <p class="kabum">Crea tu propio <strong> Kabum aquí</strong> </p>
         </div>
         </div>
     )
