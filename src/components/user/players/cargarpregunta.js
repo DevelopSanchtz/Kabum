@@ -5,7 +5,7 @@ import logo from './../../../assets/images/logo-nuevo-kabum.png'
 import './show-screen.scss'
 export const cargarpregunta = () => {
     return (
-        <div>
+        <div className="contenedor-show">
             <div class="barra">
                 <div class="d-flex">
                     <div class="p-3">

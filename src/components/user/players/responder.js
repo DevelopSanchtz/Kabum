@@ -7,7 +7,7 @@ import logo4 from './../../../assets/images/perro.png'
 import './show-screen.scss'
 export const responder = () => {
     return (
-        <div class="principal">
+        <div className="container-responder">
             <div class="barra">
                 <div class="d-flex">
                     <div class="p-3">
@@ -25,29 +25,48 @@ export const responder = () => {
                         <p>14121</p>
                     </div>
                 </div>
+            </div>|
+
+
+            <div className="container">
+                <div className="row justify-content-center">
+                    <div className="col-6">
+
+                        <Link to="/gamertag" className="btn-respuestas">
+                            <div class="item" id="item1">
+                                <img className="animal" src={logo} alt=""></img>
+                            </div>
+                        </Link>            
+                        
+                        <Link to="/gamertag" className="btn-respuestas">
+                            <div class="item" id="item3">
+                                <img className="animal" src={logo3} alt=""></img>
+                            </div>
+                        </Link>                 
+                    </div>
+
+                    <div className="col-6">
+
+
+                        <Link to="/gamertag">
+                            <div class="item" id="item2">
+                                <img className="animal" src={logo2} alt=""></img>
+                            </div>
+                        </Link>
+                        <Link to="/gamertag" className="btn-respuestas">
+                            <div class="item" id="item4">
+                                <img className="animal" src={logo4} alt=""></img>
+                            </div>
+                        </Link>   
+
+
+
+                    </div>
+
+                </div>
             </div>
 
 
-            <div class="container">
-                <div class="item" id="item1">
-                    <img className="animal" src={logo} alt=""></img>
-                </div>
-
-                <div class="item" id="item2">
-                    <img className="animal" src={logo2} alt=""></img>
-                </div>
-
-                <div class="item" id="item3">
-                    <img className="animal" src={logo3} alt=""></img>
-                </div>
-
-                <div class="item" id="item4">
-                    <img className="animal" src={logo4} alt=""></img>
-                </div>
-            </div>
-
-
-
-        </div>  
+        </div>
     )
 }
