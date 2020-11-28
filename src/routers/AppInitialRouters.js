@@ -9,7 +9,6 @@ import {
 import { CreateKabumScreen } from '../components/admin/kabums/CreateKabumScreen';
 import { KabumsScreen } from '../components/admin/kabums/KabumsScreen';
 import { Navbar } from '../components/admin/shared/navbar/Navbar';
-import { ShowPlayersScreen } from '../components/user/players/ShowPlayersScreen';
 import { AnswerQuestion } from '../components/user/questionsUser/AnswerQuestionScreen';
 import { LoginAdminScreen } from '../components/admin/auth/loginAdmin/LoginAdminScreen'
 
@@ -22,7 +21,7 @@ export class AppInitialRouters extends Component {
                 <div>
                     <Switch>
                         {/* user */}
-                        <Route exact path="/showplayers" component={ ShowPlayersScreen } />
+                       
                         <Route exact path="/answer" component={AnswerQuestion}/>
 
                         {/* admin */}

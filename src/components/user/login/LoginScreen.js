@@ -8,7 +8,8 @@ export const LoginScreen = () => {
 
         <div className="body-login">
             <img className="logo-burrito" src={logo} alt=""></img>
-                <button className="button-play">Jugar Ahora</button>
+            <Link to="/pin" class="button-play"> Ingresar </Link>
+
                 <div className="fondo"></div>
                 <div className="sol"></div>
                 <div className="nubes1"></div>

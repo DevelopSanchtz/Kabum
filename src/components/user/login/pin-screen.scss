@@ -1,0 +1,119 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    animation: BGcolorChanging-4colors 20s linear infinite alternate both;
+}
+
+
+
+.contenedor {
+    height: 400px;
+    margin: 100px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes BGcolorChanging-4colors {
+    0% {
+        background: #33418A;
+    }
+    33.333% {
+        background: #85ECFF;
+    }
+    66.666% {
+        background: #FFE375;
+    }
+    100% {
+        background: #FB6566;
+    }
+}
+
+input:focus,
+input.form-control:focus {
+    outline: none !important;
+    outline-width: 0 !important;
+}
+
+.pin {
+    border-radius: 2em;
+    margin-top: 40px;
+    border: none;
+    width: 350px;
+    height: 50px;
+    color: rgb(112, 112, 112);
+    font-size: 24px;
+    text-align: center;
+    box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.4);
+}
+
+.kabum {
+    color: white;
+    height: 20px;
+    font-size: 18px;
+    bottom: 0;
+    position: fixed;
+}
+
+.btn-pin {
+    background-color: rgba(0, 0, 0, 0.4);
+    font-size: 24px;
+    color: white;
+    border-radius: 2em;
+    margin-top: 10px;
+    border: none;
+    width: 350px;
+    height: 50px;
+    text-align: center;
+    box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.4);
+}
+
+.barra-arriba {
+    font-size: 24px;
+    height: 80px;
+    font-weight: bold;
+    width: auto;
+    background-color: white;
+    display: flex;
+    box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.2);
+}
+
+.inicio-texto {
+    margin: 245px auto;
+    font-weight: bold;
+    text-align: center;
+    font-size: 28px;
+    color: white;
+    text-shadow: 1px 2px 1px black;
+}
+
+.item {
+    float: left;
+    margin: 1em;
+}
+
+.btn-iniciar-juego{
+    position: absolute;
+    margin-top: 10px;
+    left: 50%;
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+    transform: translate(-50%, -50%);
+	cursor: pointer;
+	display: inline-block;
+ 	height: 50px; 
+    width: 200px;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    border: none;
+    text-decoration: none;
+    font-size: 30px;
+    text-align: center;
+    font-weight:bold ;
+    -webkit-box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
+    -moz-box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
+    box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
+    transition: all 0.5s;
+}
