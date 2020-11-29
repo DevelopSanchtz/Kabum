@@ -4,7 +4,7 @@ import logo from './../../../assets/images/logo-nuevo-kabum.png'
 import { Link } from 'react-router-dom';
 
 
-export const QuestionScreen = () => {
+export const QuestionScreen3 = () => {
 
 
     return (
@@ -13,7 +13,7 @@ export const QuestionScreen = () => {
             <div className="fondo-start">
                 <div className="fondo-start-color">
                     <div className="container-contador-preguntas">
-                        <h1 className="contador-preguntas">1 de 3</h1>
+                        <h1 className="contador-preguntas">3 de 3</h1>
                     </div>
 
                     <div className="container mt-5">
@@ -24,7 +24,7 @@ export const QuestionScreen = () => {
 
                     <div className="container-pregunta container-fluid color-pin">
                         <div className="row justify-content-center ">
-                            <h1 className="animate__shakeX text-center nombre-pregunta">¿Cuantos estados xdd tiene México? </h1>
+                            <h1 className="animate__shakeX text-center nombre-pregunta">¿Cúal es la capital de Tamaulipas? </h1>
                         </div>
                     </div>
 
@@ -32,7 +32,7 @@ export const QuestionScreen = () => {
                         <div class="progress-value"></div>
                     </div>
 
-                    <Link to="/answerAdmin" className="btn-iniciar-juego">Siguiente </Link>
+                    <Link to="/answerAdmin3" className="btn-iniciar-juego">Siguiente </Link>
 
 
                 </div>

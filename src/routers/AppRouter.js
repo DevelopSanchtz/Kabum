@@ -18,8 +18,14 @@ import { responder } from '../components/user/players/responder';
 import { cargarpregunta } from '../components/user/players/cargarpregunta';
 import { NameKabumsScreen } from '../components/admin/nameKabum/NameKabumsScreen'
 import { QuestionScreen } from '../components/admin/nameKabum/QuestionScreen'
+import { QuestionScreen2 } from '../components/admin/nameKabum/QuestionScreen2'
+import { QuestionScreen3 } from '../components/admin/nameKabum/QuestionScreen3'
 import { AnswerQuestionAdminScreen } from '../components/admin/questionsAdmin/AnswerQuestionAdminScreen';
+import { AnswerQuestionAdminScreen2 } from '../components/admin/questionsAdmin/AnswerQuestionAdminScreen2';
+import { AnswerQuestionAdminScreen3 } from '../components/admin/questionsAdmin/AnswerQuestionAdminScreen3';
 import { ResultsScreen } from '../components/admin/questionsAdmin/ResultsScreen';
+import { ResultsScreen2 } from '../components/admin/questionsAdmin/ResultsScreen2';
+import { ResultsScreen3 } from '../components/admin/questionsAdmin/ResultsScreen3';
 
 export const AppRouter = () => {
     return (
@@ -35,11 +41,17 @@ export const AppRouter = () => {
                     <Route exact path="/start" component={StartScreen} />
                     <Route exact path="/nameKabum" component={NameKabumsScreen} />
                     <Route exact path="/question" component={QuestionScreen} />
+                    <Route exact path="/question2" component={QuestionScreen2} />
+                    <Route exact path="/question3" component={QuestionScreen3} />
                     <Route exact path="/answerAdmin" component={AnswerQuestionAdminScreen} />
+                    <Route exact path="/answerAdmin2" component={AnswerQuestionAdminScreen2} />
+                    <Route exact path="/answerAdmin3" component={AnswerQuestionAdminScreen3} />
                     <Route exact path="/showplayers" component={ ShowPlayersScreen } />
                     <Route exact path="/responder" component={ responder } />
                     <Route exact path="/cargarpregunta" component={ cargarpregunta } />
                     <Route exact path="/resultadosAdmin" component={ ResultsScreen } />
+                    <Route exact path="/resultadosAdmin2" component={ ResultsScreen2 } />
+                    <Route exact path="/resultadosAdmin3" component={ ResultsScreen3 } />
 
 
                     <Route path="/" component={AppInitialRouters} />

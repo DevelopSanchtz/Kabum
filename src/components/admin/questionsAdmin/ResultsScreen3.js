@@ -8,13 +8,13 @@ import logo3 from './../../../assets/images/leon.png'
 import logo4 from './../../../assets/images/perro.png'
 import Swal from 'sweetalert2'
 
-export const ResultsScreen = () => {
+export const ResultsScreen3 = () => {
 
     const terminarJuego = () => {
         Swal.fire({
             title: "Terminar",
             icon: "warning",
-            text: "¿Estás seguro que desea trminar el juego?",
+            text: "¿Estás seguro que desea terminar el juego?",
             confirmButtonText: "Terminar",
             showCancelButton: true,
             cancelButtonText: "Seguir jugando"
@@ -35,10 +35,10 @@ export const ResultsScreen = () => {
         <div>
             <div className=" titulo-pregunta container-fluid mt-2">
                 <div className="row  justify-content-center">
-                    <h1>¿Cuandos estados tiene México?</h1>
+                    <h1>¿Cúal es la capital de Tamaulipas?</h1>
                 </div>
             </div>
-            <h3>1 de 3</h3>
+            <h3>3 de 3</h3>
 
             <div className="container-fluid mt-4">
                 <div className="container mt-5">
@@ -49,7 +49,7 @@ export const ResultsScreen = () => {
 
                 <div className="row justify-content-center">
                     <div className="col-6">
-                        <button className="respuesta2 mt-2">32 </button>
+                        <button className="respuesta2 mt-2">Victoria</button>
                     </div>
 
 
@@ -99,7 +99,7 @@ export const ResultsScreen = () => {
             </div>
 
 
-            <Link to="/question2" className="siguiente-pregunta">Siguiente </Link>
+            <Link to="/question" className="siguiente-pregunta">Siguiente </Link>
             <Link onClick={terminarJuego} className="terminar-juego">Terminar </Link>
 
         </div>
