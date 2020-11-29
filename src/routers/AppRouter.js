@@ -20,6 +20,8 @@ import { NameKabumsScreen } from '../components/admin/nameKabum/NameKabumsScreen
 import { QuestionScreen } from '../components/admin/nameKabum/QuestionScreen'
 import { AnswerQuestionAdminScreen } from '../components/admin/questionsAdmin/AnswerQuestionAdminScreen';
 import { ResultsScreen } from '../components/admin/questionsAdmin/ResultsScreen';
+import { Scoreboard} from '../components/user/players/scoreboard'
+
 
 export const AppRouter = () => {
     return (
@@ -27,6 +29,7 @@ export const AppRouter = () => {
         <Router>
             <div>
                 <Switch>
+
                     <Route exact path="/login" component={LoginScreen} />
                     <Route exact path="/pin" component={PinScreen} />
                     <Route exact path="/gamertag" component={UsernameScreen} />
@@ -40,7 +43,8 @@ export const AppRouter = () => {
                     <Route exact path="/responder" component={ responder } />
                     <Route exact path="/cargarpregunta" component={ cargarpregunta } />
                     <Route exact path="/resultadosAdmin" component={ ResultsScreen } />
-
+                    <Route exact path="/scoreboard" component={ Scoreboard } />
+                    
 
                     <Route path="/" component={AppInitialRouters} />
 
