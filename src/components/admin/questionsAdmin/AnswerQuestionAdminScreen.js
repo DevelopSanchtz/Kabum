@@ -24,7 +24,7 @@ export const AnswerQuestionAdminScreen = () => {
                         <img className="container-imagen" src={imagen}></img>
                     </div>
                 </div>
-            </div>
+            </div> 
 
             <div className="container-fluid mt-4">
                 <div className="row">
@@ -45,7 +45,7 @@ export const AnswerQuestionAdminScreen = () => {
                 <p>Respuesta</p>
             </div>
 
-            <Link to="/question" className="siguiente-pregunta">Saltar </Link>
+            <Link to="/resultadosAdmin" className="siguiente-pregunta">Saltar </Link>
 
 
         </div>

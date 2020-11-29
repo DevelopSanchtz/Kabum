@@ -19,6 +19,7 @@ import { cargarpregunta } from '../components/user/players/cargarpregunta';
 import { NameKabumsScreen } from '../components/admin/nameKabum/NameKabumsScreen'
 import { QuestionScreen } from '../components/admin/nameKabum/QuestionScreen'
 import { AnswerQuestionAdminScreen } from '../components/admin/questionsAdmin/AnswerQuestionAdminScreen';
+import { ResultsScreen } from '../components/admin/questionsAdmin/ResultsScreen';
 
 export const AppRouter = () => {
     return (
@@ -38,6 +39,7 @@ export const AppRouter = () => {
                     <Route exact path="/showplayers" component={ ShowPlayersScreen } />
                     <Route exact path="/responder" component={ responder } />
                     <Route exact path="/cargarpregunta" component={ cargarpregunta } />
+                    <Route exact path="/resultadosAdmin" component={ ResultsScreen } />
 
 
                     <Route path="/" component={AppInitialRouters} />
