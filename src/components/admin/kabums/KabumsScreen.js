@@ -27,9 +27,6 @@ export const KabumsScreen = () => {
     }
 
 
-
-
-
     return (
         <div>
             <div className="portada-kabum">

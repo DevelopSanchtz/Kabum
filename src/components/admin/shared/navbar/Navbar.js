@@ -11,7 +11,7 @@ export const Navbar = () => {
     const crearKabum = async ()=>{
         const { value: text } = await  Swal.fire({
             input: 'text',
-            inputLabel: 'Nombre',
+            inputLabel: 'Titulo Kabum',
             inputPlaceholder: 'Ingrese el titulo del kabum',
             inputAttributes: {
               'aria-label': 'Escribe el titulo aquí'

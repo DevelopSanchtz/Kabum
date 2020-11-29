@@ -1,0 +1,97 @@
+.nombre-pregunta{
+    font-size: 60px;
+    font-weight: bolder;
+    cursor: default;
+}
+
+*{
+    font-family: 'Quicksand', sans-serif;    
+}
+
+h1{
+    font-family: 'Quicksand', sans-serif;    
+    font-weight: bold;
+}
+
+.container-pregunta{
+    position: absolute;
+    top:40%;
+    left: 0%;
+}
+
+.cargando{
+    position: absolute;
+    top:60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+ 
+
+.logo-kabum-movimiento{
+    width: 300px;
+    height: 150px;
+    animation: animate;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: animate infinite alternate 500ms;
+}
+
+
+@keyframes animate{
+    from{
+        width: 280px;
+        height: 130px;
+    }
+    to{
+        width: 300px;
+        height: 150px;    
+    }
+}
+
+ 
+.progress {
+    background: rgba(255,255,255,0.1);
+    justify-content: flex-start;
+    border-radius: 100px;
+    align-items: center;
+    position: relative;
+    padding: 0 5px;
+    display: flex;
+    height: 40px;
+    width: 800px;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+.progress-value {
+    animation: load 3s normal forwards;
+    box-shadow: 0 10px 40px -10px #fff;
+    border-radius: 100px;
+    background: #fff;
+    height: 30px;
+    width: 0;
+  }
+  
+  @keyframes load {
+    0% { width: 0; }
+    100% { width: 100%; }
+  }
+
+.container-contador-preguntas{
+    background: #fff;
+    color: black;
+    width: 150px;
+    height: 50px;
+    padding-left: 15px;;
+    border-radius: 0px 0px 30px;
+}
+  
+.contador-preguntas{
+    font-weight: bold;
+}

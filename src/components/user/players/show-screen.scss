@@ -1,0 +1,98 @@
+.principal{
+    background-color:   white;
+    width:  100%;
+
+}
+.barra {
+    font-size: 24px;
+    width: 100%;
+    height: 80px;
+    font-weight: bold;
+    background-color: white;
+    box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.2);
+}
+#color{
+    background-color: black;
+    color: white;
+    box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.2);
+    height: 80px;
+}
+#respuestas{
+    color: aqua;
+    background-color: aqua;
+    height: 980px;
+    width: 50px;
+}
+
+.tiempo-centro{
+    background-color: #ff4b4b;
+    color: #fff;
+    border-radius: 200px;
+    width: 100px;
+    height: 100px;
+    padding: 25px;
+    text-align: center;
+    top: 30%;
+    left: 15%;
+    margin: 0 auto;
+}
+.animal{
+    height: 150px;   
+    position: relative;
+  
+}
+.container-responder{
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+   
+    }
+
+.item{
+    background-color: white  ;
+    padding: 1em;
+    margin: 1em;
+    float: left;
+    width: 100%                                                                         ;
+    display: flex;
+    justify-content: center;
+}
+
+#item1{
+    background-color:rgb(245, 83, 83);
+    
+}
+#item2{
+    background-color:rgb(38, 55, 139);
+}
+#item3{
+    background-color:rgb(235, 202, 58);
+}
+#item4{
+    background-color:rgb(89, 207, 228);
+}
+.btn-respuesta{
+    width: 100%;
+}
+
+.contenedor-show{
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    animation-name: fondo-color-show;
+	animation-duration: 10s;
+	animation-iteration-count: infinite;
+}
+@keyframes fondo-color-show{
+    100%{ background: #FFE375;
+    }
+    35%{ background: #FB6566;
+    }
+    // 30%{ background: #85ECFF; 
+    //     background-image: url('../../../assets/images/fondo-signos.png');
+    //     background-size: cover; 
+    //     }
+    30%{ background: #33418A; 
+
+    }
+}
