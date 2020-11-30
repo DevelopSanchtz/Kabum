@@ -29,6 +29,12 @@ import { ResultsScreen3 } from '../components/admin/questionsAdmin/ResultsScreen
 import { Scoreboard } from '../components/user/players/scoreboard';
 import { Scoreboard2 } from '../components/user/players/scoreboard2';
 import { Scoreboard3 } from '../components/user/players/scoreboard3';
+import { PodioUserScreen } from '../components/user/players/PodioUserScreen';
+
+// PodioUser
+// correcto
+import { correcto } from '../components/user/players/correcto';
+import { incorrecto } from '../components/user/players/incorrecto';
 
 
 export const AppRouter = () => {
@@ -60,6 +66,10 @@ export const AppRouter = () => {
                     <Route exact path="/scoreboard" component={ Scoreboard } />
                     <Route exact path="/scoreboard2" component={ Scoreboard2 } />
                     <Route exact path="/scoreboard3" component={ Scoreboard3 } />
+                    <Route exact path="/correcto" component={ correcto } />
+                    <Route exact path="/incorrecto" component={ incorrecto } />
+                    <Route exact path="/podioUsuario" component={ PodioUserScreen } />
+
                     <Route path="/" component={AppInitialRouters} />
 
                 </Switch>

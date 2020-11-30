@@ -24,7 +24,7 @@ export const QuestionScreen = () => {
 
                     <div className="container-pregunta container-fluid color-pin">
                         <div className="row justify-content-center ">
-                            <h1 className="animate__shakeX text-center nombre-pregunta">¿Cuantos estados xdd tiene México? </h1>
+                            <h1 className="animate__shakeX text-center nombre-pregunta">¿Cuantos estados tiene México? </h1>
                         </div>
                     </div>
 
