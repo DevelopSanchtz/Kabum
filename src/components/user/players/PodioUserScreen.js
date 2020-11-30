@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import './show-screen.scss'
 import logo4 from './../../../assets/images/perro.png'
-import imgPodioUsuario from './../../../assets/images/podio-usuario-primero.png'
+import imgPodioUsuario from './../../../assets/images/bu.png'
 
 export const PodioUserScreen = () => {
     return (

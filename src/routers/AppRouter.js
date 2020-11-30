@@ -30,6 +30,7 @@ import { Scoreboard } from '../components/user/players/scoreboard';
 import { Scoreboard2 } from '../components/user/players/scoreboard2';
 import { Scoreboard3 } from '../components/user/players/scoreboard3';
 import { PodioUserScreen } from '../components/user/players/PodioUserScreen';
+import { resultados } from '../components/admin/resultados/resultados';
 
 // PodioUser
 // correcto
@@ -69,6 +70,7 @@ export const AppRouter = () => {
                     <Route exact path="/correcto" component={ correcto } />
                     <Route exact path="/incorrecto" component={ incorrecto } />
                     <Route exact path="/podioUsuario" component={ PodioUserScreen } />
+                    <Route exact path="/podiumAdmin" component={ resultados } />
 
                     <Route path="/" component={AppInitialRouters} />
 
