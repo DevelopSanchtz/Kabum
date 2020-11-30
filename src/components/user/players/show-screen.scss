@@ -41,6 +41,39 @@
     position: relative;
   
 }
+
+.fondo_scoreboard{
+    background-color: #33418A; 
+    width: 100%; 
+    height: 90%; 
+    position: fixed; 
+    top: 10%; 
+    left: 0;
+}
+
+.tabla-top{
+
+    color: #fff !important;
+}
+
+.score-tit{
+    font-size: 40px;
+}
+
+.tr-fisrt{
+    color: black;
+    font-weight: 700;
+    background-color: blanchedalmond;
+}
+
+.tamaño-tabla{
+    font-size: 35px;
+}
+
+.margen-table{
+    margin-top: 10%;
+}
+
 .container-responder{
         height: 100vh;
         justify-content: center;

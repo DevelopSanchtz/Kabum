@@ -99,7 +99,7 @@ export const ResultsScreen3 = () => {
             </div>
 
 
-            <Link to="/question" className="siguiente-pregunta">Siguiente </Link>
+            <Link to="/scoreboard3" className="siguiente-pregunta">Siguiente </Link>
             <Link onClick={terminarJuego} className="terminar-juego">Terminar </Link>
 
         </div>

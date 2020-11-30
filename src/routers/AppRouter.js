@@ -26,6 +26,10 @@ import { AnswerQuestionAdminScreen3 } from '../components/admin/questionsAdmin/A
 import { ResultsScreen } from '../components/admin/questionsAdmin/ResultsScreen';
 import { ResultsScreen2 } from '../components/admin/questionsAdmin/ResultsScreen2';
 import { ResultsScreen3 } from '../components/admin/questionsAdmin/ResultsScreen3';
+import { Scoreboard } from '../components/user/players/scoreboard';
+import { Scoreboard2 } from '../components/user/players/scoreboard2';
+import { Scoreboard3 } from '../components/user/players/scoreboard3';
+
 
 export const AppRouter = () => {
     return (
@@ -33,6 +37,7 @@ export const AppRouter = () => {
         <Router>
             <div>
                 <Switch>
+
                     <Route exact path="/login" component={LoginScreen} />
                     <Route exact path="/pin" component={PinScreen} />
                     <Route exact path="/gamertag" component={UsernameScreen} />
@@ -52,7 +57,9 @@ export const AppRouter = () => {
                     <Route exact path="/resultadosAdmin" component={ ResultsScreen } />
                     <Route exact path="/resultadosAdmin2" component={ ResultsScreen2 } />
                     <Route exact path="/resultadosAdmin3" component={ ResultsScreen3 } />
-
+                    <Route exact path="/scoreboard" component={ Scoreboard } />
+                    <Route exact path="/scoreboard2" component={ Scoreboard2 } />
+                    <Route exact path="/scoreboard3" component={ Scoreboard3 } />
 
                     <Route path="/" component={AppInitialRouters} />
 
