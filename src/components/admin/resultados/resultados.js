@@ -20,27 +20,36 @@ export const resultados = () => {
                 <div class="footer">
                
                 <div className="titulo-tag">
-                        <h2 id="titulo">Gamertag</h2>
+                        <h2 id="titulo">Gamertagx</h2>
                     </div>
 
                     <div class="item2" id="item11">
+                        
+                    <div className="titulo-tag2">
+                        <h2 id="titulo">Gamertagx2</h2>
+                    </div>
                     <img className="medallas" src={img2do} alt=""></img>
                         <h2 id="titulo">1234</h2>
                         <p id="subtitulo">2 de cada 4</p>
                     </div>
                     
                  
+    
+
 
                     <div class="item2" id="item22">
                 
-                        <img className="medallas" src={img1er} alt=""></img>
+                        <img className="medallas1" src={img1er} alt=""></img>
                         <h2 id="titulo">1234</h2>
                         <p id="subtitulo">1 de cada 4</p>
                     </div>
-
-            
+    
+      
 
                     <div class="item2" id="item33">  
+                    <div className="titulo-tag3">
+                        <h2 id="titulo">Gamertagx3</h2>
+                    </div>
                     <img className="medallas" src={img3er} alt=""></img>
                         <h2 id="titulo">1234</h2>
                         <p id="subtitulo">3 de cada 4</p>                  

@@ -20,6 +20,7 @@
 #titulo{
     color: white;
 }
+
 #subtitulo{
     color: white;
 }
@@ -70,25 +71,32 @@
     text-align: center;
     margin-top: -25px;
     width: 50%;
-    color: black;
-    border-radius: 10px;
 }
+
+
+
+
 .titulo-tag2{
-    margin-top: -25px;
-    color: black;
-    border-radius: 10px;
-}
+    align-items: center;
+    text-align: center;
+    margin-top: -62px;
+    }
+
+
+
 .titulo-tag3{
     align-items: center;
     text-align: center;
-    margin-top: -25px;
-    width: 780px;
-    color: black;
-    border-radius: 10px;
-}
+    margin-top: -62px;
+    }
 
 
 .medallas{
+    width: 150px;
+    margin-top: 0px;
+    }
+    
+.medallas1{
     width: 150px;
     margin-top: -16px;
     }
