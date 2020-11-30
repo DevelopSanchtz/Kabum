@@ -24,7 +24,7 @@ export const ResultsScreen = () => {
                     title: "Juego terminado",
                     icon: "success",
                 }).then((resultado) => {
-                    window.location.href = "/kabums";
+                    window.location.href = "/login";
                 })
             }
         })
