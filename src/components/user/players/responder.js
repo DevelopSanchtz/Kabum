@@ -2,8 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import logo from './../../../assets/images/burro.png'
 import logo2 from './../../../assets/images/gato.png'
-import logo3 from './../../../assets/images/leon.png'
-import logo4 from './../../../assets/images/perro.png'
+import logo3 from './../../../assets/images/vaca.png'
+import logo4 from './../../../assets/images/lobo.png'
 import './show-screen.scss'
 export const responder = () => {
     return (
@@ -58,14 +58,10 @@ export const responder = () => {
                                 <img className="animal" src={logo4} alt=""></img>
                             </div>
                         </Link>   
-
-
-
                     </div>
 
                 </div>
             </div>
-
 
         </div>
     )
