@@ -4,6 +4,14 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2'
 
 export const KabumsScreen = () => {
+    let pin1 = Math.floor(Math.random()*10);
+        let pin2 = Math.floor(Math.random()*10);
+        let pin3 = Math.floor(Math.random()*10);
+        let pin4 = Math.floor(Math.random()*10);
+        let pin5 = Math.floor(Math.random()*10);
+        let pin6 = Math.floor(Math.random()*10);
+
+    let pin = pin1 + "" + pin2 + "" + pin3 + "" + pin4 + "" + pin5 + "" + pin6;
 
     const borrarKabum = ()=>{
         Swal.fire({
@@ -100,7 +108,12 @@ export const KabumsScreen = () => {
                                     <div class="row justify-content-end"> <p> <span>3 </span> Jugadores</p> </div>
                                     <div class="row justify-content-end">
                                         <Link to="/create" class="btn btn-outline-primary"> Editar </Link>
-                                        <Link to="/start" class="btn btn-success ml-2"> Jugar </Link>
+                                        <Link to={{
+                                            pathname: "/start",
+                                            props: {
+                                                pin: pin
+                                            }
+                                        }} class="btn btn-success ml-2"> Jugar </Link>
                                     </div>
                                 </div>
                             </div>
