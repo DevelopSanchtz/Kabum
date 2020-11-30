@@ -15,7 +15,7 @@ export const PinScreen = () => {
             text:"El pin ingresado es correcto",
             confirmButtonText:"Aceptar",
         }).then(function(){
-            window.location.href = "/gamertag";
+            window.location.href = "/showplayers";
         })
     }
 
@@ -25,6 +25,10 @@ export const PinScreen = () => {
                 <img src={logo} alt="logo" height="200px"></img>
                 <form>
                     <p><input type="text" placeholder="Pin" name="pin" class="pin" maxLength="6" /></p>
+                </form>
+
+                <form>
+                    <p><input type="text" placeholder="GamerTag" name="pin" class="pin" maxLength="6" /></p>
                 </form>
                 <Link onClick={verificarPin} class="btn-pin"> Ingresa </Link>
             </div>

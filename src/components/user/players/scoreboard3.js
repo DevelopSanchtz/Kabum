@@ -28,7 +28,7 @@ export const Scoreboard3=() =>{
 </table>
 </div>
 </div>
-<Link to="/podiumAdmin" className="siguiente-pregunta">Siguiente </Link>
+<Link to="/podiumAdmin" className="siguiente-pregunta-scoreboard">Siguiente </Link>
 
 </div>
 

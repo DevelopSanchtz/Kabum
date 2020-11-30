@@ -4,8 +4,8 @@ import imagen from './../../../assets/images/mexico-imagen.jpg'
 import { Link } from 'react-router-dom';
 import logo from './../../../assets/images/burro.png'
 import logo2 from './../../../assets/images/gato.png'
-import logo3 from './../../../assets/images/leon.png'
-import logo4 from './../../../assets/images/perro.png'
+import logo3 from './../../../assets/images/vaca.png'
+import logo4 from './../../../assets/images/lobo.png'
 import Swal from 'sweetalert2'
 
 export const ResultsScreen = () => {

@@ -28,7 +28,7 @@ export const Scoreboard2=() =>{
 </table>
 </div>
 </div>
-<Link to="/question3" className="siguiente-pregunta">Siguiente </Link>
+<Link to="/question3" className="siguiente-pregunta-scoreboard">Siguiente </Link>
 
 </div>
 
