@@ -60,7 +60,6 @@ export const AppRouter = () => {
                     <Route exact path="/scoreboard" component={ Scoreboard } />
                     <Route exact path="/scoreboard2" component={ Scoreboard2 } />
                     <Route exact path="/scoreboard3" component={ Scoreboard3 } />
-
                     <Route path="/" component={AppInitialRouters} />
 
                 </Switch>
