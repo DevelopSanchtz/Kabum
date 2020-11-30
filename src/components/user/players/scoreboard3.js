@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-export const Scoreboard=() =>{
+export const Scoreboard3=() =>{
     return(
         <div>
 <header class="text-center mt-4">
@@ -28,7 +28,7 @@ export const Scoreboard=() =>{
 </table>
 </div>
 </div>
-<Link to="/question2" className="siguiente-pregunta">Siguiente </Link>
+<Link to="/podio" className="siguiente-pregunta">Siguiente </Link>
 
 </div>
 
