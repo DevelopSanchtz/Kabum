@@ -78,7 +78,7 @@
         height: 100vh;
         justify-content: center;
         align-items: center;
-       
+        
     }
     .container-correcto{
       
@@ -89,6 +89,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        
         
     }
     .container-incorrecto{
@@ -102,7 +103,6 @@
     }
 
 .item{
-    background-color: white  ;
     padding: 1em;
     margin: 1em;
     float: left;
@@ -110,9 +110,8 @@
     width: 100%                                                                         ;
     display: flex;
     justify-content: center;
-
     flex-direction: column;
-        align-items: center;
+    align-items: center;
 }
 
 #item1{

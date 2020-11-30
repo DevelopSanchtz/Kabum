@@ -7,7 +7,7 @@ import img2do from './../../../assets/images/ka.png'
 import img3er from './../../../assets/images/m.png'
 export const resultados = () => {
     return (
-        <div class="principal">
+        <div class="principal-r">
         <div class="row fs">
             <div class="col-3">
             </div>
@@ -23,7 +23,7 @@ export const resultados = () => {
                         <h2 id="titulo">Gamertag</h2>
                     </div>
 
-                    <div class="item" id="item11">
+                    <div class="item2" id="item11">
                     <img className="medallas" src={img2do} alt=""></img>
                         <h2 id="titulo">1234</h2>
                         <p id="subtitulo">2 de cada 4</p>
@@ -31,7 +31,7 @@ export const resultados = () => {
                     
                  
 
-                    <div class="item" id="item22">
+                    <div class="item2" id="item22">
                 
                         <img className="medallas" src={img1er} alt=""></img>
                         <h2 id="titulo">1234</h2>
@@ -40,7 +40,7 @@ export const resultados = () => {
 
             
 
-                    <div class="item" id="item33">  
+                    <div class="item2" id="item33">  
                     <img className="medallas" src={img3er} alt=""></img>
                         <h2 id="titulo">1234</h2>
                         <p id="subtitulo">3 de cada 4</p>                  
