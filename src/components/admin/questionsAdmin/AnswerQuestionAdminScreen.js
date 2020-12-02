@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 
 
 export const AnswerQuestionAdminScreen = () => {
+
+    
     return (
         <div>
             <div className=" titulo-pregunta container-fluid mt-2">
