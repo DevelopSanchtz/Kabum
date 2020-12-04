@@ -1,4 +1,4 @@
-import React, { useEffect, UseState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import io from 'socket.io-client';
 import logo from './../../../assets/images/burro.png'
@@ -14,22 +14,13 @@ const connectSocketServer = () => {
     return socket;
 }
 
-const [pregunta, setPregunta] = useState({});
-
-useEffect(() => {
-    socket.on('pregunta', pregunta => {
-        console.log(pregunta);
-        setPregunta(pregunta);
-    });
-}, []);
-
-export const responder = () => {
-
-    const [socket] = UseState(connectSocketServer);
+export const Responder = () => {
+    
+    const [socket] = useState(connectSocketServer);
 
     let contador = 0;
 
-    let pregunta = 'respuesta de pregunta';
+    let pregunta2 = 'respuesta de pregunta';
 
     let tiempo = setInterval(() => {
         contador++;
@@ -38,6 +29,15 @@ export const responder = () => {
     const preguntaElegida = (id, pregunta, respuesta) => {
         socket.emit('enviar-pregunta', id, pregunta, respuesta);
     }
+    
+    const [pregunta, setPregunta] = useState({});
+    
+    useEffect(() => {
+        socket.on('pregunta', pregunta => {
+            console.log(pregunta);
+            setPregunta(pregunta);
+        });
+    }, []);
 
     return (
         <div className="container-responder">
@@ -65,13 +65,13 @@ export const responder = () => {
                 <div className="row justify-content-center">
                     <div className="col-6">
 
-                        <Link to="/correcto" className="btn-respuestas" onClick={preguntaElegida(pregunta, 'a'), clearInterval(tiempo)}>
+                        <Link to="/correcto" className="btn-respuestas" onClick={preguntaElegida(pregunta2, 'a'), clearInterval(tiempo)}>
                             <div class="item" id="item1">
                                 <img className="animal" src={logo} alt=""></img>
                             </div>
                         </Link>            
                         
-                        <Link to="/correcto" className="btn-respuestas" onClick={preguntaElegida(pregunta, 'c'), clearInterval(tiempo)}>
+                        <Link to="/correcto" className="btn-respuestas" onClick={preguntaElegida(pregunta2, 'c'), clearInterval(tiempo)}>
                             <div class="item" id="item3">
                                 <img className="animal" src={logo3} alt=""></img>
                             </div>
@@ -81,12 +81,12 @@ export const responder = () => {
                     <div className="col-6">
 
 
-                        <Link to="/incorrecto" onClick={preguntaElegida(pregunta, 'b'), clearInterval(tiempo)}>
+                        <Link to="/incorrecto" onClick={preguntaElegida(pregunta2, 'b'), clearInterval(tiempo)}>
                             <div class="item" id="item2">
                                 <img className="animal" src={logo2} alt=""></img>
                             </div>
                         </Link>
-                        <Link to="/incorrecto" className="btn-respuestas" onClick={preguntaElegida(pregunta, 'd'), clearInterval(tiempo)}>
+                        <Link to="/incorrecto" className="btn-respuestas" onClick={preguntaElegida(pregunta2, 'd'), clearInterval(tiempo)}>
                             <div class="item" id="item4">
                                 <img className="animal" src={logo4} alt=""></img>
                             </div>

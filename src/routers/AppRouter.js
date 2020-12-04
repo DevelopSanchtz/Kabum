@@ -13,7 +13,7 @@ import { LoginAdminScreen } from '../components/admin/auth/loginAdmin/LoginAdmin
 import { CreateKabumScreen } from '../components/admin/kabums/CreateKabumScreen';
 import { StartScreen } from '../components/admin/start/StartScreen';
 import { ShowPlayersScreen } from '../components/user/players/ShowPlayersScreen';
-import { responder } from '../components/user/players/responder';
+import { Responder } from '../components/user/players/responder';
 import { cargarpregunta } from '../components/user/players/cargarpregunta';
 import { NameKabumsScreen } from '../components/admin/nameKabum/NameKabumsScreen'
 import { QuestionScreen } from '../components/admin/nameKabum/QuestionScreen'
@@ -57,7 +57,7 @@ export const AppRouter = () => {
                     <Route exact path="/answerAdmin2" component={AnswerQuestionAdminScreen2} />
                     <Route exact path="/answerAdmin3" component={AnswerQuestionAdminScreen3} />
                     <Route exact path="/showplayers" component={ ShowPlayersScreen } />
-                    <Route exact path="/responder" component={ responder } />
+                    <Route exact path="/responder" component={ Responder } />
                     <Route exact path="/cargarpregunta" component={ cargarpregunta } />
                     <Route exact path="/resultadosAdmin" component={ ResultsScreen } />
                     <Route exact path="/resultadosAdmin2" component={ ResultsScreen2 } />
