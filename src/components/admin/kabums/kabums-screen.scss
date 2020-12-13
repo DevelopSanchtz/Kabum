@@ -1,7 +1,10 @@
 *{
     font-family: 'Poppins', Courier, monospace;
 }
-
+.padre {
+  width: 100%;
+  margin-left: -40px;
+}
 
 
 .portada-kabum{
@@ -77,7 +80,11 @@ ul {
 }
 
 .columna {
-  width: 50%;
+  
+
+}
+.columna2 {
+  height: auto;
 }
 
 .navs {
@@ -98,15 +105,9 @@ ul {
 }
 
 
-
-
-
-
-
-
 .titulo {
   background-color: aliceblue;
-  width: 100%;
+  width: 1100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -126,17 +127,11 @@ ul {
 
 }
 
-.titulo2 {
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 
 .imagen {
   background-color: aliceblue;
   border-radius: 15px;
-  width: 50%;
   box-shadow: 0 4px 10px 1px rgba(0, 0, 0, 0.2);
   height: 250px;
 }
@@ -144,48 +139,64 @@ ul {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  margin-right: 100px;
+  margin-top: 500px;
+  color: black;
+  width: 98%;
 }
 
-.botones button {
-  width: 60vh;
-  height: 100px;
-  border-radius: 15px;
-  border: none;
-  font-size: 30px;
-  font-weight: bold;
-  color: white;
-  //text-align: left;
-}
 
 .azul {
-  background-color: rgba(54, 110, 230, 0.945);
+  background-color: rgba(32, 76, 173, 0.945);
+  color: white;
 }
 .azul:hover {
-  background-color: rgba(11, 85, 245, 0.945);
+  background-color: rgba(11, 75, 214, 0.945);
+  color: white;
+}
+.azul:focus {
+  background-color: rgba(11, 75, 214, 0.945);
+  color: white;
 }
 .rojo {
-  background-color: rgba(235, 98, 98, 0.87);
+  background-color: rgba(231, 84, 84, 0.87);
+  color: white;
 }
 .rojo:hover {
   background-color: rgba(252, 44, 44, 0.87);
+  color: white;
+}
+.rojo:focus {
+  background-color: rgba(252, 44, 44, 0.87);
+  color: white;
 }
 .amarillo {
-  background-color: rgba(238, 235, 73, 0.87);
+  background-color: rgba(241, 239, 111, 0.87);
+  color: white;
 }
 .amarillo:hover {
-  background-color: rgba(255, 252, 51, 0.87);
+  background-color: rgba(252, 249, 84, 0.87);
+  color: white;
+}
+.amarillo:focus {
+  background-color: rgba(255, 252, 82, 0.87);
+  color: white;
 }
 .cielo {
   background-color: rgba(88, 216, 233, 0.87);
+  color: white;
 }
 .cielo:hover {
   background-color: rgba(68, 233, 255, 0.87);
+  color: white;
+}
+.cielo:focus {
+  background-color: rgba(68, 233, 255, 0.87);
+  color: white;
 }
 
 .logos {
-  margin-left: 450px;
-  margin-top: 20px;
+  margin-left: 480px;
+  margin-top: 5px;
 }
 .logos .trash{
   color: #FB6566;
@@ -195,10 +206,28 @@ ul {
   cursor: pointer;
 }
 
-input {
-  border: none;
-  width: 800px;
-  background-color: aliceblue;
-  text-align: center;
-
+.edit {
+  margin-left: -50px;
 }
+
+input {
+  
+  text-align: center;
+}
+.botones input {
+  height: 70px;
+  font-size: 30px;
+  color: black;
+  font-weight: bold;
+  border-radius: 10px;
+  border: none;
+  width: 460px;
+  
+}
+
+.titulo2 {
+  width: 800px;
+  margin-left: -60px;
+  margin-bottom: 40px;
+}
+
