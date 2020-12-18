@@ -37,42 +37,28 @@ export class CreateKabumScreen extends Component {
     }
 
 
-    imageHandler = (e) => {
-        const reader = new FileReader();
-        reader.onload = () => {
-            if (reader.readyState === 2) {
-                this.setState({ recurso: reader.result });
-            }
-        }
-        reader.readAsDataURL(e.target.files[0])
-
+    imageHandler = (value) => {
+        this.setState({ recurso: value});
     }
     handleChange = (e) => {
         const { value } = e.target;
         if (e.target.checked) {
             if (this.state[value] !== '') {
                 if (!this.state.correcta.includes(e.target.value)) {
-
                     this.state.correcta.push(e.target.value);
-
                 }
             }
-
         } else {
             const index = this.state.correcta.indexOf(e.target.value);
             if (index > -1) {
                 this.state.correcta.splice(index, 1);
             }
         }
-
         console.log(this.state);
-
     }
 
     handleChangeInput = (e) => {
-
         const { name, value } = e.target;
-
         switch (name) {
             case 'a':
                 if (value !== '') {
@@ -127,18 +113,11 @@ export class CreateKabumScreen extends Component {
         this.setState({ [name]: value })
     }
 
-
     handleSubmit = (e) => {
-
         if (this.state.pregunta != "" && this.state.a != "" && this.state.b != "" && this.state.c != "" && this.state.d != "" && this.state.correcta != "" && this.state.tiempo != "" && this.state.recurso != "") {
             e.preventDefault()
-
             this.kabum.preguntas.push(this.state);
-
             document.getElementById('form').reset();
-
-            console.log(this.state);
-            console.log(this.kabum);
             Swal.fire({
                 icon: 'success',
                 title: 'Pregunta añadida'
@@ -155,7 +134,6 @@ export class CreateKabumScreen extends Component {
         e.preventDefault();
         try {
             if (this.kabum.preguntas.length > 0) {
-                console.log(this.kabum)
                 axios.post('http://localhost:4000/save-kabum', this.kabum)
                     .then( res => {
                         console.log(res.data);
@@ -171,7 +149,6 @@ export class CreateKabumScreen extends Component {
         }
     }
 
-
     render() {
         const { pregunta, a, b, c, d, tiempo, recurso } = this.state;
         return (
@@ -181,7 +158,6 @@ export class CreateKabumScreen extends Component {
                     <a className="navbar-brand" href="#">
                         <img src={logo} width="80px" height="30px" alt=""></img>
                     </a>
-
                     <NavLink
                         activeClassName="active"
                         className="nav-item nav-link"
@@ -189,7 +165,6 @@ export class CreateKabumScreen extends Component {
                         to="/kabums">
                         Kabums
                     </NavLink>
-
                     <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
                         <ul className="navbar-nav mr-auto mt-2 mt-lg-0"></ul>
                         <form className="form-inline my-2 my-lg-0">
@@ -199,15 +174,12 @@ export class CreateKabumScreen extends Component {
                     </div>
                 </nav>
                 {/* termina navbar */}
-
                 <div className="container-fluid mt-3">
                     <form name="form" id="form">
                         <div className="row">
-
                             <div className="col-12 mb-2 text-center">
                                 <Link onClick={this.handleSubmit} className="btn btn-success my-2 my-sm-0" type="submit">Agregar pregunta</Link>
                             </div>
-
                             <div className="col-12">
                                 <div className="row">
                                     <div className="col-12">
@@ -227,12 +199,14 @@ export class CreateKabumScreen extends Component {
                                         </select>
                                     </div>
                                     <div className=" col-8 imagen">
-                                        <div className="d-flex justify-content-center im">
-                                            <img id="form" src={recurso} width="300px" height="205px" className="mt-3" alt="Imagen de la pregunta"></img>
-                                        </div>
-                                        <div className="logos d-flex justify-content-center">
-                                            <label for="input"><span className="ml-2"><i className="fas fa-edit edit"></i></span></label>
-                                            <input id="input" name="recurso" type="file" accept="image/*" onChange={this.imageHandler} className="d-none" />
+                                        <div className="row h-100 justify-content-center align-items-center">
+                                            <div className="col-7">
+                                                <img id="form" src={recurso} width="380px" className="img-fluid" alt="Imagen de la pregunta"></img>
+                                            </div>
+                                            <div class="col-5 form-group">
+                                                <label for="input"><strong>Url de la imagen: </strong></label>
+                                                <input type="text" className="form-control" onChange={event => this.imageHandler(event.target.value)} />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
