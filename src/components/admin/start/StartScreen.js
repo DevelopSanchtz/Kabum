@@ -1,18 +1,24 @@
-import React, { useEffect, useState } from 'react'
-import './start-screen.scss'
-import logo from './../../../assets/images/logo-nuevo-kabum.png'
-import Swal from 'sweetalert2'
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+
+import Swal from 'sweetalert2';
+
+import './start-screen.scss';
+import logo from './../../../assets/images/logo-nuevo-kabum.png';
 import socket from '../../socket';
 import { PlayerTag } from './PlayerTag';
 
 export const StartScreen = (props) => {
+    const history = useHistory();
     let pin;
-    if( localStorage.getItem('pin-kabum') ) {
+    if (localStorage.getItem('pin-kabum')) {
         pin = localStorage.getItem('pin-kabum');
+        kabum = localStorage.getItem('kabum');
     } else {
         pin = props.location.props.pin;
         localStorage.setItem('pin-kabum', pin);
+        kabum = props.location.props.kabum;
+        localStorage.setItem('kabum', kabum);
     }
     const salir = () => {
         Swal.fire({
@@ -46,6 +52,23 @@ export const StartScreen = (props) => {
         });
     }, []);
 
+    const iniciarJuego = () => {
+        if (online.length > 1) {
+            socket.emit('empezar-juego');
+            history.push('/nameKabum', {
+                kabum: kabum
+            })
+        } else {
+            Swal.fire({
+                title: "Sala incompleta",
+                icon: "warning",
+                text: "Aun faltan mas jugadores, esperemos a que se unan más personas",
+                confirmButtonText: "Ok",
+                timer: '3000'
+            })
+        }
+    };
+
     return (
 
         <div >
@@ -70,7 +93,7 @@ export const StartScreen = (props) => {
 
                     <div className="container mt-2">
                         <div className="row">
-                            <h2 className="num-jugadores" > <span className="icon-user"> <i class="fas fa-user"></i> </span> {online.length}</h2>
+                            <h2 className="num-jugadores" > <span className="icon-user"> <i className="fas fa-user"></i> </span> {online.length}</h2>
                         </div>
                     </div>
 
@@ -78,15 +101,15 @@ export const StartScreen = (props) => {
                         <div className="row justify-content-center">
                             {
                                 online.map(player => {
-                                    return(
+                                    return (
                                         <PlayerTag key={player.id} data={player} />
                                     );
                                 })
                             }
                         </div>
                     </div>
-                    <Link to="/nameKabum" className="btn-iniciar-juego">Iniciar </Link>
-
+                    <button onClick={iniciarJuego} className="btn-iniciar-juego">Iniciar </button>
+                    {/* <Link to="/nameKabum" className="btn-iniciar-juego">Iniciar </Link> */}
                 </div>
             </div>
         </div>

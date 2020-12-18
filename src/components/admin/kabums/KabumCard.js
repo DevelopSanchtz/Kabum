@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 export const KabumCard = (props) => {
@@ -11,37 +11,37 @@ export const KabumCard = (props) => {
   let pin = pin1 + "" + pin2 + "" + pin3 + "" + pin4 + "" + pin5 + "" + pin6;
   const { kabum, borrarKabum } = props;
   const { id, nombre, preguntas } = kabum;
-  console.log(kabum);
   return (
-    <div class="col-12">
-      <div class="card">
-        <div class="card-body">
-          <div class="container">
-            <div class="row">
-              <div class="col-3">
-                <div class="">
-                  <img class="imagen-pregunta" src="" alt=""></img>
+    <div className="col-12">
+      <div className="card">
+        <div className="card-body">
+          <div className="container">
+            <div className="row">
+              <div className="col-3">
+                <div className="">
+                  <img className="imagen-pregunta" src="" alt=""></img>
                 </div>
               </div>
-              <div class="col-6">
-                <h2 class="titulo-kabums">{nombre}</h2>
+              <div className="col-6">
+                <h2 className="titulo-kabums">{nombre}</h2>
                 <h5>{preguntas.length} preguntas</h5>
                 {/* <p>Creado hace <span> 2 dias </span> </p> */}
               </div>
-              <div class="col-3">
-                <div class="row justify-content-end">
-                  <button class="btn btn-light my-2 my-sm-0 ml-2" type="submit"> <i class="far fa-heart"></i> </button>
-                  <button onClick={borrarKabum(kabum.id)} class="btn btn-light my-2 my-sm-0 ml-2" type="submit"> <i class="fas fa-trash-alt"></i> </button>
+              <div className="col-3">
+                <div className="row justify-content-end">
+                  <button className="btn btn-light my-2 my-sm-0 ml-2" type="submit"> <i className="far fa-heart"></i> </button>
+                  <button onClick={() => borrarKabum(id)} className="btn btn-light my-2 my-sm-0 ml-2" type="submit"> <i className="fas fa-trash-alt"></i> </button>
                 </div>
-                {/* <div class="row justify-content-end"> <p> <span>3 </span> Jugadores</p> </div> */}
-                <div class="row justify-content-end">
-                  <Link to="/create" class="btn btn-outline-primary"> Editar </Link>
+                {/* <div className="row justify-content-end"> <p> <span>3 </span> Jugadores</p> </div> */}
+                <div className="row justify-content-end">
+                  <Link to="/create" className="btn btn-outline-primary"> Editar </Link>
                   <Link to={{
                     pathname: "/start",
                     props: {
-                      pin: pin
+                      pin: pin,
+                      kabum: kabum
                     }
-                  }} class="btn btn-success ml-2"> Jugar </Link>
+                  }} className="btn btn-success ml-2"> Jugar </Link>
                 </div>
               </div>
             </div>

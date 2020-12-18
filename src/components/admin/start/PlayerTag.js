@@ -23,7 +23,7 @@ export const PlayerTag = (props) => {
         <h2 className="num-jugadores ml-2" key={player.id} id={player.id}> {player.nombre}
             <span>
                 <a className="quitar-jugador" onClick={borrarJugador} >
-                    <i class="fas fa-times-circle"></i>
+                    <i className="fas fa-times-circle"></i>
                 </a>
             </span>
         </h2>

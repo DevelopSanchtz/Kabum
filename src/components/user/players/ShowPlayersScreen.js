@@ -1,22 +1,39 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-import './show-screen.scss'
-export const ShowPlayersScreen = () => {
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+
+import './show-screen.scss';
+import socket from '../../socket';
+
+export const ShowPlayersScreen = (props) => {
+    const { pin, tag, id } = props.location.state;
+    const history = useHistory();
+    socket.connect();
+    useEffect(() => {
+        socket.on('dejar-sala', idBorrado => {
+            if (id === idBorrado) {
+                socket.emit('disconnect', null);
+                history.replace('/login');
+            }
+        });
+        socket.on('primera-pregunta', pregunta => {
+            history.replace('/register', { pregunta: pregunta });
+        });
+    }, []);
     return (
-        <div class="contenedor-show">
-            <div class="barra">
-                <div class="d-flex">
-                    <div class="p-3">
-                        <p>Pin:465465465</p>
+        <div className="contenedor-show">
+            <div className="barra">
+                <div className="d-flex">
+                    <div className="p-3">
+                        <p>Pin: {pin}</p>
                     </div>
-                    <div class="p-3 ml-auto">
-                        <p>Gamertag</p>
+                    <div className="p-3 ml-auto">
+                        <p>{tag}</p>
                     </div>
                 </div>
             </div>
-            <div class="inicio-texto">
+            <div className="inicio-texto">
                 <p>Solo esperemos mas participantes</p>
-                <p>Puedes ver tu nombre?</p>
+                <p>¿Puedes ver tu nombre?</p>
             </div>
         </div>
     )

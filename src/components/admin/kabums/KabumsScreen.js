@@ -5,52 +5,64 @@ import { KabumList } from './KabumList';
 
 export const KabumsScreen = () => {
     const [kabumList, setKabumList] = useState([]);
+    const [unfilteredKabums, setUnfilteredKabums] = useState([]);
     useEffect(() => {
         fetch('http://localhost:4000/get-kabum-fromserver')
             .then(response => response.json())
             .then(data => {
+                setUnfilteredKabums(data);
                 setKabumList(data);
             })
             .catch(error => console.log(error));
     }, []);
+    const filterKabums = (event) => {
+        const filterText = event.target.value;
+        let newKabumsList = []
+        unfilteredKabums.forEach((kabum) => {
+            if (kabum.nombre.toLowerCase().includes(filterText.toLowerCase())) {
+                newKabumsList.push(kabum);
+            }
+        });
+        setKabumList(newKabumsList);
+    };
     return (
         <div>
             <div className="portada-kabum">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-2"></div>
-                        <div class="col-8 form-buscar">
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Buscar kabum" aria-label="Buscar kabum"
-                                    aria-describedby="button-addon2"></input>
-                                <div class="input-group-append">
-                                    <button class="btn-buscar btn  btn-light" type="button" id="button-addon2"> <i
-                                        class="fas fa-search"></i></button>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-2"></div>
+                        <div className="col-8 form-buscar">
+                            <div className="input-group mb-3">
+                                <input type="text" className="form-control" placeholder="Buscar kabum" aria-label="Buscar kabum"
+                                    aria-describedby="button-addon2" onChange={filterKabums}></input>
+                                <div className="input-group-append">
+                                    <button className="btn-buscar btn  btn-light" type="button" id="button-addon2"> <i
+                                        className="fas fa-search"></i></button>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-2"></div>
+                        <div className="col-2"></div>
                     </div>
                 </div>
             </div>
-            <div class="container mt-4">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="d-flex">
-                            <div class="p-2">
-                                <h5>Mis <span class="titulo-kabums"> Kabums </span> <span class="badge color-badge">3</span>
+            <div className="container mt-4">
+                <div className="row">
+                    <div className="col-12">
+                        <div className="d-flex">
+                            <div className="p-2">
+                                <h5>Mis <span className="titulo-kabums"> Kabums </span> <span className="badge color-badge">{kabumList.length}</span>
                                 </h5>
                             </div>
-                            <div class="ml-auto p-2">
-                                <h6 class="mt-2">Filtrar por:</h6>
+                            <div className="ml-auto p-2">
+                                <h6 className="mt-2">Filtrar por:</h6>
                             </div>
-                            <div class="p-2">
-                                <div class="dropdown">
-                                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div className="p-2">
+                                <div className="dropdown">
+                                    <button className="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Mas recientes
                                     </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                        <button class="dropdown-item" type="button">preguntas</button>
+                                    <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                        <button className="dropdown-item" type="button">preguntas</button>
                                     </div>
                                 </div>
                             </div>
@@ -58,11 +70,11 @@ export const KabumsScreen = () => {
                     </div>
                 </div>
                 {/* lista de kabums */}
-                <KabumList kabums={kabumList} />
+                <KabumList kabums={kabumList} setKabums={setKabumList} unfilteredKabums={unfilteredKabums} setUnfilteredKabums={setUnfilteredKabums} />
             </div>
             <footer>
-                <div class="container">
-                    <div class="row justify-content-center">
+                <div className="container">
+                    <div className="row justify-content-center">
                         <h6>Kabum&reg;</h6>
                     </div>
                 </div>

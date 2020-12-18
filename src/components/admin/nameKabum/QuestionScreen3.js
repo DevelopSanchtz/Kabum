@@ -28,8 +28,8 @@ export const QuestionScreen3 = () => {
                         </div>
                     </div>
 
-                    <div class="progress">
-                        <div class="progress-value"></div>
+                    <div className="progress">
+                        <div className="progress-value"></div>
                     </div>
 
                     <Link to="/answerAdmin3" className="btn-iniciar-juego">Siguiente </Link>

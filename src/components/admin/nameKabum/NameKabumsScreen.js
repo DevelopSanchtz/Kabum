@@ -23,8 +23,8 @@ export const NameKabumsScreen = () => {
 
                     <div className="cargando container mt-5">
                         <div className="row justify-content-center">
-                            <div class="spinner-border text-light" role="status">
-                                <span class="sr-only">Cargando</span>
+                            <div className="spinner-border text-light" role="status">
+                                <span className="sr-only">Cargando</span>
                             </div>
                         </div>
                     </div>

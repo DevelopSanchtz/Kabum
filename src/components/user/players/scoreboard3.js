@@ -4,25 +4,25 @@ import { Link } from 'react-router-dom';
 export const Scoreboard3=() =>{
     return(
         <div>
-<header class="text-center mt-4">
+<header className="text-center mt-4">
     <h1>Scoreboard</h1>
 </header>
 
-<div class="fondo_scoreboard">
+<div className="fondo_scoreboard">
     
-    <div class="margen-table">
-        <div class="container">
-<table class="table">
+    <div className="margen-table">
+        <div className="container">
+<table className="table">
   <thead>
   </thead>
   <tbody>
-    <tr class="tr-fisrt text-center tamaño-tabla" >
+    <tr className="tr-fisrt text-center tamaño-tabla" >
       <td>Mark</td>
       <td>4645</td>
     </tr>
-    <tr class="text-center tamaño-tabla">
-      <td class="tabla-top text-center">Thornton</td>
-      <td class="tabla-top text-center">0</td>
+    <tr className="text-center tamaño-tabla">
+      <td className="tabla-top text-center">Thornton</td>
+      <td className="tabla-top text-center">0</td>
     </tr>
   </tbody>
 </table>

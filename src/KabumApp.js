@@ -4,7 +4,7 @@ import { AppRouter } from './routers/AppRouter'
 export const KabumApp = () => {
     return (
         <div>
-            <AppRouter/>
+            <AppRouter />
         </div>
     )
 }
