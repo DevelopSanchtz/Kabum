@@ -30,8 +30,9 @@ export const StartScreen = (props) => {
             cancelButtonText: "Cancelar"
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = "/kabums";
+                socket.emit('terminar', null);
                 localStorage.removeItem('pin-kabum');
+                history.replace('/kabums');
             }
         })
     }

@@ -10,9 +10,12 @@ export const ShowPlayersScreen = (props) => {
     socket.connect();
     socket.on('dejar-sala', idBorrado => {
         if (id === idBorrado) {
-            socket.emit('disconnect', null);
+            socket.emit('disconnect-reply', null);
             history.replace('/login');
         }
+    });
+    socket.on('juego-terminado', () => {
+        history.replace('/login');
     });
     socket.on('primera-pregunta', pregunta => {
         history.replace('/register', { pregunta: pregunta });

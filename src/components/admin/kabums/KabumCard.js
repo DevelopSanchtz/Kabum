@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import logo from '../../../assets/images/logo-nuevo-kabum.png'
+
 export const KabumCard = (props) => {
   let pin1 = Math.floor(Math.random() * 10);
   let pin2 = Math.floor(Math.random() * 10);
@@ -19,7 +21,7 @@ export const KabumCard = (props) => {
             <div className="row">
               <div className="col-3">
                 <div className="">
-                  <img className="imagen-pregunta" src="" alt=""></img>
+                  <img className="imagen-pregunta" src={logo} alt=""></img>
                 </div>
               </div>
               <div className="col-6">

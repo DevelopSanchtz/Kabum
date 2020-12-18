@@ -5,10 +5,10 @@ import Swal from 'sweetalert2';
 import { KabumCard } from './KabumCard';
 
 export const KabumList = (props) => {
-
   const { kabums, setKabums, unfilteredKabums, setUnfilteredKabums } = props;
   useEffect(() => {
     setKabums(kabums);
+    setUnfilteredKabums(unfilteredKabums);
   }, []);
   const borrarKabum = (id) => {
     Swal.fire({
@@ -19,22 +19,24 @@ export const KabumList = (props) => {
       showCancelButton: true,
       cancelButtonText: "Cancelar"
     }).then((result) => {
-      // Llamada a la API para eliminar Kabums
+      // TODO: Llamada a la API para eliminar Kabums
       if (result.isConfirmed) {
+        let newKabumList = [];
         for (let i = 0; i < kabums.length; i++) {
           if (kabums[i].id === id) {
-            kabums.splice(i, 1);
-            break;
+            continue;
           }
+          newKabumList.push(kabums[i]);
         }
+        setKabums(newKabumList);
+        newKabumList = [];
         for (let i = 0; i < unfilteredKabums.length; i++) {
           if (unfilteredKabums[i].id === id) {
-            unfilteredKabums.splice(i, 1);
-            break;
+            continue;
           }
+          newKabumList.push(unfilteredKabums[i]);
         }
-        setKabums(kabums);
-        setUnfilteredKabums(unfilteredKabums);
+        setUnfilteredKabums(newKabumList);
         Swal.fire({
           icon: "success",
           title: "Eliminado",
@@ -47,10 +49,7 @@ export const KabumList = (props) => {
   }
   return (
     <div className="container">
-      {kabums.map((kabum) => {
-        return <KabumCard key={kabum.id} kabum={kabum} borrarKabum={borrarKabum} />;
-      }
-      )}
+      {kabums.map((kabum) => <KabumCard key={kabum.id} kabum={kabum} borrarKabum={borrarKabum} />)}
     </div>
   )
 }
