@@ -7,12 +7,22 @@ import './pin-screen.scss'
 import logo from './../../../assets/images/logo-nuevo-kabum.png'
 import socket from '../../socket';
 
-export const PinScreen = () => {
+export const PinScreen = (props) => {
     const [pin, setPin] = useState("");
     const [tag, setTag] = useState("");
     const history = useHistory();
-    let state = {};
-    const id = Math.random().toString(36).substr(2) + Math.random().toString(36).substr(2);
+    let id;
+    if (localStorage.getItem('id-jugador')) {
+        id = localStorage.getItem('id-jugador');
+    } else {
+        id = props.location.props.id;
+        localStorage.setItem('id-jugador', id);
+    }
+    let state = {
+        tag: tag,
+        pin: pin,
+        id: id
+    };
     socket.connect();
     useEffect(() => {
         socket.on('estado', (response) => {
@@ -31,6 +41,7 @@ export const PinScreen = () => {
                     confirmButtonText: "Aceptar",
                     timer: "3000"
                 }).then(function () {
+                    console.log(state);
                     history.push('/showplayers', state);
                 });
             }
@@ -50,9 +61,11 @@ export const PinScreen = () => {
         });
     };
     const changePin = (event) => {
+        state = { ...state, pin: event.target.value }
         setPin(event.target.value);
     };
     const changeTag = (event) => {
+        state = { ...state, tag: event.target.value }
         setTag(event.target.value);
     };
     return (

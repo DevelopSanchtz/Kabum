@@ -8,17 +8,15 @@ export const ShowPlayersScreen = (props) => {
     const { pin, tag, id } = props.location.state;
     const history = useHistory();
     socket.connect();
-    useEffect(() => {
-        socket.on('dejar-sala', idBorrado => {
-            if (id === idBorrado) {
-                socket.emit('disconnect', null);
-                history.replace('/login');
-            }
-        });
-        socket.on('primera-pregunta', pregunta => {
-            history.replace('/register', { pregunta: pregunta });
-        });
-    }, []);
+    socket.on('dejar-sala', idBorrado => {
+        if (id === idBorrado) {
+            socket.emit('disconnect', null);
+            history.replace('/login');
+        }
+    });
+    socket.on('primera-pregunta', pregunta => {
+        history.replace('/register', { pregunta: pregunta });
+    });
     return (
         <div className="contenedor-show">
             <div className="barra">

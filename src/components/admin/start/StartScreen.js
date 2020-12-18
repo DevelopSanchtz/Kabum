@@ -10,7 +10,7 @@ import { PlayerTag } from './PlayerTag';
 
 export const StartScreen = (props) => {
     const history = useHistory();
-    let pin;
+    let pin, kabum;
     if (localStorage.getItem('pin-kabum')) {
         pin = localStorage.getItem('pin-kabum');
         kabum = localStorage.getItem('kabum');
