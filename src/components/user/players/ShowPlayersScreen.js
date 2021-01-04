@@ -17,8 +17,8 @@ export const ShowPlayersScreen = (props) => {
     socket.on('juego-terminado', () => {
         history.replace('/login');
     });
-    socket.on('primera-pregunta', pregunta => {
-        history.replace('/register', { pregunta: pregunta });
+    socket.on('primera-pregunta', (data) => {
+        history.replace('/register', { pregunta: data.pregunta, length: data.numPreguntas });
     });
     return (
         <div className="contenedor-show">

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './answer-question-admin.scss'
 import imagen from './../../../assets/images/mexico-imagen.jpg'
 import { Link } from 'react-router-dom';
@@ -7,9 +7,15 @@ import logo2 from './../../../assets/images/gato.png'
 import logo3 from './../../../assets/images/vaca.png'
 import logo4 from './../../../assets/images/lobo.png'
 import Swal from 'sweetalert2'
+import socket from '../../socket'
 
 export const ResultsScreen = () => {
-
+    const [estadisticas, setEstadisticas] = useState({})
+    useEffect(() => {
+        socket.on('estadisticas-preguntas', data => {
+            setEstadisticas(data);
+        });
+    });
     const terminarJuego = () => {
         Swal.fire({
             title: "Terminar",
@@ -68,14 +74,14 @@ export const ResultsScreen = () => {
                     <div className="col-lg-3">
                         <div className="resultados-totales1">
                             <img className="animal-resultados" src={logo} alt=""></img>
-                            <h4 className="text-center numero-respuestas-total">2</h4>
+                            <h4 className="text-center numero-respuestas-total">{estadisticas.a}</h4>
                         </div>
                     </div>
 
                     <div className="col-lg-3">
                         <div className="resultados-totales2">
                             <img className="animal-resultados" src={logo2} alt=""></img>
-                            <h4 className="text-center numero-respuestas-total">2</h4>
+                            <h4 className="text-center numero-respuestas-total">{estadisticas.b}</h4>
 
                         </div>
                     </div>
@@ -83,14 +89,14 @@ export const ResultsScreen = () => {
                     <div className="col-lg-3">
                         <div className="resultados-totales3">
                             <img className="animal-resultados" src={logo3} alt=""></img>
-                            <h4 className="text-center numero-respuestas-total">1</h4>
+                            <h4 className="text-center numero-respuestas-total">{estadisticas.c}</h4>
 
                         </div>
                     </div>
                     <div className="col-lg-3">
                         <div className="resultados-totales4">
                             <img className="animal-resultados" src={logo4} alt=""></img>
-                            <h4 className="text-center numero-respuestas-total">5</h4>
+                            <h4 className="text-center numero-respuestas-total">{estadisticas.d}</h4>
 
                         </div>
                     </div>

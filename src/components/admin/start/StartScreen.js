@@ -45,7 +45,8 @@ export const StartScreen = (props) => {
             id: "FHx45X",
             usuario: "host",
             sala: pin,
-            tipo: "host"
+            tipo: "host",
+            kabum: props.location.props.kabum
         });
         socket.on('jugadores', players => {
             console.log(players);
@@ -55,7 +56,7 @@ export const StartScreen = (props) => {
 
     const iniciarJuego = () => {
         if (online.length > 1) {
-            socket.emit('empezar-juego');
+            // socket.emit('empezar-juego');
             history.push('/nameKabum', {
                 kabum: kabum
             })

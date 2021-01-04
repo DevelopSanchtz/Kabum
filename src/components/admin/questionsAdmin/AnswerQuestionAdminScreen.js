@@ -2,11 +2,14 @@ import React from 'react'
 import './answer-question-admin.scss'
 import imagen from './../../../assets/images/mexico-imagen.jpg'
 import { Link } from 'react-router-dom';
-
+import socket from '../../socket';
 
 export const AnswerQuestionAdminScreen = () => {
-
-    
+    const skipQuestion = () => {
+        socket.connect();
+        socket.emit('saltar-pregunta',null);
+        socket.disconnect();
+    }
     return (
         <div>
             <div className=" titulo-pregunta container-fluid mt-2">
@@ -47,7 +50,7 @@ export const AnswerQuestionAdminScreen = () => {
                 <p>Respuesta</p>
             </div>
 
-            <Link to="/resultadosAdmin" className="siguiente-pregunta">Saltar </Link>
+            <Link onClick={skipQuestion} to="/resultadosAdmin" className="siguiente-pregunta">Saltar </Link>
 
 
         </div>
