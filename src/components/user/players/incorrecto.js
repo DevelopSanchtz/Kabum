@@ -26,8 +26,7 @@ export const incorrecto = () => {
                 </div>
             </div>
             <div className="informacion">
-            <p id="txt-correcto">Incorrecto</p>
-            <img className="medidas-incorrecto" src={logoincorrecto} alt=""></img>
+             <img className="medidas-incorrecto" src={logoincorrecto} alt=""></img>
             <p id="txt-suerte">Suerte en la siguiente</p>
             <p id="txt-podium">No te encuentras dentro del podium</p>
             </div>

@@ -1,7 +1,5 @@
 .titulo-pregunta{
-    -webkit-box-shadow: 10px 14px 47px -19px rgba(0,0,0,0.55);
--moz-box-shadow: 10px 14px 47px -19px rgba(0,0,0,0.55);
-box-shadow: 10px 14px 47px -19px rgba(0,0,0,0.55);
+  
 }
 h2,h1{
     cursor: default;
@@ -33,14 +31,7 @@ h2,h1{
     font-weight: bold;
  
 }
-.respuesta1:hover{
-    color: #fff;
-    background-color: #ff4b4b;
-    -webkit-box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
-    -moz-box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
-    box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
-}
-
+ 
 
 .respuesta2{
     background-color: #192d95;
@@ -55,14 +46,7 @@ h2,h1{
     font-weight: bold;
  
 }
-.respuesta2:hover{
-    color: #fff;
-    background-color: #20328a;
-    -webkit-box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
-    -moz-box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
-    box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
-}
-
+ 
 
 .respuesta3{
     background-color: #ffd83a;
@@ -78,14 +62,7 @@ h2,h1{
     font-weight: bold;
  
 }
-.respuesta3:hover{
-    color: #fff;
-    background-color: #ffdb4d;
-    -webkit-box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
-    -moz-box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
-    box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
-}
-
+ 
 
 .respuesta4{
     background-color: #5fe6fd;
@@ -100,15 +77,7 @@ h2,h1{
     font-weight: bold;
  
 }
-.respuesta4:hover{
-    color: #fff;
-    background-color: #47e3ff;
-    -webkit-box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
-    -moz-box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
-    box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
-}
-
-
+ 
 .tiempo{
     background-color: #ff4b4b;
     color: #fff;
@@ -151,9 +120,7 @@ button[disabled]{
     text-align: center;
     padding: 2px;
     font-weight:bold ;
-    -webkit-box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
-    -moz-box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
-    box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
+   
     transition: all 0.5s;
 }
 
@@ -241,9 +208,6 @@ button[disabled]{
     text-align: center;
     padding: 2px;
     font-weight:bold ;
-    -webkit-box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
-    -moz-box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
-    box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
     transition: all 0.5s;
 }
 
