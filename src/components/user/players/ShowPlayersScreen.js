@@ -5,7 +5,10 @@ import './show-screen.scss';
 import socket from '../../socket';
 
 export const ShowPlayersScreen = (props) => {
-    const { pin, tag, id } = props.location.state;
+    const pin = sessionStorage.getItem('player-pin');
+    const tag = sessionStorage.getItem('player-name');
+    const id = sessionStorage.getItem('player-id');
+
     const history = useHistory();
     socket.connect();
     socket.on('dejar-sala', idBorrado => {
@@ -17,8 +20,9 @@ export const ShowPlayersScreen = (props) => {
     socket.on('juego-terminado', () => {
         history.replace('/login');
     });
-    socket.on('primera-pregunta', (data) => {
-        history.replace('/register', { pregunta: data.pregunta, length: data.numPreguntas });
+    socket.on('primera-pregunta', (kabum) => {
+        sessionStorage.setItem('player-kabum', JSON.stringify(kabum));
+        history.replace('/responder', { pregunta: 0 });
     });
     return (
         <div className="contenedor-show">

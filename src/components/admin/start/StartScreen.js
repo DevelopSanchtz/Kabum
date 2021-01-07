@@ -11,15 +11,19 @@ import { PlayerTag } from './PlayerTag';
 export const StartScreen = (props) => {
     const history = useHistory();
     let pin, kabum;
-    if (localStorage.getItem('pin-kabum')) {
-        pin = localStorage.getItem('pin-kabum');
-        kabum = localStorage.getItem('kabum');
-    } else {
+    if (props.location.props) {
         pin = props.location.props.pin;
-        localStorage.setItem('pin-kabum', pin);
+        sessionStorage.setItem('pin-kabum', pin);
         kabum = props.location.props.kabum;
-        localStorage.setItem('kabum', kabum);
+        sessionStorage.setItem('kabum', JSON.stringify(kabum));
+    } else {
+        pin = sessionStorage.getItem('pin-kabum');
+        kabum = sessionStorage.getItem('kabum');
+        kabum = JSON.parse(kabum);
     }
+    let state = {
+        kabum: kabum
+    };
     const salir = () => {
         Swal.fire({
             title: "Salir",
@@ -31,7 +35,7 @@ export const StartScreen = (props) => {
         }).then((result) => {
             if (result.isConfirmed) {
                 socket.emit('terminar', null);
-                localStorage.removeItem('pin-kabum');
+                sessionStorage.removeItem('pin-kabum');
                 history.replace('/kabums');
             }
         })
@@ -49,17 +53,13 @@ export const StartScreen = (props) => {
             kabum: props.location.props.kabum
         });
         socket.on('jugadores', players => {
-            console.log(players);
             setOnline(players);
         });
     }, []);
 
     const iniciarJuego = () => {
         if (online.length > 1) {
-            // socket.emit('empezar-juego');
-            history.push('/nameKabum', {
-                kabum: kabum
-            })
+            history.push('/nameKabum', state);
         } else {
             Swal.fire({
                 title: "Sala incompleta",

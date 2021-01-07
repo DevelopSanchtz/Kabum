@@ -1,34 +1,56 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import './show-screen.scss'
 import logo4 from './../../../assets/images/perro.png'
 import logocorrecto from './../../../assets/images/correcto.png'
+import socket from '../../socket';
 
-export const correcto = () => {
+export const Correcto = (props) => {
+    const history = useHistory();
+    const pin = sessionStorage.getItem('player-pin');
+    const tag = sessionStorage.getItem('player-name');
+    const id = sessionStorage.getItem('player-id');
+    let pregunta = sessionStorage.getItem('player-question');
+    pregunta = parseInt(pregunta);
+    const kabum = JSON.parse(sessionStorage.getItem('player-kabum'));
+    let jugador;
+    if (props.location.state) {
+        jugador = props.location.state;
+        sessionStorage.setItem('player', JSON.stringify(jugador));
+    } else {
+        jugador = sessionStorage.getItem('player');
+        jugador = JSON.parse(jugador);
+    }
+    socket.on('juego-terminado', () => {
+        socket.emit('disconnect-reply', null);
+        history.push('/login');
+    });
+    socket.on('pregunta-siguiente', () => {
+        sessionStorage.setItem('player-question', pregunta + 1);
+        history.push('/responder');
+    })
     return (
         <div className="container-correcto">
             <div className="barra">
                 <div className="d-flex">
                     <div className="p-3">
-                        <p>Pin:465465465</p>
+                        <p>Pin: {pin}</p>
                     </div>
                     <div className="p-3">
-                        <p>2/12</p>
-
+                        <p>{pregunta + 1}/{kabum.preguntas.length}</p>
                     </div>
                     <div className="p-3 ml-auto">
-                        <p>Gamertag</p>
+                        <p>{tag}</p>
                     </div>
-
                     <div className="p-3" id="color">
-                        <p>14121</p>
+                        <p>{jugador.jugador.puntos}</p>
                     </div>
                 </div>
             </div>
             <div className="informacion">
-             <img className="medidas-incorrecto" src={logocorrecto} alt=""></img>
-            <p id="txt-suerte">Suerte en la siguiente</p>
-            <p id="txt-podium">No te encuentras dentro del podium</p>
+                <img className="medidas-incorrecto" src={logocorrecto} alt=""></img>
+                <p id="txt-suerte">Suerte en la siguiente</p>
+                <p id="txt-podium">No te encuentras dentro del podium</p>
             </div>
         </div>
     )
