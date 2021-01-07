@@ -16,7 +16,6 @@ export const Scoreboard = () => {
     let state = {
       pregunta: pregunta + 1
     };
-    socket.emit('sig-pregunta', null);
     history.replace('/question', state);
   }
   let players = estadisticas.jugadores;

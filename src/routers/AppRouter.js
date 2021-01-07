@@ -16,17 +16,9 @@ import { Responder } from '../components/user/players/responder';
 import { cargarpregunta } from '../components/user/players/cargarpregunta';
 import { NameKabumsScreen } from '../components/admin/nameKabum/NameKabumsScreen'
 import { QuestionScreen } from '../components/admin/nameKabum/QuestionScreen'
-import { QuestionScreen2 } from '../components/admin/nameKabum/QuestionScreen2'
-import { QuestionScreen3 } from '../components/admin/nameKabum/QuestionScreen3'
 import { AnswerQuestionAdminScreen } from '../components/admin/questionsAdmin/AnswerQuestionAdminScreen';
-import { AnswerQuestionAdminScreen2 } from '../components/admin/questionsAdmin/AnswerQuestionAdminScreen2';
-import { AnswerQuestionAdminScreen3 } from '../components/admin/questionsAdmin/AnswerQuestionAdminScreen3';
 import { ResultsScreen } from '../components/admin/questionsAdmin/ResultsScreen';
-import { ResultsScreen2 } from '../components/admin/questionsAdmin/ResultsScreen2';
-import { ResultsScreen3 } from '../components/admin/questionsAdmin/ResultsScreen3';
 import { Scoreboard } from '../components/user/players/scoreboard';
-import { Scoreboard2 } from '../components/user/players/scoreboard2';
-import { Scoreboard3 } from '../components/user/players/scoreboard3';
 import { PodioUserScreen } from '../components/user/players/PodioUserScreen';
 import { resultados } from '../components/admin/resultados/resultados';
 

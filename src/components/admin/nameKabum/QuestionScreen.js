@@ -19,9 +19,13 @@ export const QuestionScreen = (props) => {
         pregunta = parseInt(pregunta);
     }
     const startKabum = () => {
-        socket.connect();
-        socket.emit('empezar-juego', kabum);
-        history.replace('/answerAdmin', { pregunta: pregunta });
+        if (pregunta == 0) {
+            socket.emit('empezar-juego', kabum);
+            history.replace('/answerAdmin', { pregunta: pregunta });
+        } else {
+            socket.emit('sig-pregunta', null);
+            history.replace('/answerAdmin', { pregunta: pregunta });
+        }
     }
     console.log(pregunta, kabum.preguntas[pregunta]);
     return (
