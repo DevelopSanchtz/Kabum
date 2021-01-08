@@ -2,18 +2,18 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import './show-screen.scss'
 import logo4 from './../../../assets/images/perro.png'
-import logocorrecto from './../../../assets/images/correcto.png'
+import imgPodioUsuario from './../../../assets/images/ka.png'
 
-export const correcto = () => {
+export const PodioUserScreen2 = () => {
     return (
-        <div className="container-correcto">
+        <div className="container-podio-usuario">
             <div class="barra">
                 <div class="d-flex">
                     <div class="p-3">
-                        <p>Pin:465465465</p>
+                        <p></p>
                     </div>
                     <div class="p-3">
-                        <p>2/12</p>
+                        <p></p>
 
                     </div>
                     <div class="p-3 ml-auto">
@@ -26,9 +26,9 @@ export const correcto = () => {
                 </div>
             </div>
             <div className="informacion">
-            <p id="txt-correcto">Correcto</p>
-            <img className="medidas-incorrecto" src={logocorrecto} alt=""></img>
-            <p id="txt-suerte">Suerte en la siguiente</p>
+            <p id="txt-correcto">Segundo Lugar</p>
+            <img className="medidas-incorrecto" src={imgPodioUsuario} alt=""></img>
+            <p id="txt-suerte">Felicidades</p>
             </div>
         </div>
     )

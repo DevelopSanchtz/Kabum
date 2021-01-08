@@ -29,13 +29,15 @@ import { Scoreboard } from '../components/user/players/scoreboard';
 import { Scoreboard2 } from '../components/user/players/scoreboard2';
 import { Scoreboard3 } from '../components/user/players/scoreboard3';
 import { PodioUserScreen } from '../components/user/players/PodioUserScreen';
+import { PodioUserScreen2 } from '../components/user/players/PodioUserScreen2';
+import { PodioUserScreen3 } from '../components/user/players/PodioUserScreen3';
 import { resultados } from '../components/admin/resultados/resultados';
+
 
 // PodioUser
 // correcto
 import { correcto } from '../components/user/players/correcto';
 import { incorrecto } from '../components/user/players/incorrecto';
-
 
 export const AppRouter = () => {
     return (
@@ -67,7 +69,9 @@ export const AppRouter = () => {
                     <Route exact path="/scoreboard3" component={ Scoreboard3 } />
                     <Route exact path="/correcto" component={ correcto } />
                     <Route exact path="/incorrecto" component={ incorrecto } />
-                    <Route exact path="/podioUsuario" component={ PodioUserScreen } />
+                    <Route exact path="/podioprimero" component={ PodioUserScreen } />
+                    <Route exact path="/podiosegundo" component={ PodioUserScreen2 } />
+                    <Route exact path="/podiotercero" component={ PodioUserScreen3 } />
                     <Route exact path="/podiumAdmin" component={ resultados } />
                     <Route path="/" component={AppInitialRouters} />
 

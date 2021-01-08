@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import io from 'socket.io-client';
-import logo from './../../../assets/images/burro.png'
-import logo2 from './../../../assets/images/gato.png'
-import logo3 from './../../../assets/images/vaca.png'
-import logo4 from './../../../assets/images/lobo.png'
+import logo from './../../../assets/images/burrito1.png'
+import logo2 from './../../../assets/images/conejito1.png'
+import logo3 from './../../../assets/images/gatito1.png'
+import logo4 from './../../../assets/images/perrito1.png'
 import './show-screen.scss'
 
 const connectSocketServer = () => {
@@ -72,7 +72,7 @@ export const Responder = () => {
                         </Link>            
                         
                         <Link to="/correcto" className="btn-respuestas" onClick={preguntaElegida(pregunta2, 'c'), clearInterval(tiempo)}>
-                            <div class="item" id="item3">
+                            <div class="item" id="item2">
                                 <img className="animal" src={logo3} alt=""></img>
                             </div>
                         </Link>                 
@@ -82,7 +82,7 @@ export const Responder = () => {
 
 
                         <Link to="/incorrecto" onClick={preguntaElegida(pregunta2, 'b'), clearInterval(tiempo)}>
-                            <div class="item" id="item2">
+                            <div class="item" id="item3">
                                 <img className="animal" src={logo2} alt=""></img>
                             </div>
                         </Link>
