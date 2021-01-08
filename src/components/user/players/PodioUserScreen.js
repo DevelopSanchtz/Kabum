@@ -7,20 +7,20 @@ import imgPodioUsuario from './../../../assets/images/bu.png'
 export const PodioUserScreen = () => {
     return (
         <div className="container-podio-usuario">
-            <div class="barra">
-                <div class="d-flex">
-                    <div class="p-3">
+            <div className="barra">
+                <div className="d-flex">
+                    <div className="p-3">
                         <p></p>
                     </div>
-                    <div class="p-3">
+                    <div className="p-3">
                         <p></p>
 
                     </div>
-                    <div class="p-3 ml-auto">
+                    <div className="p-3 ml-auto">
                         <p>Gamertag</p>
                     </div>
 
-                    <div class="p-3" id="color">
+                    <div className="p-3" id="color">
                         <p>14121</p>
                     </div>
                 </div>

@@ -1,19 +1,29 @@
-import React, { useEffect, useState } from 'react'
-import './start-screen.scss'
-import logo from './../../../assets/images/logo-nuevo-kabum.png'
-import Swal from 'sweetalert2'
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+
+import Swal from 'sweetalert2';
+
+import './start-screen.scss';
+import logo from './../../../assets/images/logo-nuevo-kabum.png';
 import socket from '../../socket';
 import { PlayerTag } from './PlayerTag';
 
 export const StartScreen = (props) => {
-    let pin;
-    if( localStorage.getItem('pin-kabum') ) {
-        pin = localStorage.getItem('pin-kabum');
-    } else {
+    const history = useHistory();
+    let pin, kabum;
+    if (props.location.props) {
         pin = props.location.props.pin;
-        localStorage.setItem('pin-kabum', pin);
+        sessionStorage.setItem('pin-kabum', pin);
+        kabum = props.location.props.kabum;
+        sessionStorage.setItem('kabum', JSON.stringify(kabum));
+    } else {
+        pin = sessionStorage.getItem('pin-kabum');
+        kabum = sessionStorage.getItem('kabum');
+        kabum = JSON.parse(kabum);
     }
+    let state = {
+        kabum: kabum
+    };
     const salir = () => {
         Swal.fire({
             title: "Salir",
@@ -24,8 +34,9 @@ export const StartScreen = (props) => {
             cancelButtonText: "Cancelar"
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = "/kabums";
-                localStorage.removeItem('pin-kabum');
+                socket.emit('terminar', null);
+                sessionStorage.removeItem('pin-kabum');
+                history.replace('/kabums');
             }
         })
     }
@@ -38,13 +49,27 @@ export const StartScreen = (props) => {
             id: "FHx45X",
             usuario: "host",
             sala: pin,
-            tipo: "host"
+            tipo: "host",
+            kabum: props.location.props.kabum
         });
         socket.on('jugadores', players => {
-            console.log(players);
             setOnline(players);
         });
     }, []);
+
+    const iniciarJuego = () => {
+        if (online.length > 1) {
+            history.push('/nameKabum', state);
+        } else {
+            Swal.fire({
+                title: "Sala incompleta",
+                icon: "warning",
+                text: "Aun faltan mas jugadores, esperemos a que se unan más personas",
+                confirmButtonText: "Ok",
+                timer: '3000'
+            })
+        }
+    };
 
     return (
 
@@ -70,7 +95,7 @@ export const StartScreen = (props) => {
 
                     <div className="container mt-2">
                         <div className="row">
-                            <h2 className="num-jugadores" > <span className="icon-user"> <i class="fas fa-user"></i> </span> {online.length}</h2>
+                            <h2 className="num-jugadores" > <span className="icon-user"> <i className="fas fa-user"></i> </span> {online.length}</h2>
                         </div>
                     </div>
 
@@ -78,15 +103,15 @@ export const StartScreen = (props) => {
                         <div className="row justify-content-center">
                             {
                                 online.map(player => {
-                                    return(
+                                    return (
                                         <PlayerTag key={player.id} data={player} />
                                     );
                                 })
                             }
                         </div>
                     </div>
-                    <Link to="/nameKabum" className="btn-iniciar-juego">Iniciar </Link>
-
+                    <button onClick={iniciarJuego} className="btn-iniciar-juego">Iniciar </button>
+                    {/* <Link to="/nameKabum" className="btn-iniciar-juego">Iniciar </Link> */}
                 </div>
             </div>
         </div>

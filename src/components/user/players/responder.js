@@ -6,96 +6,134 @@ import logo2 from './../../../assets/images/conejito1.png'
 import logo3 from './../../../assets/images/gatito1.png'
 import logo4 from './../../../assets/images/perrito1.png'
 import './show-screen.scss'
+import socket from '../../socket';
 
-const connectSocketServer = () => {
-    const socket = io.connect('http://localhost:4000', {
-      transports: ['websocket']
-    });
-    return socket;
-}
-
-export const Responder = () => {
-    
-    const [socket] = useState(connectSocketServer);
-
-    let contador = 0;
-
-    let pregunta2 = 'respuesta de pregunta';
-
-    let tiempo = setInterval(() => {
-        contador++;
-    }, 1);
-
-    const preguntaElegida = (id, pregunta, respuesta) => {
-        socket.emit('enviar-pregunta', id, pregunta, respuesta);
+export const Responder = (props) => {
+    const history = useHistory();
+    const kabum = JSON.parse(sessionStorage.getItem('player-kabum'));
+    const pin = sessionStorage.getItem('player-pin');
+    const tag = sessionStorage.getItem('player-name');
+    const id = sessionStorage.getItem('player-id');
+    let pregunta;
+    const [contesto, setContesto] = useState(false);
+    if (props.location.state) {
+        pregunta = props.location.state.pregunta;
+        sessionStorage.setItem('player-question', pregunta);
+    } else {
+        pregunta = sessionStorage.getItem('player-question');
+        pregunta = parseInt(pregunta);
     }
-    
-    const [pregunta, setPregunta] = useState({});
-    
-    useEffect(() => {
-        socket.on('pregunta', pregunta => {
-            console.log(pregunta);
-            setPregunta(pregunta);
-        });
-    }, []);
+    let contador = 0;
+    let answer;
+    let time = setInterval(() => {
+        contador++;
+        if ((contador / 100) == kabum.preguntas[pregunta].tiempo) {
+            clearInterval(time);
+        }
+    }, 10);
 
+    const preguntaElegida = (respuesta) => {
+        clearInterval(time);
+        setContesto(true);
+        sessionStorage.setItem('contesto', true);
+        answer = respuesta;
+        sessionStorage.setItem('answer', respuesta);
+        const tiempo = kabum.preguntas[pregunta].tiempo
+        const correcta = kabum.preguntas[pregunta].correcta
+        let puntos = 0;
+        if (answer == kabum.preguntas[pregunta].correcta) {
+            puntos = 1000 - (contador * 10) / (parseInt(tiempo));
+        }
+        const data = {
+            id: id,
+            puntos: puntos,
+            respuesta: respuesta,
+            correcta: correcta
+        };
+        socket.emit('enviar-pregunta', data);
+    }
+        socket.on('contestar-auto', () => {
+            if (sessionStorage.getItem('contesto') === 'false') {
+                setContesto(true);
+                sessionStorage.setItem('contesto', true);
+                let player = {};
+                let state = {
+                    jugador: player
+                }
+                const correcta = kabum.preguntas[pregunta].correcta
+                const data = {
+                    id: id,
+                    puntos: 0,
+                    respuesta: '',
+                    correcta: correcta
+                };
+                socket.emit('enviar-pregunta', data);
+                history.push('/incorrecto', state);
+            }
+        });
+    useEffect(() => {
+        socket.on('pregunta', (jugadores) => {
+            let player = {};
+            jugadores.forEach(jugador => {
+                if (jugador.id == id) {
+                    player = jugador;
+                    return;
+                }
+            });
+            let state = {
+                jugador: player
+            }
+            if (sessionStorage.getItem('answer') == kabum.preguntas[pregunta].correcta) {
+                history.push('/correcto', state);
+            } else {
+                history.push('/incorrecto', state);
+            }
+        });
+    }, [answer, pregunta]);
     return (
         <div className="container-responder">
-            <div class="barra">
-                <div class="d-flex">
-                    <div class="p-3">
-                        <p>Pin:465465465</p>
+            {contesto ? <div className="pantalla-espera"><div className="loading">ESPERA</div></div>: <></>}
+            <div className="barra">
+                <div className="d-flex">
+                    <div className="p-3">
+                        <p>Pin: {pin}</p>
                     </div>
-                    <div class="p-3">
-                        <p>2/12</p>
-
+                    <div className="p-3">
+                        <p>{pregunta + 1}/{kabum.preguntas.length}</p>
                     </div>
-                    <div class="p-3 ml-auto">
-                        <p>Gamertag</p>
-                    </div>
-
-                    <div class="p-3" id="color">
-                        <p>14121</p>
+                    <div className="p-3 ml-auto">
+                        <p>{tag}</p>
                     </div>
                 </div>
             </div>|
-
-
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-6">
-
-                        <Link to="/correcto" className="btn-respuestas" onClick={preguntaElegida(pregunta2, 'a'), clearInterval(tiempo)}>
-                            <div class="item" id="item1">
+                        <Link className="btn-respuestas" onClick={() => preguntaElegida('a')}>
+                            <div className="item" id="item1">
                                 <img className="animal" src={logo} alt=""></img>
                             </div>
-                        </Link>            
-                        
-                        <Link to="/correcto" className="btn-respuestas" onClick={preguntaElegida(pregunta2, 'c'), clearInterval(tiempo)}>
-                            <div class="item" id="item2">
-                                <img className="animal" src={logo3} alt=""></img>
-                            </div>
-                        </Link>                 
-                    </div>
-
-                    <div className="col-6">
-
-
-                        <Link to="/incorrecto" onClick={preguntaElegida(pregunta2, 'b'), clearInterval(tiempo)}>
-                            <div class="item" id="item3">
+                        </Link>
+                        <Link className="btn-respuestas" onClick={() => preguntaElegida('b')}>
+                            <div className="item" id="item3">
                                 <img className="animal" src={logo2} alt=""></img>
                             </div>
                         </Link>
-                        <Link to="/incorrecto" className="btn-respuestas" onClick={preguntaElegida(pregunta2, 'd'), clearInterval(tiempo)}>
-                            <div class="item" id="item4">
+                    </div>
+                    <div className="col-6">
+                        <Link className="btn-respuestas" onClick={() => preguntaElegida('c')}>
+                            <div className="item" id="item2">
+                                <img className="animal" src={logo3} alt=""></img>
+                            </div>
+                        </Link>
+                        <Link className="btn-respuestas" onClick={() => preguntaElegida('d')}>
+                            <div className="item" id="item4">
                                 <img className="animal" src={logo4} alt=""></img>
                             </div>
-                        </Link>   
+                        </Link>
                     </div>
-
                 </div>
             </div>
-
         </div>
     )
 }

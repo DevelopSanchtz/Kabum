@@ -3,6 +3,6 @@ import ReactDOM from 'react-dom';
 import { KabumApp } from './KabumApp';
 
 ReactDOM.render(
-    <KabumApp/>,
+  <KabumApp />,
   document.getElementById('root')
 );
