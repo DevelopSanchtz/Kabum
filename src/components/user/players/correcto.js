@@ -1,7 +1,6 @@
 import React from 'react'
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import './show-screen.scss'
-import logo4 from './../../../assets/images/perro.png'
 import logocorrecto from './../../../assets/images/correcto.png'
 import socket from '../../socket';
 
@@ -27,7 +26,9 @@ export const Correcto = (props) => {
     });
     socket.on('pregunta-siguiente', () => {
         sessionStorage.setItem('player-question', pregunta + 1);
-        history.push('/responder');
+        sessionStorage.setItem('contesto', false);
+        sessionStorage.setItem('answer', '');
+        history.push('/responder', {pregunta: pregunta + 1});
     })
     return (
         <div className="container-correcto">

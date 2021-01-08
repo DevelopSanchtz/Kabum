@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import io from 'socket.io-client';
 import logo from './../../../assets/images/burro.png'
 import logo2 from './../../../assets/images/gato.png'
 import logo3 from './../../../assets/images/vaca.png'
@@ -15,6 +14,7 @@ export const Responder = (props) => {
     const tag = sessionStorage.getItem('player-name');
     const id = sessionStorage.getItem('player-id');
     let pregunta;
+    const [contesto, setContesto] = useState(false);
     if (props.location.state) {
         pregunta = props.location.state.pregunta;
         sessionStorage.setItem('player-question', pregunta);
@@ -33,7 +33,10 @@ export const Responder = (props) => {
 
     const preguntaElegida = (respuesta) => {
         clearInterval(time);
+        setContesto(true);
+        sessionStorage.setItem('contesto', true);
         answer = respuesta;
+        sessionStorage.setItem('answer', respuesta);
         const tiempo = kabum.preguntas[pregunta].tiempo
         const correcta = kabum.preguntas[pregunta].correcta
         let puntos = 0;
@@ -48,6 +51,25 @@ export const Responder = (props) => {
         };
         socket.emit('enviar-pregunta', data);
     }
+        socket.on('contestar-auto', () => {
+            if (sessionStorage.getItem('contesto') === 'false') {
+                setContesto(true);
+                sessionStorage.setItem('contesto', true);
+                let player = {};
+                let state = {
+                    jugador: player
+                }
+                const correcta = kabum.preguntas[pregunta].correcta
+                const data = {
+                    id: id,
+                    puntos: 0,
+                    respuesta: '',
+                    correcta: correcta
+                };
+                socket.emit('enviar-pregunta', data);
+                history.push('/incorrecto', state);
+            }
+        });
     useEffect(() => {
         socket.on('pregunta', (jugadores) => {
             let player = {};
@@ -60,15 +82,16 @@ export const Responder = (props) => {
             let state = {
                 jugador: player
             }
-            if (answer == kabum.preguntas[pregunta].correcta) {
+            if (sessionStorage.getItem('answer') == kabum.preguntas[pregunta].correcta) {
                 history.push('/correcto', state);
             } else {
                 history.push('/incorrecto', state);
             }
         });
-    }, [answer]);
+    }, [answer, pregunta]);
     return (
         <div className="container-responder">
+            {contesto ? <div className="pantalla-espera"><div className="loading">ESPERA</div></div>: <></>}
             <div className="barra">
                 <div className="d-flex">
                     <div className="p-3">
@@ -90,16 +113,16 @@ export const Responder = (props) => {
                                 <img className="animal" src={logo} alt=""></img>
                             </div>
                         </Link>
-                        <Link className="btn-respuestas" onClick={() => preguntaElegida('c')}>
+                        <Link className="btn-respuestas" onClick={() => preguntaElegida('b')}>
                             <div className="item" id="item3">
-                                <img className="animal" src={logo3} alt=""></img>
+                                <img className="animal" src={logo2} alt=""></img>
                             </div>
                         </Link>
                     </div>
                     <div className="col-6">
-                        <Link className="btn-respuestas" onClick={() => preguntaElegida('b')}>
+                        <Link className="btn-respuestas" onClick={() => preguntaElegida('c')}>
                             <div className="item" id="item2">
-                                <img className="animal" src={logo2} alt=""></img>
+                                <img className="animal" src={logo3} alt=""></img>
                             </div>
                         </Link>
                         <Link className="btn-respuestas" onClick={() => preguntaElegida('d')}>

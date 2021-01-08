@@ -18,7 +18,6 @@ export const ResultsScreen = (props) => {
     let estadisticas;
     if (props.location.state) {
         estadisticas = props.location.state.estadisticas;
-        console.log(estadisticas.jugadores);
         sessionStorage.setItem('estadisticas', JSON.stringify(estadisticas));
     } else {
         estadisticas = sessionStorage.getItem('estadisticas');

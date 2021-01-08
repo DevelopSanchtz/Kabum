@@ -22,6 +22,8 @@ export const ShowPlayersScreen = (props) => {
     });
     socket.on('primera-pregunta', (kabum) => {
         sessionStorage.setItem('player-kabum', JSON.stringify(kabum));
+        sessionStorage.setItem('contesto',false);
+        sessionStorage.setItem('answer', '');
         history.replace('/responder', { pregunta: 0 });
     });
     return (

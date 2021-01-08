@@ -8,13 +8,15 @@ export const AnswerQuestionAdminScreen = (props) => {
     const history = useHistory();
     let pregunta, kabum;
     const [contestados, setContestados] = useState(0);
+    const [tiempo, setTiempo] = useState(0);
+    const [timer, setTimer] = useState(null)
     kabum = sessionStorage.getItem('kabum');
     kabum = JSON.parse(kabum);
     pregunta = sessionStorage.getItem('question');
     pregunta = parseInt(pregunta);
     const skipQuestion = () => {
         socket.connect();
-        socket.emit('saltar-pregunta', null);
+        socket.emit('termino-tiempo', null);
     }
     socket.on('estadisticas-pregunta', (estadisticas) => {
         history.push('/resultadosAdmin', { estadisticas: estadisticas });
@@ -23,7 +25,24 @@ export const AnswerQuestionAdminScreen = (props) => {
         socket.on('personas-respondido', () => {
             setContestados(contestados + 1);
         });
-    }, [contestados])
+        setTimer(startTimer());
+    }, [contestados, tiempo])
+    
+    const startTimer = () => {
+        return setTimeout(() => {
+            if(tiempo === Number(kabum.preguntas[pregunta].tiempo)) {
+                stopTimer();
+            } else {  
+                setTiempo(tiempo + 1);
+            }
+        }, 1000)
+    }
+    const stopTimer = () => {
+        console.log('Se envio evento de termino-tiempo')
+        socket.connect();
+        socket.emit('termino-tiempo', null);
+        clearTimeout(timer);
+    }
     return (
         <div>
             <div className=" titulo-pregunta container-fluid mt-2">
@@ -33,7 +52,7 @@ export const AnswerQuestionAdminScreen = (props) => {
             </div>
             <h3>{pregunta + 1} de {kabum.preguntas.length}</h3>
             <div className="tiempo">
-                <h1>{kabum.preguntas[pregunta].tiempo}</h1>
+                <h1>{parseInt(kabum.preguntas[pregunta].tiempo) - tiempo}</h1>
             </div>
             <div className="container">
                 <div className="row justify-content-center">
@@ -46,10 +65,10 @@ export const AnswerQuestionAdminScreen = (props) => {
                 <div className="row">
                     <div className="col-6">
                         <button className="respuesta1 mt-2">{kabum.preguntas[pregunta].a}</button>
-                        <button className="respuesta2 mt-2">{kabum.preguntas[pregunta].c}</button>
+                        <button className="respuesta2 mt-2">{kabum.preguntas[pregunta].b}</button>
                     </div>
                     <div className="col-6">
-                        <button className="respuesta3 mt-2">{kabum.preguntas[pregunta].b}</button>
+                        <button className="respuesta3 mt-2">{kabum.preguntas[pregunta].c}</button>
                         <button className="respuesta4 mt-2">{kabum.preguntas[pregunta].d}</button>
                     </div>
                 </div>
