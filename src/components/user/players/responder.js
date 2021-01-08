@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useHistory } from 'react-router-dom';
 import io from 'socket.io-client';
 import logo from './../../../assets/images/burrito1.png'
 import logo2 from './../../../assets/images/conejito1.png'
@@ -115,14 +115,14 @@ export const Responder = (props) => {
                             </div>
                         </Link>
                         <Link className="btn-respuestas" onClick={() => preguntaElegida('b')}>
-                            <div className="item" id="item3">
+                            <div className="item" id="item2">
                                 <img className="animal" src={logo2} alt=""></img>
                             </div>
                         </Link>
                     </div>
                     <div className="col-6">
                         <Link className="btn-respuestas" onClick={() => preguntaElegida('c')}>
-                            <div className="item" id="item2">
+                            <div className="item" id="item3">
                                 <img className="animal" src={logo3} alt=""></img>
                             </div>
                         </Link>
