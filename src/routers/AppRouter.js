@@ -1,7 +1,7 @@
 
 import React from 'react'
 import {
-    BrowserRouter as Router,
+    HashRouter as Router,
     Switch,
     Route
 } from 'react-router-dom';
@@ -52,10 +52,10 @@ export const AppRouter = () => {
                     <Route exact path="/scoreboard" component={Scoreboard} />
                     <Route exact path="/correcto" component={Correcto} />
                     <Route exact path="/incorrecto" component={Incorrecto} />
-                    <Route exact path="/podioprimero" component={ PodioUserScreen } />
-                    <Route exact path="/podiosegundo" component={ PodioUserScreen2 } />
-                    <Route exact path="/podiotercero" component={ PodioUserScreen3 } />
-                    <Route exact path="/consolacion" component={ Pantallaconsolacion } />
+                    <Route exact path="/podioprimero" component={PodioUserScreen} />
+                    <Route exact path="/podiosegundo" component={PodioUserScreen2} />
+                    <Route exact path="/podiotercero" component={PodioUserScreen3} />
+                    <Route exact path="/consolacion" component={Pantallaconsolacion} />
                     <Route exact path="/podiumAdmin" component={Resultados} />
                     <Route path="/" component={AppInitialRouters} />
                 </Switch>

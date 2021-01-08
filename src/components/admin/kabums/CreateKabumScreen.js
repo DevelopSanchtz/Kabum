@@ -134,7 +134,7 @@ export class CreateKabumScreen extends Component {
         e.preventDefault();
         try {
             if (this.kabum.preguntas.length > 0) {
-                axios.post('http://localhost:4000/save-kabum', this.kabum)
+                axios.post('https://kabum-server.herokuapp.com/save-kabum', this.kabum)
                     .then( res => {
                         console.log(res.data);
                     })

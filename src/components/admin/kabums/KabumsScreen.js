@@ -7,7 +7,7 @@ export const KabumsScreen = () => {
     const [kabumList, setKabumList] = useState([]);
     const [unfilteredKabums, setUnfilteredKabums] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:4000/get-kabum-fromserver')
+        fetch('https://kabum-server.herokuapp.com/get-kabum-fromserver')
             .then(response => response.json())
             .then(data => {
                 setUnfilteredKabums(data);
