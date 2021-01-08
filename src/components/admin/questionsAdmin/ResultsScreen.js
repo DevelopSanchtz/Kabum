@@ -24,13 +24,14 @@ export const ResultsScreen = (props) => {
         estadisticas = JSON.parse(estadisticas);
     }
     const avanzarScoreboard = () => {
-        if (pregunta < kabum.preguntas.length) {
+        if (pregunta + 1 < kabum.preguntas.length) {
             let state = {
                 estadisticas: estadisticas
             };
             history.push('/scoreboard', state);
         } else {
-            history.push('/scoreboard');
+            socket.emit('podio-jugadores', null);
+            history.push('/podiumAdmin');
         }
     };
     const terminarJuego = () => {

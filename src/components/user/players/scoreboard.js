@@ -62,7 +62,7 @@ export const Scoreboard = () => {
               <tbody>
                 {
                   players.map((jugador, index) => {
-                    if (index % 2 == 0) {
+                    if (index == 0) {
                       return (
                         <tr className="tr-fisrt text-center tamaño-tabla" >
                           <td>{jugador.nombre}</td>

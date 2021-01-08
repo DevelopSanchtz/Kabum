@@ -1,33 +1,33 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
 import './show-screen.scss'
-import logo4 from './../../../assets/images/perro.png'
-import imgPodioUsuario from './../../../assets/images/bu.png'
 
 export const Pantallaconsolacion = () => {
+    const pin = sessionStorage.getItem('player-pin');
+    const tag = sessionStorage.getItem('player-name');
+    const id = sessionStorage.getItem('player-id');
+    let jugador = sessionStorage.getItem('player');
+    jugador = JSON.parse(jugador);
     return (
         <div className="container-podio-usuario">
             <div className="barra">
                 <div className="d-flex">
                     <div className="p-3">
-                        <p></p>
+                        <p>Pin: {pin}</p>
                     </div>
                     <div className="p-3">
                         <p></p>
-
                     </div>
                     <div className="p-3 ml-auto">
-                        <p>Gamertag</p>
+                        <p>{tag}</p>
                     </div>
-
                     <div className="p-3" id="color">
-                        <p>14121</p>
+                        <p>{jugador.puntos}</p>
                     </div>
                 </div>
             </div>
             <div className="informacion">
-            <p id="txt-correcto">Suerta para la proxima</p>
-            <p id="txt-suerte">¡Continúa intentandolo!</p>
+                <p id="txt-correcto">Suerta para la proxima</p>
+                <p id="txt-suerte">¡Continúa intentandolo!</p>
             </div>
         </div>
     )

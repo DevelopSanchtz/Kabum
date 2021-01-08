@@ -24,11 +24,40 @@ export const Correcto = (props) => {
         socket.emit('disconnect-reply', null);
         history.push('/login');
     });
+    socket.on('podio', (jugadores) => {
+        let n = jugadores.length;
+        for (let i = 0; i < n - 1; i++)
+            for (let j = 0; j < n - i - 1; j++)
+                if (jugadores[j].puntos < jugadores[j + 1].puntos) {
+                    let temp = jugadores[j];
+                    jugadores[j] = jugadores[j + 1];
+                    jugadores[j + 1] = temp;
+                }
+        for (let i = 0; i < jugadores.length; i++) {
+            if (jugadores[i].id == id) {
+                console.log(jugadores[i].id, id, i);
+                switch (i) {
+                    case 1:
+                        history.push('/podioprimero');
+                        break;
+                    case 2:
+                        history.push('/podiosegundo');
+                        break;
+                    case 3:
+                        history.push('/podiotercero');
+                        break;
+                    default:
+                        history.push('/consolacion');
+                        break;
+                }
+            }
+        }
+    });
     socket.on('pregunta-siguiente', () => {
         sessionStorage.setItem('player-question', pregunta + 1);
         sessionStorage.setItem('contesto', false);
         sessionStorage.setItem('answer', '');
-        history.push('/responder', {pregunta: pregunta + 1});
+        history.push('/responder', { pregunta: pregunta + 1 });
     })
     return (
         <div className="container-correcto">
@@ -49,9 +78,9 @@ export const Correcto = (props) => {
                 </div>
             </div>
             <div className="informacion">
-            <p id="txt-correcto">Correcto</p>
-            <img className="medidas-incorrecto" src={logocorrecto} alt=""></img>
-            <p id="txt-suerte">Suerte en la siguiente</p>
+                <p id="txt-correcto">Correcto</p>
+                <img className="medidas-incorrecto" src={logocorrecto} alt=""></img>
+                <p id="txt-suerte">Suerte en la siguiente</p>
             </div>
         </div>
     )

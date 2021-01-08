@@ -28,8 +28,36 @@ export const Incorrecto = (props) => {
         sessionStorage.setItem('player-question', pregunta + 1);
         sessionStorage.setItem('contesto', false);
         sessionStorage.setItem('answer', '');
-        history.push('/responder', {pregunta: pregunta + 1});
-    })
+        history.push('/responder', { pregunta: pregunta + 1 });
+    });
+    socket.on('podio', (jugadores) => {
+        let n = jugadores.length;
+        for (let i = 0; i < n - 1; i++)
+            for (let j = 0; j < n - i - 1; j++)
+                if (jugadores[j].puntos < jugadores[j + 1].puntos) {
+                    let temp = jugadores[j];
+                    jugadores[j] = jugadores[j + 1];
+                    jugadores[j + 1] = temp;
+                }
+        for (let i = 0; i < jugadores.length; i++) {
+            if (jugadores[i].id === id) {
+                switch (i) {
+                    case 0:
+                        history.push('/podioprimero');
+                        break;
+                    case 1:
+                        history.push('/podiosegundo');
+                        break;
+                    case 2:
+                        history.push('/podiotercero');
+                        break;
+                    default:
+                        history.push('/consolacion');
+                        break;
+                }
+            }
+        }
+    });
     return (
         <div className="container-incorrecto">
             <div className="barra">
@@ -51,9 +79,9 @@ export const Incorrecto = (props) => {
                 </div>
             </div>
             <div className="informacion">
-            <p id="txt-correcto">Incorrecto</p>
-            <img className="medidas-incorrecto" src={logoincorrecto} alt=""></img>
-            <p id="txt-suerte">Suerte en la siguiente</p>
+                <p id="txt-correcto">Incorrecto</p>
+                <img className="medidas-incorrecto" src={logoincorrecto} alt=""></img>
+                <p id="txt-suerte">Suerte en la siguiente</p>
             </div>
         </div>
     );
