@@ -149,6 +149,11 @@ export class CreateKabumScreen extends Component {
         }
     }
 
+    componentDidMount() {
+        if (!sessionStorage.getItem('sesion-admin')) {
+            this.props.history.replace('/loginAdmin');
+        }
+    }
     render() {
         const { pregunta, a, b, c, d, tiempo, recurso } = this.state;
         return (

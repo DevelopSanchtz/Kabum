@@ -22,6 +22,9 @@ export const AnswerQuestionAdminScreen = (props) => {
         history.push('/resultadosAdmin', { estadisticas: estadisticas });
     })
     useEffect(() => {
+        if (!sessionStorage.getItem('sesion-admin')) {
+            this.props.history.replace('/loginAdmin');
+        }
         socket.on('personas-respondido', () => {
             setContestados(contestados + 1);
         });

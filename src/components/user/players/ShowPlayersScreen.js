@@ -26,6 +26,11 @@ export const ShowPlayersScreen = (props) => {
         sessionStorage.setItem('answer', '');
         history.replace('/responder', { pregunta: 0 });
     });
+    useEffect(() => {
+        if (!sessionStorage.getItem('sesion-admin')) {
+            history.replace('/loginAdmin');
+        }
+    })
     return (
         <div className="contenedor-show">
             <div className="barra">
