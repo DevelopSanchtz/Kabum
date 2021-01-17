@@ -8,6 +8,10 @@ let estado1 = true;
 let estado2 = true;
 let estado3 = true;
 let estado4 = true;
+let contador = 0;
+
+let buttonDisabled = false;
+let buttonDisabled2 = false;
 
 
 export class CreateKabumScreen extends Component {
@@ -122,6 +126,7 @@ export class CreateKabumScreen extends Component {
                 icon: 'success',
                 title: 'Pregunta añadida'
             });
+            console.log(this.kabum);
         } else {
             Swal.fire({
                 icon: 'error',
@@ -147,6 +152,33 @@ export class CreateKabumScreen extends Component {
         } catch (error) {
             console.log(error);
         }
+    }
+
+    callEditAPI = async e => {
+        e.preventDefault();
+        try {
+                axios.get('https://kabum-server.herokuapp.com/edit-kabum')
+                    .then( 
+                    res => {
+                        console.log(res.data);
+                    },
+                    err => {
+                        console.log(err);
+                    })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    navigateQuestions = (e) => {
+        console.log(this.kabum.preguntas.length);
+        console.log(e.target.name);
+        if (e.target.name === 'right') {
+            contador += 1;
+            console.log(contador);
+        }
+
+
     }
 
     render() {
@@ -177,7 +209,12 @@ export class CreateKabumScreen extends Component {
                 <div className="container-fluid mt-3">
                     <form name="form" id="form">
                         <div className="row">
-                            <div className="col-12 mb-2 text-center">
+                            <div className="col-12 mb-2 text-center justify-content-between">
+                                <div >
+                                    <button className="btn btn-primary" name="left" disabled={buttonDisabled} onClick={event => this.navigateQuestions(event)}><span><i className="fas fa-arrow-left flecha"></i></span></button>
+                                    <button className="btn btn-primary" name='right' disabled={buttonDisabled2} onClick={event => this.navigateQuestions(event)}><span><i className="fas fa-arrow-right flecha"></i></span></button>
+                                </div>
+                                
                                 <Link onClick={this.handleSubmit} className="btn btn-success my-2 my-sm-0" type="submit">Agregar pregunta</Link>
                             </div>
                             <div className="col-12">
