@@ -82,7 +82,7 @@ export const ResultsScreen = (props) => {
                 </div>
                 <div className="row justify-content-center">
                     <div className="col-6">
-                        <button className="respuesta2 mt-2">{getCorrecta(kabum.preguntas[pregunta].correcta)}</button>
+                        <div className="respuesta2 mt-2">{getCorrecta(kabum.preguntas[pregunta].correcta)}</div>
                     </div>
                 </div>
             </div>
