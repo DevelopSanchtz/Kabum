@@ -161,7 +161,40 @@
     transition: all 0.5s;
 }
 
+.button-admin{
+	margin-top: 3%;
+	z-index: 101;
+    position: absolute;
+    width: 400px;
+    height: 200px;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(255, 238, 0);
+    color: rgb(0, 0, 0);
+    transform: translate(-50%, -50%);
+	cursor: pointer;
+	display: inline-block;
+ 	height: 35px; 
+    width: 200px;
+    background-repeat: no-repeat;
+    font-family: 'Kidspace DEMO', Courier, monospace;
+    border-radius: 100px;
+    border: none;
+    font-size: 20px;
+    text-align: center;
+    -webkit-box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
+    -moz-box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
+    box-shadow: 17px 24px 21px -11px rgba(0,0,0,0.46);
+    transition: all 0.5s;
+}
+
 .button-play:hover{
+	background-color: #103D42;
+	color: #fff;
+	text-decoration-line: none;
+}
+.button-admin:hover{
 	background-color: #103D42;
 	color: #fff;
 	text-decoration-line: none;
