@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useHistory } from 'react-router-dom';
 import './name-kabums-screen.scss'
 import logo from './../../../assets/images/logo-nuevo-kabum.png'
@@ -28,6 +28,11 @@ export const QuestionScreen = (props) => {
         }
     }
     console.log(pregunta, kabum.preguntas[pregunta]);
+    useEffect(() => {
+        if (!sessionStorage.getItem('sesion-admin')) {
+            history.replace('/loginAdmin');
+        }
+    })
     return (
         <div>
             <div className="fondo-start">

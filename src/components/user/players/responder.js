@@ -72,6 +72,9 @@ export const Responder = (props) => {
             }
         });
     useEffect(() => {
+        if (!sessionStorage.getItem('sesion-admin')) {
+            history.replace('/loginAdmin');
+        }
         socket.on('pregunta', (jugadores) => {
             let player = {};
             jugadores.forEach(jugador => {

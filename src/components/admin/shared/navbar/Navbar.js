@@ -3,11 +3,12 @@ import { Link, NavLink } from 'react-router-dom'
 import './navbar.scss'
 import logo from '../../../../assets/images/logo-nuevo-kabum.png'
 import Swal from 'sweetalert2'
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 
 
 
 export const Navbar = () => {
-
+    const history = useHistory();
     const crearKabum = async (event) => {
         event.preventDefault();
         const { value: text } = await Swal.fire({
@@ -31,6 +32,10 @@ export const Navbar = () => {
             })
         }
     }
+    const cerrarSesion = () => {
+        sessionStorage.removeItem('sesion-admin');
+        history.replace('/loginAdmin');
+    }
     return (
         <nav className="navbar navbar-expand-lg fondo-navbar">
             <a className="navbar-brand">
@@ -50,7 +55,7 @@ export const Navbar = () => {
                 <form className="form-inline my-2 my-lg-0">
                     <button onClick={crearKabum} className="btn btn-success my-2 my-sm-0" type="submit"> <i className="fas fa-plus-circle"></i> Crear
                     Kabum</button>
-                    <Link to="/loginadmin" className="btn btn-light my-2 my-sm-0 ml-2" type="submit"> Cerrar sesión </Link>
+                    <Link onClick={ cerrarSesion } className="btn btn-light my-2 my-sm-0 ml-2" type="submit"> Cerrar sesión </Link>
                 </form>
             </div>
         </nav>

@@ -1,29 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './loginadmin-screen.scss'
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2'
 
 export const LoginAdminScreen = ({history}) => {
 
-    const verificarContraseña = ()=>{
-        Swal.fire({
-            title: "Error",
-            icon: "success",
-            text:"La contraseña es incorrecta",
-            confirmButtonText:"Aceptar",
-        }).then(function(result){
-            if(result.isConfirmed){
-                history.replace('/');
-            }
-            
-        })
-    }
-
-
+    const [pass, setPass] = useState('');
+    useEffect(() => {
+        if (sessionStorage.getItem('sesion-admin')) {
+            history.replace('/kabums');
+        }
+    });
     const handleLogin= () =>{
-        history.replace('/');
+        if (pass === 'KabumTec2017') {
+            sessionStorage.setItem('sesion-admin', true);
+            history.replace('/kabums');
+        } else {
+            Swal.fire({
+                title: 'Error',
+                icon: 'info',
+                text: 'Contraseña incorrecta'
+            });
+        }
     }
 
+    const handleChange = (e) => {
+        setPass(e.target.value);
+    }
     return (
         <div>
             <div className="fondo-login">
@@ -40,9 +43,9 @@ export const LoginAdminScreen = ({history}) => {
                                 <form>
                                     <div className="form-group">
                                         <label>Contraseña:</label>
-                                        <input type="email" className="form-control" placeholder="Ingrese la contraseña"></input>
+                                        <input onChange={ handleChange } value= {pass} name="pass" type="password" className="form-control" placeholder="Ingrese la contraseña"></input>
                                     </div>
-                                    <button onClick={ handleLogin }  type="submit" className="btn btn-login-admin btn-border btn-block">Iniciar sesión</button>
+                                    <button onClick={ handleLogin }  type="button" className="btn btn-login-admin btn-border btn-block">Iniciar sesión</button>
                                 </form>
 
                             </div>

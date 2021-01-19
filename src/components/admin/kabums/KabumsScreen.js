@@ -2,18 +2,25 @@ import React, { useEffect, useState } from 'react'
 
 import './kabums-screen.scss'
 import { KabumList } from './KabumList';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 export const KabumsScreen = () => {
+    const history = useHistory();
     const [kabumList, setKabumList] = useState([]);
     const [unfilteredKabums, setUnfilteredKabums] = useState([]);
+    const sesion = sessionStorage.getItem('sesion-admin');
     useEffect(() => {
-        fetch('https://kabum-server.herokuapp.com/get-kabum-fromserver')
+        if (sesion) {
+            fetch('https://kabum-server.herokuapp.com/get-kabum-fromserver')
             .then(response => response.json())
             .then(data => {
                 setUnfilteredKabums(data);
                 setKabumList(data);
             })
             .catch(error => console.log(error));
+        } else {
+            history.replace('/loginadmin');
+        }
     }, []);
     const filterKabums = (event) => {
         const filterText = event.target.value;
