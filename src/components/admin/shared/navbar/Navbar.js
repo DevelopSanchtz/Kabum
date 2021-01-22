@@ -28,7 +28,14 @@ export const Navbar = () => {
                 icon: "success",
                 confirmButtonText: "Aceptar"
             }).then(function () {
-                window.location.href = "/create";
+                const id = Math.random().toString(36).substr(2) + Math.random().toString(36).substr(2);
+                const state = {
+                    titulo: text,
+                    id: id,
+                    preguntas: [],
+                    preguntaActual: 0
+                };
+                history.push('/create', state);
             })
         }
     }

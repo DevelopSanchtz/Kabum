@@ -72,7 +72,7 @@ export const Responder = (props) => {
             }
         });
     useEffect(() => {
-        if (!sessionStorage.getItem('sesion-admin')) {
+        if (!localStorage.getItem('sesion-admin')) {
             history.replace('/loginAdmin');
         }
         socket.on('pregunta', (jugadores) => {

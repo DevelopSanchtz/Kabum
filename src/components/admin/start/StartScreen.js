@@ -45,7 +45,7 @@ export const StartScreen = (props) => {
     const [online, setOnline] = useState([]);
 
     useEffect(() => {
-        if (!sessionStorage.getItem('sesion-admin')) {
+        if (!localStorage.getItem('sesion-admin')) {
             history.replace('/loginAdmin');
         }
         socket.emit('nuevo-jugador', {

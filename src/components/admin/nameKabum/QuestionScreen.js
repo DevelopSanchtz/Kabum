@@ -29,7 +29,7 @@ export const QuestionScreen = (props) => {
     }
     console.log(pregunta, kabum.preguntas[pregunta]);
     useEffect(() => {
-        if (!sessionStorage.getItem('sesion-admin')) {
+        if (!localStorage.getItem('sesion-admin')) {
             history.replace('/loginAdmin');
         }
     })

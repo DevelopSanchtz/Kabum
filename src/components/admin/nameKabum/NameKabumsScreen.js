@@ -25,7 +25,7 @@ export const NameKabumsScreen = (props) => {
         history.replace('/question', state);
     }
     useEffect(() => {
-        if (!sessionStorage.getItem('sesion-admin')) {
+        if (!localStorage.getItem('sesion-admin')) {
             history.replace('/loginAdmin');
         }
     });

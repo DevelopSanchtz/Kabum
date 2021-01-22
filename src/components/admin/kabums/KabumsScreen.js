@@ -8,10 +8,11 @@ export const KabumsScreen = () => {
     const history = useHistory();
     const [kabumList, setKabumList] = useState([]);
     const [unfilteredKabums, setUnfilteredKabums] = useState([]);
-    const sesion = sessionStorage.getItem('sesion-admin');
+    const sesion = localStorage.getItem('sesion-admin');
     useEffect(() => {
         if (sesion) {
-            fetch('https://kabum-server.herokuapp.com/get-kabum-fromserver')
+            // fetch('https://kabum-server.herokuapp.com/get-kabum-fromserver')
+            fetch('http://localhost:4000/get-kabum-fromserver')
             .then(response => response.json())
             .then(data => {
                 setUnfilteredKabums(data);
