@@ -26,7 +26,6 @@ export const KabumList = (props) => {
       if (result.isConfirmed) {
         const body = new FormData();
         body.append('id', id);
-        console.log(body);
         fetch('http://localhost:4000/delete-kabum', {
           method: "DELETE",
           body: body,
@@ -38,7 +37,6 @@ export const KabumList = (props) => {
           .then(
             dara => {
               //const datos = JSON.parse(dara.data);
-              console.log(dara);
               let newKabumList = [];
               for (let i = 0; i < kabums.length; i++) {
                 if (kabums[i].id === id) {
@@ -65,7 +63,6 @@ export const KabumList = (props) => {
             })
           .catch(
             err => {
-              console.log(err);
               Swal.fire({
                 icon: 'error',
                 text: 'No se pudo eliminar'
