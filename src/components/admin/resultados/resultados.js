@@ -60,7 +60,11 @@ export const Resultados = () => {
                     </div>
                 </div>
                 <Link onClick={() => avanzarScoreboard()} className="siguiente-pregunta">Siguiente </Link>
-            </div>
+                        
+                <Link onClick={() => avanzarScoreboard()} className="generar-pdf">Reporte</Link>
+
+            </div>   
         </div>
+        
     )
 }

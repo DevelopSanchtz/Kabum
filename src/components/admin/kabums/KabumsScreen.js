@@ -11,7 +11,7 @@ export const KabumsScreen = () => {
     const sesion = sessionStorage.getItem('sesion-admin');
     useEffect(() => {
         if (sesion) {
-            fetch('http://localhost:4000/get-kabum-fromserver')
+            fetch('https://kabum-server.herokuapp.com/get-kabum-fromserver')
             .then(response => response.json())
             .then(data => {
                 setUnfilteredKabums(data);
@@ -61,13 +61,13 @@ export const KabumsScreen = () => {
                                 </h5>
                             </div>
                             <div className="ml-auto p-2">
-                                <h6 className="mt-2">Ordenar por:</h6>
+                                <h6 className="mt-2">Filtrar por:</h6>
                             </div>
                             <div className="p-2">
                                 <div className="dropdown">
-                                    <button className="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Mas recientes
-                                    </button>
+                                                                                                <button className="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                                                    Mas recientes
+                                                                                                </button>
                                     <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
                                         <button className="dropdown-item" type="button">preguntas</button>
                                     </div>
