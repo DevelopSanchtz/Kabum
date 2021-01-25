@@ -1,11 +1,7 @@
 
 import React from 'react'
 import {
-<<<<<<< HEAD
-    Browserrouter as Router,
-=======
     BrowserRouter as Router,
->>>>>>> 912c28205dcb98d92939f68908574150ec7ddb30
     Switch,
     Route
 } from 'react-router-dom';
