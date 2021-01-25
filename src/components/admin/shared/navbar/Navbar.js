@@ -1,11 +1,9 @@
-import React from 'react'
-import { Link, NavLink } from 'react-router-dom'
-import './navbar.scss'
-import logo from '../../../../assets/images/logo-nuevo-kabum.png'
-import Swal from 'sweetalert2'
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
-
-
+import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import Swal from 'sweetalert2';
+import './navbar.scss';
+import logo from '../../../../assets/images/logo-nuevo-kabum.png';
 
 export const Navbar = () => {
     const history = useHistory();
@@ -40,7 +38,7 @@ export const Navbar = () => {
         }
     }
     const cerrarSesion = () => {
-        sessionStorage.removeItem('sesion-admin');
+        localStorage.removeItem('sesion-admin');
         history.replace('/loginAdmin');
     }
     return (
@@ -62,9 +60,9 @@ export const Navbar = () => {
                 <form className="form-inline my-2 my-lg-0">
                     <button onClick={crearKabum} className="btn btn-success my-2 my-sm-0" type="submit"> <i className="fas fa-plus-circle"></i> Crear
                     Kabum</button>
-                    <Link onClick={ cerrarSesion } className="btn btn-light my-2 my-sm-0 ml-2" type="submit"> Cerrar sesión </Link>
+                    <Link onClick={cerrarSesion} className="btn btn-light my-2 my-sm-0 ml-2" type="submit"> Cerrar sesión </Link>
                 </form>
             </div>
         </nav>
-    )
+    );
 }
