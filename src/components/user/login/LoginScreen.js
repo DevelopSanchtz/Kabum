@@ -8,6 +8,7 @@ export const LoginScreen = () => {
     return (
 
         <div className="body-login">
+
             <img className="logo-burrito" src={logo} alt=""></img>
             <Link to={{
                 pathname: "/pin",
@@ -15,6 +16,15 @@ export const LoginScreen = () => {
                     id: id
                 }
             }} className="button-play"> Jugar Ahora </Link>
+            
+
+            <Link to={{
+                pathname: "/loginadmin",
+                props: {
+                    id: id
+                }
+            }} className="button-admin"> Adminsitrar</Link>
+
 
             <div className="fondo"></div>
             <div className="sol"></div>

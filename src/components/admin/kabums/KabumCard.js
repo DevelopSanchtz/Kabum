@@ -31,7 +31,6 @@ export const KabumCard = (props) => {
               </div>
               <div className="col-3">
                 <div className="row justify-content-end">
-                  <button className="btn btn-light my-2 my-sm-0 ml-2" type="submit"> <i className="far fa-heart"></i> </button>
                   <button onClick={() => borrarKabum(id)} className="btn btn-light my-2 my-sm-0 ml-2" type="submit"> <i className="fas fa-trash-alt"></i> </button>
                 </div>
                 {/* <div className="row justify-content-end"> <p> <span>3 </span> Jugadores</p> </div> */}

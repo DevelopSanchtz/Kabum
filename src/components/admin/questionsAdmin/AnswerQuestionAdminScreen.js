@@ -67,12 +67,12 @@ export const AnswerQuestionAdminScreen = (props) => {
             <div className="container-fluid mt-4">
                 <div className="row">
                     <div className="col-6">
-                        <button className="respuesta1 mt-2">{kabum.preguntas[pregunta].a}</button>
-                        <button className="respuesta2 mt-2">{kabum.preguntas[pregunta].b}</button>
+                        <div className="respuesta1 mt-2">{kabum.preguntas[pregunta].a}</div>
+                        <div className="respuesta2 mt-2">{kabum.preguntas[pregunta].b}</div>
                     </div>
                     <div className="col-6">
-                        <button className="respuesta3 mt-2">{kabum.preguntas[pregunta].c}</button>
-                        <button className="respuesta4 mt-2">{kabum.preguntas[pregunta].d}</button>
+                        <div className="respuesta3 mt-2">{kabum.preguntas[pregunta].c}</div>
+                        <div className="respuesta4 mt-2">{kabum.preguntas[pregunta].d}</div>
                     </div>
                 </div>
             </div>
