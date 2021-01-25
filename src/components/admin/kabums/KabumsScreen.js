@@ -62,7 +62,7 @@ export const KabumsScreen = () => {
                                 </h5>
                             </div>
                             <div className="ml-auto p-2">
-                                <h6 className="mt-2">Filtrar por:</h6>
+                                <h6 className="mt-2">Ordenar por:</h6>
                             </div>
                             <div className="p-2">
                                 <div className="dropdown">

@@ -88,7 +88,7 @@ export const ResultsScreen = (props) => {
             </div>
             <div className="container mt-5">
                 <div className="row">
-                    <h4>Total Respuestas</h4>
+                    <h4>Total de respuestas</h4>
                 </div>
             </div>
             <div className="container">
