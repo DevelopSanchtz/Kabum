@@ -15,34 +15,32 @@ export const AnswerQuestionAdminScreen = (props) => {
     pregunta = sessionStorage.getItem('question');
     pregunta = parseInt(pregunta);
     const skipQuestion = () => {
-        socket.connect();
         socket.emit('termino-tiempo', null);
     }
     socket.on('estadisticas-pregunta', (estadisticas) => {
-        history.push('/resultadosAdmin', { estadisticas: estadisticas });
+        sessionStorage.setItem('estadisticas', JSON.stringify(estadisticas));
+        history.push('/resultadosAdmin');
     })
     useEffect(() => {
         if (!localStorage.getItem('sesion-admin')) {
-            this.props.history.replace('/loginAdmin');
+            props.history.push('/loginAdmin');
         }
         socket.on('personas-respondido', () => {
             setContestados(contestados + 1);
         });
         setTimer(startTimer());
     }, [contestados, tiempo])
-    
+
     const startTimer = () => {
         return setTimeout(() => {
-            if(tiempo === Number(kabum.preguntas[pregunta].tiempo)) {
+            if (tiempo === Number(kabum.preguntas[pregunta].tiempo)) {
                 stopTimer();
-            } else {  
+            } else {
                 setTiempo(tiempo + 1);
             }
         }, 1000)
     }
     const stopTimer = () => {
-        console.log('Se envio evento de termino-tiempo')
-        socket.connect();
         socket.emit('termino-tiempo', null);
         clearTimeout(timer);
     }
@@ -60,7 +58,7 @@ export const AnswerQuestionAdminScreen = (props) => {
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="mt-2">
-                        <img className="container-imagen" src={kabum.preguntas[pregunta].recurso === "" ? kabum.preguntas[pregunta].recurso : imagen}></img>
+                        <img className="container-imagen" alt="" src={kabum.preguntas[pregunta].recurso === "" ? kabum.preguntas[pregunta].recurso : imagen}></img>
                     </div>
                 </div>
             </div>

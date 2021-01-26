@@ -1,9 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import './name-kabums-screen.scss'
-import logo from './../../../assets/images/logo-nuevo-kabum.png'
-import { Link } from 'react-router-dom';
-import socket from '../../socket';
+import './name-kabums-screen.scss';
+import logo from './../../../assets/images/logo-nuevo-kabum.png';
 
 
 export const NameKabumsScreen = (props) => {
@@ -18,17 +16,14 @@ export const NameKabumsScreen = (props) => {
         kabum = JSON.parse(kabum);
     }
     const startKabum = () => {
-        let state = {
-            pregunta: 0
-        }
-        console.log(state);
-        history.replace('/question', state);
+        sessionStorage.setItem('question', 0)
+        history.push('/question');
     }
     useEffect(() => {
         if (!localStorage.getItem('sesion-admin')) {
-            history.replace('/loginAdmin');
+            history.push('/loginAdmin');
         }
-    });
+    }, [history]);
     return (
         <div>
             <div className="fondo-start">

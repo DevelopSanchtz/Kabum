@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import logo from '../../../assets/images/logo-nuevo-kabum.png'
 
 export const KabumCard = (props) => {
+  const history = useHistory();
   let pin1 = Math.floor(Math.random() * 10);
   let pin2 = Math.floor(Math.random() * 10);
   let pin3 = Math.floor(Math.random() * 10);
@@ -13,6 +14,11 @@ export const KabumCard = (props) => {
   let pin = pin1 + "" + pin2 + "" + pin3 + "" + pin4 + "" + pin5 + "" + pin6;
   const { kabum, borrarKabum } = props;
   const { id, nombre, preguntas } = kabum;
+  const jugarKabum = () => {
+    sessionStorage.setItem('pin-kabum', pin);
+    sessionStorage.setItem('kabum', JSON.stringify(kabum));
+    history.push('/start');
+  }
   return (
     <div className="col-12">
       <div className="card">
@@ -36,13 +42,7 @@ export const KabumCard = (props) => {
                 {/* <div className="row justify-content-end"> <p> <span>3 </span> Jugadores</p> </div> */}
                 <div className="row justify-content-end">
                   <Link to="/create" className="btn btn-outline-primary"> Editar </Link>
-                  <Link to={{
-                    pathname: "/start",
-                    props: {
-                      pin: pin,
-                      kabum: kabum
-                    }
-                  }} className="btn btn-success ml-2"> Jugar </Link>
+                  <button onClick={jugarKabum} className="btn btn-success ml-2"> Jugar </button>
                 </div>
               </div>
             </div>

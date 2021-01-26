@@ -11,24 +11,14 @@ import { PlayerTag } from './PlayerTag';
 export const StartScreen = (props) => {
     const history = useHistory();
     let pin, kabum;
-    if (props.location.props) {
-        pin = props.location.props.pin;
-        sessionStorage.setItem('pin-kabum', pin);
-        kabum = props.location.props.kabum;
-        sessionStorage.setItem('kabum', JSON.stringify(kabum));
-    } else {
-        pin = sessionStorage.getItem('pin-kabum');
-        kabum = sessionStorage.getItem('kabum');
-        kabum = JSON.parse(kabum);
-    }
-    let state = {
-        kabum: kabum
-    };
+    pin = sessionStorage.getItem('pin-kabum');
+    kabum = sessionStorage.getItem('kabum');
+    kabum = JSON.parse(kabum);
     const salir = () => {
         Swal.fire({
             title: "Salir",
             icon: "warning",
-            text: "¿Estás seguro que desea trminar el juego?",
+            text: "¿Estás seguro que desea terminar el juego?",
             confirmButtonText: "Salir",
             showCancelButton: true,
             cancelButtonText: "Cancelar"
@@ -36,33 +26,33 @@ export const StartScreen = (props) => {
             if (result.isConfirmed) {
                 socket.emit('terminar', null);
                 sessionStorage.removeItem('pin-kabum');
-                history.replace('/kabums');
+                history.push('/kabums');
             }
         })
     }
 
-    socket.connect();
     const [online, setOnline] = useState([]);
 
     useEffect(() => {
         if (!localStorage.getItem('sesion-admin')) {
-            history.replace('/loginAdmin');
+            history.push('/loginAdmin');
         }
         socket.emit('nuevo-jugador', {
             id: "FHx45X",
             usuario: "host",
             sala: pin,
             tipo: "host",
-            kabum: props.location.props.kabum
+            kabum: kabum
         });
         socket.on('jugadores', players => {
             setOnline(players);
         });
-    }, []);
+    }, [history, pin, props]);
 
     const iniciarJuego = () => {
         if (online.length > 1) {
-            history.push('/nameKabum', state);
+            sessionStorage.setItem('kabum', JSON.stringify(kabum));
+            history.push('/nameKabum');
         } else {
             Swal.fire({
                 title: "Sala incompleta",

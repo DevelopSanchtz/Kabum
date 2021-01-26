@@ -7,14 +7,14 @@ export const LoginAdminScreen = ({ history }) => {
     const [pass, setPass] = useState('');
     useEffect(() => {
         if (localStorage.getItem('sesion-admin')) {
-            history.replace('/kabums');
+            history.push('/kabums');
         }
-    });
+    }, [history]);
     const handleLogin = (event) => {
         event.preventDefault();
         if (pass === 'KabumTec2017') {
             localStorage.setItem('sesion-admin', true);
-            history.replace('/kabums');
+            history.push('/kabums');
         } else {
             Swal.fire({
                 title: 'Error',

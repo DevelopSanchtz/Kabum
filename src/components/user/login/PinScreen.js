@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import Swal from 'sweetalert2'
 
@@ -18,7 +18,6 @@ export const PinScreen = (props) => {
     } else {
         id = sessionStorage.getItem('id-jugador');
     }
-    socket.connect();
     useEffect(() => {
         socket.on('estado', (response) => {
             if (response.error) {
@@ -40,9 +39,20 @@ export const PinScreen = (props) => {
                 });
             }
         });
-    }, []);
-    const verificarPin = () => {
-        sessionStorage.setItem('player-name', tag);
+    }, [history]);
+    const verificarPin = (event) => {
+        event.preventDefault();
+        if (tag.trim().replace(' ', '').length === 0) {
+            Swal.fire({
+                title: "Error",
+                icon: "error",
+                text: "Por favor ingresa un gamertag",
+                confirmButtonText: "OK",
+                timer: "3000"
+            });
+            return;
+        }
+        sessionStorage.setItem('player-name', tag.trim().replace(' ', ''));
         sessionStorage.setItem('player-id', id);
         sessionStorage.setItem('player-pin', pin);
         socket.emit('nuevo-jugador', {
@@ -61,13 +71,11 @@ export const PinScreen = (props) => {
     return (
         <div className="contenedor">
             <img src={logo} alt="logo" height="200px"></img>
-            <form>
+            <form onSubmit={verificarPin}>
                 <p><input onChange={changePin} type="text" placeholder="Pin" name="pin" className="pin" maxLength="6" /></p>
-            </form>
-            <form>
                 <p><input onChange={changeTag} type="text" placeholder="GamerTag" name="tag" className="pin" maxLength="6" /></p>
+                <button className="btn-pin"> Ingresa </button>
             </form>
-            <button onClick={verificarPin} className="btn-pin"> Ingresa </button>
         </div>
     );
 }

@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import './answer-question-admin.scss'
-import imagen from './../../../assets/images/mexico-imagen.jpg'
 import { Link, useHistory } from 'react-router-dom';
 import logo from './../../../assets/images/burrito1.png'
 import logo2 from './../../../assets/images/gatito1.png'
@@ -16,19 +15,12 @@ export const ResultsScreen = (props) => {
     let kabum = sessionStorage.getItem('kabum');
     kabum = JSON.parse(kabum);
     let estadisticas;
-    if (props.location.state) {
-        estadisticas = props.location.state.estadisticas;
-        sessionStorage.setItem('estadisticas', JSON.stringify(estadisticas));
-    } else {
-        estadisticas = sessionStorage.getItem('estadisticas');
-        estadisticas = JSON.parse(estadisticas);
-    }
+    estadisticas = sessionStorage.getItem('estadisticas');
+    estadisticas = JSON.parse(estadisticas);
     const avanzarScoreboard = () => {
         if (pregunta + 1 < kabum.preguntas.length) {
-            let state = {
-                estadisticas: estadisticas
-            };
-            history.push('/scoreboard', state);
+            sessionStorage.setItem('estadisticas', JSON.stringify(estadisticas));
+            history.push('/scoreboard');
         } else {
             socket.emit('podio-jugadores', null);
             history.push('/podiumAdmin');
@@ -38,7 +30,7 @@ export const ResultsScreen = (props) => {
         Swal.fire({
             title: "Terminar",
             icon: "warning",
-            text: "¿Estás seguro que desea trminar el juego?",
+            text: "¿Estás seguro que desea terminar el juego?",
             confirmButtonText: "Terminar",
             showCancelButton: true,
             cancelButtonText: "Seguir jugando"
@@ -48,7 +40,7 @@ export const ResultsScreen = (props) => {
                     title: "Juego terminado",
                     icon: "success",
                 }).then((resultado) => {
-                    history.replace("/login");
+                    history.push("/kabums");
                 })
             }
         });
@@ -64,6 +56,8 @@ export const ResultsScreen = (props) => {
                 return kabum.preguntas[pregunta].c;
             case 'd':
                 return kabum.preguntas[pregunta].d;
+            default:
+                return '';
         }
     }
     return (

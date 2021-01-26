@@ -4,7 +4,6 @@ import Swal from 'sweetalert2';
 
 import { KabumCard } from './KabumCard';
 
-import axios from 'axios'
 
 export const KabumList = (props) => {
   const { kabums, setKabums, unfilteredKabums, setUnfilteredKabums } = props;
@@ -21,8 +20,6 @@ export const KabumList = (props) => {
       showCancelButton: true,
       cancelButtonText: "Cancelar"
     }).then((result) => {
-      // TODO: Llamada a la API para eliminar Kabums
-
       if (result.isConfirmed) {
         const body = new FormData();
         body.append('id', id);
@@ -35,8 +32,7 @@ export const KabumList = (props) => {
               return res.text();
             })
           .then(
-            dara => {
-              //const datos = JSON.parse(dara.data);
+            _ => {
               let newKabumList = [];
               for (let i = 0; i < kabums.length; i++) {
                 if (kabums[i].id === id) {
@@ -62,7 +58,8 @@ export const KabumList = (props) => {
               });
             })
           .catch(
-            err => {
+            error => {
+              console.error(error);
               Swal.fire({
                 icon: 'error',
                 text: 'No se pudo eliminar'

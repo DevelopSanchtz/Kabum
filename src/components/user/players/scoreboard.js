@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Link, useHistory } from 'react-router-dom';
 import socket from '../../socket';
 import Swal from 'sweetalert2'
@@ -16,7 +16,8 @@ export const Scoreboard = () => {
     let state = {
       pregunta: pregunta + 1
     };
-    history.replace('/question', state);
+    sessionStorage.setItem('question', (pregunta + 1));
+    history.push('/question');
   }
   let players = estadisticas.jugadores;
   let n = players.length;
@@ -29,25 +30,13 @@ export const Scoreboard = () => {
       }
   const terminarJuego = () => {
     Swal.fire({
-      title: "Terminar",
-      icon: "warning",
-      text: "¿Estás seguro que desea trminar el juego?",
-      confirmButtonText: "Terminar",
-      showCancelButton: true,
-      cancelButtonText: "Seguir jugando"
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          title: "Juego terminado",
-          icon: "success",
-        }).then((resultado) => {
-          socket.emit('terminar', null);
-          history.replace("/kabums");
-        })
-      }
-    });
+      title: "Juego terminado",
+      icon: "success",
+    }).then((resultado) => {
+      socket.emit('terminar', null);
+      history.push("/kabums");
+    })
   };
-  console.log(pregunta < kabum.preguntas.length, pregunta, kabum.preguntas.length);
   return (
     <div>
       <header className="text-center mt-4">
@@ -62,7 +51,7 @@ export const Scoreboard = () => {
               <tbody>
                 {
                   players.map((jugador, index) => {
-                    if (index == 0) {
+                    if (index === 0) {
                       return (
                         <tr className="tr-fisrt text-center tamaño-tabla" >
                           <td>{jugador.nombre}</td>

@@ -23,7 +23,7 @@ export const LoginScreen = () => {
                 props: {
                     id: id
                 }
-            }} className="button-admin"> Adminsitrar</Link>
+            }} className="button-admin"> Administrar</Link>
 
 
             <div className="fondo"></div>

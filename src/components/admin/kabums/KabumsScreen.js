@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 
-import './kabums-screen.scss'
-import { KabumList } from './KabumList';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+
+import { KabumList } from './KabumList';
+import './kabums-screen.scss';
 
 export const KabumsScreen = () => {
     const history = useHistory();
@@ -13,16 +14,16 @@ export const KabumsScreen = () => {
         if (sesion) {
             // fetch('https://kabum-server.herokuapp.com/get-kabum-fromserver')
             fetch('http://localhost:4000/get-kabum-fromserver')
-            .then(response => response.json())
-            .then(data => {
-                setUnfilteredKabums(data);
-                setKabumList(data);
-            })
-            .catch(error => console.log(error));
+                .then(response => response.json())
+                .then(data => {
+                    setKabumList(data);
+                    setUnfilteredKabums(data);
+                })
+                .catch(error => console.error(error));
         } else {
-            history.replace('/loginadmin');
+            history.push('/loginadmin');
         }
-    }, []);
+    }, [history, sesion]);
     const filterKabums = (event) => {
         const filterText = event.target.value;
         let newKabumsList = []
@@ -66,9 +67,9 @@ export const KabumsScreen = () => {
                             </div>
                             <div className="p-2">
                                 <div className="dropdown">
-                                                                                                <button className="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                                                    Mas recientes
-                                                                                                </button>
+                                    <button className="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Mas recientes
+                                    </button>
                                     <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
                                         <button className="dropdown-item" type="button">preguntas</button>
                                     </div>
@@ -77,7 +78,6 @@ export const KabumsScreen = () => {
                         </div>
                     </div>
                 </div>
-                {/* lista de kabums */}
                 <KabumList kabums={kabumList} setKabums={setKabumList} unfilteredKabums={unfilteredKabums} setUnfilteredKabums={setUnfilteredKabums} />
             </div>
             <footer>

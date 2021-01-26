@@ -1,13 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
 import './show-screen.scss'
-import logo4 from './../../../assets/images/perro.png'
 import imgPodioUsuario from './../../../assets/images/bu.png'
 
 export const PodioUserScreen = () => {
     const pin = sessionStorage.getItem('player-pin');
     const tag = sessionStorage.getItem('player-name');
-    const id = sessionStorage.getItem('player-id');
     let jugador = sessionStorage.getItem('player');
     jugador = JSON.parse(jugador);
     return (

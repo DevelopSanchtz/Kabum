@@ -3,7 +3,6 @@ const { default: socket } = require("../../socket");
 
 
 export const PlayerTag = (props) => {
-    console.log(props.data);
     const player = props.data;
     const borrarJugador = () => {
         Swal.fire({
@@ -21,11 +20,9 @@ export const PlayerTag = (props) => {
     }
     return (
         <h2 className="num-jugadores ml-2" key={player.id} id={player.id}> {player.nombre}
-            <span>
-                <a className="quitar-jugador" onClick={borrarJugador} >
-                    <i className="fas fa-times-circle"></i>
-                </a>
+            <span className="quitar-jugador" onClick={borrarJugador} >
+                <i className="fas fa-times-circle"></i>
             </span>
         </h2>
-    )
+    );
 }

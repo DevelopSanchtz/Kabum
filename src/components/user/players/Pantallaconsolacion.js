@@ -4,7 +4,6 @@ import './show-screen.scss'
 export const Pantallaconsolacion = () => {
     const pin = sessionStorage.getItem('player-pin');
     const tag = sessionStorage.getItem('player-name');
-    const id = sessionStorage.getItem('player-id');
     let jugador = sessionStorage.getItem('player');
     jugador = JSON.parse(jugador);
     return (

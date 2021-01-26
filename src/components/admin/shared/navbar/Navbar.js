@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import Swal from 'sweetalert2';
 import './navbar.scss';
@@ -39,13 +39,13 @@ export const Navbar = () => {
     }
     const cerrarSesion = () => {
         localStorage.removeItem('sesion-admin');
-        history.replace('/loginAdmin');
+        history.push('/loginAdmin');
     }
     return (
         <nav className="navbar navbar-expand-lg fondo-navbar">
-            <a className="navbar-brand">
+            <span className="navbar-brand">
                 <img src={logo} width="80" height="30" alt=""></img>
-            </a>
+            </span>
             <NavLink
                 activeClassName="active"
                 className="nav-item nav-link"
@@ -53,14 +53,14 @@ export const Navbar = () => {
                 to="/kabums">
                 Kabums
             </NavLink>
-            <a className="navbar-brand">
-            </a>
+            <span className="navbar-brand">
+            </span>
             <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
                 <ul className="navbar-nav mr-auto mt-2 mt-lg-0"></ul>
                 <form className="form-inline my-2 my-lg-0">
                     <button onClick={crearKabum} className="btn btn-success my-2 my-sm-0" type="submit"> <i className="fas fa-plus-circle"></i> Crear
                     Kabum</button>
-                    <Link onClick={cerrarSesion} className="btn btn-light my-2 my-sm-0 ml-2" type="submit"> Cerrar sesión </Link>
+                    <button onClick={cerrarSesion} className="btn btn-light my-2 my-sm-0 ml-2" type="submit"> Cerrar sesión </button>
                 </form>
             </div>
         </nav>

@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { useHistory } from 'react-router-dom';
 import './name-kabums-screen.scss'
 import logo from './../../../assets/images/logo-nuevo-kabum.png'
-import { Link } from 'react-router-dom';
 import socket from '../../socket';
 
 export const QuestionScreen = (props) => {
@@ -11,28 +10,24 @@ export const QuestionScreen = (props) => {
     kabum = sessionStorage.getItem('kabum');
     kabum = JSON.parse(kabum);
     let pregunta;
-    if (props.location.state) {
-        pregunta = props.location.state.pregunta;
-        sessionStorage.setItem('question', pregunta)
-    } else {
-        pregunta = sessionStorage.getItem('question');
-        pregunta = parseInt(pregunta);
-    }
+    pregunta = sessionStorage.getItem('question');
+    pregunta = parseInt(pregunta);
     const startKabum = () => {
-        if (pregunta == 0) {
+        if (pregunta === 0) {
             socket.emit('empezar-juego', kabum);
-            history.replace('/answerAdmin', { pregunta: pregunta });
+            sessionStorage.setItem('question', pregunta)
+            history.push('/answerAdmin');
         } else {
             socket.emit('sig-pregunta', null);
-            history.replace('/answerAdmin', { pregunta: pregunta });
+            sessionStorage.setItem('question', pregunta)
+            history.push('/answerAdmin');
         }
     }
-    console.log(pregunta, kabum.preguntas[pregunta]);
     useEffect(() => {
         if (!localStorage.getItem('sesion-admin')) {
-            history.replace('/loginAdmin');
+            history.push('/loginAdmin');
         }
-    })
+    }, [history])
     return (
         <div>
             <div className="fondo-start">

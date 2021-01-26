@@ -10,27 +10,22 @@ export const ShowPlayersScreen = (props) => {
     const id = sessionStorage.getItem('player-id');
 
     const history = useHistory();
-    socket.connect();
     socket.on('dejar-sala', idBorrado => {
         if (id === idBorrado) {
             socket.emit('disconnect-reply', null);
-            history.replace('/login');
+            history.push('/login');
         }
     });
     socket.on('juego-terminado', () => {
-        history.replace('/login');
+        history.push('/login');
     });
     socket.on('primera-pregunta', (kabum) => {
         sessionStorage.setItem('player-kabum', JSON.stringify(kabum));
         sessionStorage.setItem('contesto',false);
         sessionStorage.setItem('answer', '');
-        history.replace('/responder', { pregunta: 0 });
+        sessionStorage.setItem('player-question', 0);
+        history.push('/responder');
     });
-    useEffect(() => {
-        if (!localStorage.getItem('sesion-admin')) {
-            history.replace('/loginAdmin');
-        }
-    })
     return (
         <div className="contenedor-show">
             <div className="barra">
@@ -48,6 +43,6 @@ export const ShowPlayersScreen = (props) => {
                 <p>¿Puedes ver tu nombre?</p>
             </div>
         </div>
-    )
+    );
 }
 

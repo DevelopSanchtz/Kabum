@@ -1,32 +1,21 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import logo from './../../../assets/images/logo-nuevo-kabum.png'
+import { NavLink, useHistory } from 'react-router-dom';
+
 import Swal from 'sweetalert2'
 import axios from 'axios'
 
+import logo from './../../../assets/images/logo-nuevo-kabum.png'
+
 export const CreateKabumScreen = (props) => {
-    let id
-    let titulo;
-    let preguntas;
-    let preguntaActual;
+    const history = useHistory();
     if (!localStorage.getItem('sesion-admin')) {
-        props.history.replace('/loginAdmin');
+        props.history.push('/loginAdmin');
     }
-    if (props.location.state) {
-        id = props.location.state.id;
-        titulo = props.location.state.titulo;
-        preguntas = props.location.state.preguntas;
-        preguntaActual = props.location.state.preguntaActual;
-        sessionStorage.setItem('kabum-id', id);
-        sessionStorage.setItem('kabum-name', titulo);
-        sessionStorage.setItem('kabum-preguntas', preguntas);
-        sessionStorage.setItem('kabum-preguntaActual', preguntaActual);
-    } else {
-        id = sessionStorage.getItem('kabum-id');
-        titulo = sessionStorage.setItem('kabum-name', titulo);
-        preguntas = sessionStorage.setItem('kabum-preguntas', preguntas);
-        preguntaActual = sessionStorage.setItem('kabum-preguntaActual', preguntaActual);
-    }
+
+    const id = sessionStorage.getItem('kabum-id');
+    const titulo = sessionStorage.setItem('kabum-name', titulo);
+    const preguntas = sessionStorage.setItem('kabum-preguntas', preguntas);
+    const preguntaActual = sessionStorage.setItem('kabum-preguntaActual', preguntaActual);
     const [estado1, setEstado1] = useState(preguntaActual < preguntas.length ? false : true);
     const [estado2, setEstado2] = useState(preguntaActual < preguntas.length ? false : true);
     const [estado3, setEstado3] = useState(preguntaActual < preguntas.length ? false : true);
@@ -50,7 +39,6 @@ export const CreateKabumScreen = (props) => {
                 recurso: '',
                 tipo_recurso: 'imagen'
             });
-
     const handleChange = (e) => {
         if (e.target.checked) {
             if (state[e.target.value] !== '') {
@@ -62,9 +50,7 @@ export const CreateKabumScreen = (props) => {
             //     state.correcta.splice(index, 1);
             // }
         }
-        console.log(state);
-    }
-
+    };
     const handleChangeInput = (e) => {
         const { name, value } = e.target;
         switch (name) {
@@ -76,7 +62,6 @@ export const CreateKabumScreen = (props) => {
                     if (state.correcta.includes(name)) {
                         state.correcta.pop(name);
                         state[name] = '';
-                        console.log(state);
                     }
                 }
                 break;
@@ -88,7 +73,6 @@ export const CreateKabumScreen = (props) => {
                     if (state.correcta.includes(name)) {
                         state.correcta.pop(name);
                         state[name] = '';
-                        console.log(state);
                     }
                 }
                 break;
@@ -100,7 +84,6 @@ export const CreateKabumScreen = (props) => {
                     if (state.correcta.includes(name)) {
                         state.correcta.pop(name);
                         state[name] = '';
-                        console.log(state);
                     }
                 }
                 break;
@@ -112,15 +95,13 @@ export const CreateKabumScreen = (props) => {
                     if (state.correcta.includes(name)) {
                         state.correcta.pop(name);
                         state[name] = '';
-                        console.log(state);
                     }
                 }
                 break;
             default:
         }
         setState({ ...state, [name]: value })
-    }
-
+    };
     const handleSubmit = (e) => {
         if (state.pregunta !== "" && state.a !== "" && state.b !== "" && state.c !== "" && state.d !== "" && state.correcta !== "" && state.tiempo !== "" && state.recurso !== "") {
             e.preventDefault()
@@ -140,16 +121,15 @@ export const CreateKabumScreen = (props) => {
                 title: 'Añade preguntas o verifica que todos los campos se encuentren llenos'
             });
         }
-    }
-
+    };
     const submitInfo = async e => {
         e.preventDefault();
         try {
             if (kabum.preguntas.length > 0) {
                 // axios.post('https://kabum-server.herokuapp.com/save-kabum', kabum)
                 axios.post('http://localhost:4000/save-kabum', kabum)
-                    .then(res => {
-                        console.log(res.data);
+                    .then(error => {
+                        console.error(error);
                     })
             } else {
                 Swal.fire({
@@ -158,56 +138,53 @@ export const CreateKabumScreen = (props) => {
                 });
             }
         } catch (error) {
-            console.log(error);
+            console.error(error);
         }
-    }
-
-    const callEditKabum = async e => {
-        let kabum2 = {
-            id: 3,
-            nombre: 'pruebasBackend',
-            preguntas:
-                [
-                    {
-                        "pregunta": "¿Qué desaolla303dor hizo esta pruebaX48vez?",
-                        "a": "ArmandoDev",
-                        "b": "MarcoDev",
-                        "c": "WeroDev",
-                        "d": "KtDev",
-                        "correcta": "a",
-                        "tiempo": "10",
-                        "recurso": "www.imagen.com",
-                        "tipo_recurso": "img"
-                    }
-                ]
-        }
-        e.preventDefault();
-        try {
-            axios.post('http://localhost:4000/edit-kabum', kabum)
-                .then(
-                    res => {
-                        console.log(res.data);
-                        Swal.fire({
-                            icon: 'success',
-                            text: 'exito guardando'
-                        });
-                    },
-                    err => {
-                        console.log(err);
-                    })
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
+    };
+    // const callEditKabum = async e => {
+    //     let kabum2 = {
+    //         id: 3,
+    //         nombre: 'pruebasBackend',
+    //         preguntas:
+    //             [
+    //                 {
+    //                     "pregunta": "¿Qué desaolla303dor hizo esta pruebaX48vez?",
+    //                     "a": "ArmandoDev",
+    //                     "b": "MarcoDev",
+    //                     "c": "WeroDev",
+    //                     "d": "KtDev",
+    //                     "correcta": "a",
+    //                     "tiempo": "10",
+    //                     "recurso": "www.imagen.com",
+    //                     "tipo_recurso": "img"
+    //                 }
+    //             ]
+    //     }
+    //     e.preventDefault();
+    //     try {
+    //         axios.post('http://localhost:4000/edit-kabum', kabum)
+    //             .then(
+    //                 res => {
+    //                     console.log(res.data);
+    //                     Swal.fire({
+    //                         icon: 'success',
+    //                         text: 'exito guardando'
+    //                     });
+    //                 },
+    //                 err => {
+    //                     console.log(err);
+    //                 })
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }
     const navigateQuestions = (e) => {
         if (e === 'right') {
             preguntaActual++;
         } else if (e === 'left') {
             preguntaActual--;
         }
-    }
-
+    };
     const imageHandler = (e) => {
         const reader = new FileReader();
         reader.onload = () => {
@@ -215,17 +192,30 @@ export const CreateKabumScreen = (props) => {
                 setState({ recurso: reader.result });
             }
         }
-        reader.readAsDataURL(e.target.files[0])
-        console.log(e.target.files[0]);
-    }
+        reader.readAsDataURL(e.target.files[0]);
+    };
     const { pregunta, a, b, c, d, tiempo, recurso } = state;
+    const cancelCreation = (event) => {
+        Swal.fire({
+            title: "Cancelar Kabum",
+            icon: "warning",
+            text: "¿Estás seguro?",
+            confirmButtonText: "Cancelar",
+            showCancelButton: true,
+            cancelButtonText: "Atrás"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                history.push('/kabums');
+            }
+        })
+    };
     return (
         <>
             {/* Navbar */}
             <nav className="navbar navbar-expand-lg fondo-navbar">
-                <a className="navbar-brand" href="#">
+                <span className="navbar-brand" href="#">
                     <img src={logo} width="80px" height="30px" alt=""></img>
-                </a>
+                </span>
                 <NavLink
                     activeClassName="active"
                     className="nav-item nav-link"
@@ -236,8 +226,8 @@ export const CreateKabumScreen = (props) => {
                 <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
                     <ul className="navbar-nav mr-auto mt-2 mt-lg-0"></ul>
                     <form className="form-inline my-2 my-lg-0">
-                        <button className="btn btn-cancelar my-2 my-sm-0 mr-2" type="submit"> Cancelar </button>
-                        <button className="btn btn-success my-2 my-sm-0" type="submit" onClick={submitInfo}> Guardar</button>
+                        <button className="btn btn-cancelar my-2 my-sm-0 mr-2" type="button" onClick={cancelCreation} > Cancelar </button>
+                        <button className="btn btn-success my-2 my-sm-0" type="button" onClick={submitInfo}> Guardar</button>
                     </form>
                 </div>
             </nav>
@@ -313,5 +303,5 @@ export const CreateKabumScreen = (props) => {
                 </form>
             </div>
         </>
-    )
+    );
 }
