@@ -8,10 +8,12 @@ import logo from './../../../assets/images/logo-nuevo-kabum.png'
 
 export const CreateKabumScreen = (props) => {
     const history = useHistory();
+    //verificacion de login
     if (!localStorage.getItem('sesion-admin')) {
         props.history.push('/loginAdmin');
     }
 
+    //constantes que almacenan las preguntas segun el estado detectado en el front, una vez almacenada toda la info, se genera el json
     const id = sessionStorage.getItem('kabum-id');
     const titulo = sessionStorage.setItem('kabum-name', titulo);
     const preguntas = sessionStorage.setItem('kabum-preguntas', preguntas);
@@ -26,6 +28,8 @@ export const CreateKabumScreen = (props) => {
         preguntas: preguntas,
         preguntaActual: preguntaActual
     });
+
+    //state que almacena cada parte que corresponde a la pregunta general
     const
         [state, setState] = useState(
             {
@@ -39,6 +43,9 @@ export const CreateKabumScreen = (props) => {
                 recurso: '',
                 tipo_recurso: 'imagen'
             });
+
+    //  metodo que almacena la pregunta correcta, una vez marcado el input check
+    // es llamada cuando se marca el check de la pregunta
     const handleChange = (e) => {
         if (e.target.checked) {
             if (state[e.target.value] !== '') {
@@ -51,6 +58,10 @@ export const CreateKabumScreen = (props) => {
             // }
         }
     };
+
+    //guarda la respuesta correcta en el state
+    //utiliza los estados de las preguntas para conocer cual es la correcta
+    //y debe ser almacenada, puede ser una respuesta correcta o mas 
     const handleChangeInput = (e) => {
         const { name, value } = e.target;
         switch (name) {
@@ -102,6 +113,9 @@ export const CreateKabumScreen = (props) => {
         }
         setState({ ...state, [name]: value })
     };
+
+    // almacena los valores que conforman a toda la pregunta
+    // en los constantes declarados a partir de la linea 16
     const handleSubmit = (e) => {
         if (state.pregunta !== "" && state.a !== "" && state.b !== "" && state.c !== "" && state.d !== "" && state.correcta !== "" && state.tiempo !== "" && state.recurso !== "") {
             e.preventDefault()
@@ -122,6 +136,8 @@ export const CreateKabumScreen = (props) => {
             });
         }
     };
+    //metodo que manda el json con todas las preguntas al servidor
+    // el json formado por todas las preguntas se llama kabum
     const submitInfo = async e => {
         e.preventDefault();
         try {
@@ -178,6 +194,10 @@ export const CreateKabumScreen = (props) => {
     //         console.log(error);
     //     }
     // }
+
+    //funcion para navegar entre las preguntas creadas en el kabum
+    // si da clic a la derecha aumenta el contador de pregunta actual
+    // caso contrario disminuye
     const navigateQuestions = (e) => {
         if (e === 'right') {
             preguntaActual++;
@@ -185,6 +205,8 @@ export const CreateKabumScreen = (props) => {
             preguntaActual--;
         }
     };
+    //funcion para mostrar la imagen en el img y guardarla en su constante
+    // es llamado cuando se presiona el icono de edicion, para guardar el archivo en el json de la pregunta
     const imageHandler = (e) => {
         const reader = new FileReader();
         reader.onload = () => {
@@ -194,7 +216,10 @@ export const CreateKabumScreen = (props) => {
         }
         reader.readAsDataURL(e.target.files[0]);
     };
+
     const { pregunta, a, b, c, d, tiempo, recurso } = state;
+
+    //funcion para cancelar la creacion de las preguntas del kabum actual
     const cancelCreation = (event) => {
         Swal.fire({
             title: "Cancelar Kabum",
@@ -254,6 +279,7 @@ export const CreateKabumScreen = (props) => {
                                     <input id="form" className="form-control titulo" type="text" name="pregunta" value={pregunta} onChange={handleChangeInput} placeholder="¿Como se llama el Chino?"></input>
                                 </div>
                             </div>
+                            {/* input de duracion de pregunta e img para vista previa de imagen */}
                             <div className="row p-2 mt-5 ml-5 justify-content-center align-items-center">
                                 <div className="col-4">
                                     <label >Duración en segundos</label>
@@ -276,6 +302,7 @@ export const CreateKabumScreen = (props) => {
                                     </div>
                                 </div>
                             </div>
+                            {/* inputs para insertar pregunta y marcar la corracta */}
                             <div className="row mt-4 p-2 mb-2 justify-content-between align-items-center botones">
                                 <div className="col-6">
                                     <div className="">
