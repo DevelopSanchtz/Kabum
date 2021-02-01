@@ -24,8 +24,10 @@ export const StartScreen = (props) => {
             cancelButtonText: "Cancelar"
         }).then((result) => {
             if (result.isConfirmed) {
+                //función para terminar el juego y redireccionar a los jugadores al inicio
                 socket.emit('terminar', null);
                 sessionStorage.removeItem('pin-kabum');
+                //Redirecciona al administrador a la pantalla de kabums
                 history.push('/kabums');
             }
         })
@@ -69,6 +71,7 @@ export const StartScreen = (props) => {
         <div >
             <div className="fondo-start" >
                 <div className="fondo-start-color">
+                    {/* Botón para salir del juego */}
                     <button onClick={salir} className="btn p-1 m-1 btn-salir" >Salir</button>
 
                     <div className="container">
@@ -81,7 +84,9 @@ export const StartScreen = (props) => {
                         <div className="row justify-content-center">
                             <h6 className="pin-start mt-1">PIN</h6>
                         </div>
+                        
                         <div className="row justify-content-center ">
+                           {/* Muestra el pin del juego */} 
                             <h1 className="numero-pin">{pin}</h1>
                         </div>
                     </div>
@@ -92,10 +97,12 @@ export const StartScreen = (props) => {
                         </div>
                     </div>
 
+                {/* Contenedor donde irá la lista de las etiquetas de los jugadores que van ingresando */}
                     <div className="container container-jugadores mt-2">
                         <div className="row justify-content-center">
                             {
                                 online.map(player => {
+                                    //Retorna la etiqueta de los jugadores 
                                     return (
                                         <PlayerTag key={player.id} data={player} />
                                     );
@@ -103,6 +110,8 @@ export const StartScreen = (props) => {
                             }
                         </div>
                     </div>
+                    {/* Fin de la lista de los jugadores que ingresaron  */}
+
                     <button onClick={iniciarJuego} className="btn-iniciar-juego">Iniciar </button>
                     {/* <Link to="/nameKabum" className="btn-iniciar-juego">Iniciar </Link> */}
                 </div>

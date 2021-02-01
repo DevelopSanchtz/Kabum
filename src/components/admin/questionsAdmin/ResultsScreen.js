@@ -40,6 +40,7 @@ export const ResultsScreen = (props) => {
                     title: "Juego terminado",
                     icon: "success",
                 }).then((resultado) => {
+                    //Redirecciona al administrador a la pantalla de kabums
                     history.push("/kabums");
                 })
             }
@@ -64,9 +65,11 @@ export const ResultsScreen = (props) => {
         <div>
             <div className=" titulo-pregunta container-fluid mt-2">
                 <div className="row  justify-content-center">
+                    {/* Muestra el titulo de la pregunta */}
                     <h1>{kabum.preguntas[pregunta].pregunta}</h1>
                 </div>
             </div>
+            {/* Muestra el número de la pregunta */}
             <h3>{pregunta + 1} de {kabum.preguntas.length}</h3>
             <div className="container-fluid mt-4">
                 <div className="container mt-5">
@@ -76,6 +79,7 @@ export const ResultsScreen = (props) => {
                 </div>
                 <div className="row justify-content-center">
                     <div className="col-6">
+                        {/* Muestra la respuesta correcta de la pregunta en curso */}
                         <div className="respuesta2 mt-2">{getCorrecta(kabum.preguntas[pregunta].correcta)}</div>
                     </div>
                 </div>
@@ -90,24 +94,28 @@ export const ResultsScreen = (props) => {
                     <div className="col-lg-3">
                         <div className="resultados-totales1">
                             <img className="animal-resultados" src={logo} alt=""></img>
+                            {/* Muestra la estadistica de las respuestas a */}
                             <h4 className="text-center numero-respuestas-total">{estadisticas.a}</h4>
                         </div>
                     </div>
                     <div className="col-lg-3">
                         <div className="resultados-totales2">
                             <img className="animal-resultados" src={logo2} alt=""></img>
+                            {/* Muestra la estadistica de las respuestas b */}
                             <h4 className="text-center numero-respuestas-total">{estadisticas.b}</h4>
                         </div>
                     </div>
                     <div className="col-lg-3">
                         <div className="resultados-totales3">
                             <img className="animal-resultados" src={logo3} alt=""></img>
+                            {/* Muestra la estadistica de las respuestas c */}
                             <h4 className="text-center numero-respuestas-total">{estadisticas.c}</h4>
                         </div>
                     </div>
                     <div className="col-lg-3">
                         <div className="resultados-totales4">
                             <img className="animal-resultados" src={logo4} alt=""></img>
+                            {/* Muestra la estadistica de las respuestas d */}
                             <h4 className="text-center numero-respuestas-total">{estadisticas.d}</h4>
                         </div>
                     </div>

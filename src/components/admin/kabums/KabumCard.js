@@ -19,6 +19,7 @@ export const KabumCard = (props) => {
     sessionStorage.setItem('kabum', JSON.stringify(kabum));
     history.push('/start');
   }
+  //Retorna el contenedor de cada kabum
   return (
     <div className="col-12">
       <div className="card">
@@ -31,12 +32,15 @@ export const KabumCard = (props) => {
                 </div>
               </div>
               <div className="col-6">
+                {/* Se muestra el nombre del kabum */}
                 <h2 className="titulo-kabums">{nombre}</h2>
+                {/* Se muestra el número de preguntas que tiene el kabum */}
                 <h5>{preguntas.length} preguntas</h5>
                 {/* <p>Creado hace <span> 2 dias </span> </p> */}
               </div>
               <div className="col-3">
                 <div className="row justify-content-end">
+                  {/* Boton para borrar el kabum  */}
                   <button onClick={() => borrarKabum(id)} className="btn btn-light my-2 my-sm-0 ml-2" type="submit"> <i className="fas fa-trash-alt"></i> </button>
                 </div>
                 {/* <div className="row justify-content-end"> <p> <span>3 </span> Jugadores</p> </div> */}
