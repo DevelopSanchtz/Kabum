@@ -175,7 +175,7 @@ export const CreateKabumScreen = (props) => {
             console.error(error);
         }
     };
-    
+
 
     //funcion para navegar entre las preguntas creadas en el kabum
     // si da clic a la derecha aumenta el contador de pregunta actual
@@ -192,24 +192,7 @@ export const CreateKabumScreen = (props) => {
     //funcion para mostrar la imagen en el img y guardarla en su constante
     // es llamado cuando se presiona el icono de edicion, para guardar el archivo en el json de la pregunta
     const imageHandler = (e) => {
-        let imgPost = new FormData();
-        imgPost.append(`pregunta`, preguntaActual);
-        imgPost.append(`recurso${preguntaActual}`, e.target.files[0]);
-
-        fetch('http://localhost:4000/save-image', {
-            method: 'POST',
-            body: imgPost
-        }).then(res => res.json())
-            .then(response => console.log('Success:', response))
-            .catch(error => console.error('Error:', error));
-        //const reader = new FileReader();
-        //reader.onload = () => {
-        //    if (reader.readyState === 2) {
-        //        setImageArray([...imageArray, reader.result])
-        //    }
-        //}
-        //reader.readAsDataURL(e.target.files[0]);
-        //console.log(imageArray);
+        setState({ ...state, recurso: e.target.value });
     };
 
     const { pregunta, a, b, c, d, tiempo, recurso } = state;
@@ -271,7 +254,7 @@ export const CreateKabumScreen = (props) => {
                                     ? <button className="btn btn-primary mr-5" name='right' onClick={event => navigateQuestions(event.target.name)}><span><i className="fas fa-arrow-right flecha"></i></span></button>
                                     : <></>
                                 }
-                                <button onClick={handleSubmit} className="btn btn-success my-2 my-sm-0" type="submit">Agregar pregunta</button>
+                                <button onClick={handleSubmit} className="btn btn-success my-2 my-sm-0" type="button">Agregar pregunta</button>
                             </div>
                         </div>
                         <div className="col-12">
@@ -294,12 +277,16 @@ export const CreateKabumScreen = (props) => {
                                     </select>
                                 </div>
                                 <div className=" col-8 imagen">
-                                    <div className="d-flex justify-content-center im">
-                                        <img id="form" src={recurso} width="300px" height="205px" className="mt-3" alt="Imagen de la pregunta" />
-                                    </div>
-                                    <div className="logos d-flex justify-content-center">
-                                        <label htmlFor="input"><span className="ml-2"><i className="fas fa-edit edit"></i></span></label>
-                                        <input id="input" name="recurso" type="file" accept="image/*" onChange={imageHandler} className="d-none" />
+                                    <div className="row h-100 align-items-center">
+                                        <div className="col-6 h-100">
+                                            <img id="form" src={recurso} width="300px" height="205px" className="mt-3" alt="Imagen de la pregunta" />
+                                        </div>
+                                        <div className="col-6">
+                                            <div className="form-group">
+                                                <label for="input">Recurso</label>
+                                                <input className="form-control" id="input" name="recurso" type="text" onChange={imageHandler}/>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
