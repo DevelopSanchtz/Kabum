@@ -26,7 +26,8 @@ export const KabumList = (props) => {
         const body = new FormData();
         body.append('id', id);
         //llamada a la api
-        fetch('http://localhost:4000/delete-kabum', {
+        // fetch('http://localhost:4000/delete-kabum', {
+        fetch('https://kabum-server.herokuapp.com/save-kabum', {
           method: "DELETE",
           body: body,
         })

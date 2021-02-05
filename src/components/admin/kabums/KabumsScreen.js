@@ -16,8 +16,8 @@ export const KabumsScreen = () => {
         //si es true hace una llamada a la api para mostrar los kabums que hay almacenados
         //si no es true lo redirecciona a la ruta loginadmin
         if (sesion) {
-            // fetch('https://kabum-server.herokuapp.com/get-kabum-fromserver')
-            fetch('http://localhost:4000/get-kabum-fromserver')
+            // fetch('http://localhost:4000/get-kabum-fromserver')
+            fetch('https://kabum-server.herokuapp.com/get-kabum-fromserver')
                 .then(response => response.json())
                 .then(data => {
                     setKabumList(data);

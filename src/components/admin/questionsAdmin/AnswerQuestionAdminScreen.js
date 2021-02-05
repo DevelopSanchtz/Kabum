@@ -68,7 +68,7 @@ export const AnswerQuestionAdminScreen = (props) => {
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="mt-2">
-                        <img className="container-imagen" alt="" src={kabum.preguntas[pregunta].recurso === "" ? kabum.preguntas[pregunta].recurso : imagen}></img>
+                        <img className="container-imagen" alt="" src={kabum.preguntas[pregunta].recurso === "" ? imagen : kabum.preguntas[pregunta].recurso}></img>
                     </div>
                 </div>
             </div>

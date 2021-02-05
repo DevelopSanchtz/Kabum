@@ -12,7 +12,6 @@ export const CreateKabumScreen = (props) => {
     if (!localStorage.getItem('sesion-admin')) {
         props.history.push('/loginAdmin');
     }
-    console.log('rerender');
     //constantes que almacenan las preguntas segun el estado detectado en el front, una vez almacenada toda la info, se genera el json
     const id = sessionStorage.getItem('kabum-id');
     const titulo = sessionStorage.getItem('kabum-name');
@@ -35,14 +34,11 @@ export const CreateKabumScreen = (props) => {
         preguntaActual: preguntaActual
     });
 
-    console.log(preguntas.length, preguntaActual);
-    //console.log(preguntas[preguntaActual].pregunta);
-
     //state que almacena cada parte que corresponde a la pregunta general
     const
         [state, setState] = useState(
             {
-                pregunta: preguntaActual < preguntas.length ? preguntas[preguntaActual].pregunta : '',
+                pregunta: '',
                 a: '',
                 b: '',
                 c: '',
@@ -122,16 +118,14 @@ export const CreateKabumScreen = (props) => {
                 break;
             default:
         }
-        console.log(state);
         setState({ ...state, [name]: value })
-        console.log(state);
     };
 
     // almacena los valores que conforman a toda la pregunta
     // en los constantes declarados a partir de la linea 16
     const handleSubmit = (e) => {
+        e.preventDefault()
         if (state.pregunta !== "" && state.a !== "" && state.b !== "" && state.c !== "" && state.d !== "" && state.correcta !== "" && state.tiempo !== "") {
-            e.preventDefault()
             document.getElementById('form').reset();
             Swal.fire({
                 icon: 'success',
@@ -167,8 +161,8 @@ export const CreateKabumScreen = (props) => {
         try {
             if (kabum.preguntas.length > 0) {
                 console.log(kabum);
-                // axios.post('https://kabum-server.herokuapp.com/save-kabum', kabum)
-                axios.post('http://localhost:4000/save-kabum', kabum)
+                //axios.post('http://localhost:4000/save-kabum', kabum)
+                axios.post('https://kabum-server.herokuapp.com/save-kabum', kabum)
                     .then(response => {
                         Swal.fire({
                             icon: 'success',
@@ -191,13 +185,20 @@ export const CreateKabumScreen = (props) => {
     //funcion para navegar entre las preguntas creadas en el kabum
     // si da clic a la derecha aumenta el contador de pregunta actual
     // caso contrario disminuye
-    const navigateQuestions = (e) => {
+    const navigateQuestions = (event) => {
+        const e = event.target.name;
         if (e === 'right') {
             sessionStorage.setItem('kabum-preguntaActual', preguntaActual + 1);
             setKabum({ ...kabum, preguntaActual: preguntaActual + 1 });
         } else if (e === 'left') {
             sessionStorage.setItem('kabum-preguntaActual', preguntaActual - 1);
-            setKabum({ ...kabum, preguntas: preguntas, preguntaActual: preguntaActual - 1 });
+            setKabum({ ...kabum, preguntaActual: preguntaActual - 1 });
+        }
+        console.log(kabum.preguntas[preguntaActual], kabum.preguntas.length, preguntaActual);
+        if (preguntaActual < kabum.preguntas.length) {
+            setState(kabum.preguntas[preguntaActual]);
+        } else {
+            ({ pregunta, a, b, c, d, tiempo, recurso } = state);
         }
     };
     //funcion para mostrar la imagen en el img y guardarla en su constante
@@ -206,7 +207,7 @@ export const CreateKabumScreen = (props) => {
         setState({ ...state, recurso: e.target.value });
     };
 
-    const { pregunta, a, b, c, d, tiempo, recurso } = state;
+    let { pregunta, a, b, c, d, tiempo, recurso } = state;
 
     //funcion para cancelar la creacion de las preguntas del kabum actual
     const cancelCreation = (event) => {
@@ -278,7 +279,7 @@ export const CreateKabumScreen = (props) => {
                             <div className="row p-2 mt-5 ml-5 justify-content-center align-items-center">
                                 <div className="col-4">
                                     <label >Duración en segundos</label>
-                                    <select className="selector d-flex justify-content-center text-align-center" name="tiempo" value={preguntaActual < preguntas.length ? preguntas[preguntaActual].tiempo : tiempo} onChange={handleChangeTiempo}>
+                                    <select className="selector d-flex justify-content-center text-align-center" name="tiempo" value={tiempo} onChange={handleChangeTiempo}>
                                         <option>5</option>
                                         <option>10</option>
                                         <option>15</option>
@@ -295,7 +296,7 @@ export const CreateKabumScreen = (props) => {
                                         <div className="col-6">
                                             <div className="form-group">
                                                 <label for="input">Recurso</label>
-                                                <input className="form-control" id="input" name="recurso" type="text" onChange={imageHandler}/>
+                                                <input className="form-co   ntrol" id="input" name="recurso" type="text" onChange={imageHandler} />
                                             </div>
                                         </div>
                                     </div>
@@ -306,21 +307,21 @@ export const CreateKabumScreen = (props) => {
                                 <div className="col-6">
                                     <div className="">
                                         <input className="form-control mb-1" disabled={estado1} type="checkbox" placeholder="Respuestas" id="check1" value="a" onChange={handleChange} name="correcta"></input>
-                                        <input name="a" value={preguntaActual < preguntas.length ? preguntas[preguntaActual].a : a} onChange={handleChangeInput} className="form-control azul" htmlFor="check1" id="form"></input>
+                                        <input name="a" value={a} onChange={handleChangeInput} className="form-control azul" htmlFor="check1" id="form"></input>
                                     </div>
                                     <div className="mt-4">
                                         <input className="form-control mb-1" disabled={estado2} type="checkbox" placeholder="Respuestas" value="b" id="check2" onChange={handleChange} name="correcta"></input>
-                                        <input name="b" value={preguntaActual < preguntas.length ? preguntas[preguntaActual].b : b} onChange={handleChangeInput} className="form-control rojo" htmlFor="check2" id="form"></input>
+                                        <input name="b" value={b} onChange={handleChangeInput} className="form-control rojo" htmlFor="check2" id="form"></input>
                                     </div>
                                 </div>
                                 <div className="col-6">
                                     <div className="">
                                         <input className="form-control mb-1" disabled={estado3} type="checkbox" placeholder="Respuestas" id="check3" value="c" onChange={handleChange} name="correcta"></input>
-                                        <input name="c" value={preguntaActual < preguntas.length ? preguntas[preguntaActual].c : c} onChange={handleChangeInput} className="form-control amarillo" htmlFor="check3" id="form"></input>
+                                        <input name="c" value={c} onChange={handleChangeInput} className="form-control amarillo" htmlFor="check3" id="form"></input>
                                     </div>
                                     <div className="mt-4">
                                         <input className="form-control mb-1" disabled={estado4} type="checkbox" placeholder="Respuestas" id="check4" value="d" onChange={handleChange} name="correcta"></input>
-                                        <input name="d" value={preguntaActual < preguntas.length ? preguntas[preguntaActual].d : d} onChange={handleChangeInput} className="form-control cielo" id="form" ></input>
+                                        <input name="d" value={d} onChange={handleChangeInput} className="form-control cielo" id="form" ></input>
                                     </div>
                                 </div>
                             </div>

@@ -117,9 +117,7 @@ export const EditKabumScreen = (props) => {
         break;
       default:
     }
-    console.log(state);
     setState({ ...state, [name]: value })
-    console.log(state);
   };
 
   // almacena los valores que conforman a toda la pregunta
@@ -146,6 +144,17 @@ export const EditKabumScreen = (props) => {
         sessionStorage.setItem('kabum-preguntas', JSON.stringify(preguntas));
         sessionStorage.setItem('kabum-preguntaActual', (preguntaActual + 1));
         setKabum({ ...kabum, preguntas: preguntas, preguntaActual: preguntaActual + 1 });
+        setState({
+          pregunta: '',
+          a: '',
+          b: '',
+          c: '',
+          d: '',
+          correcta: '',
+          tiempo: '5',
+          recurso: '',
+          tipo_recurso: ''
+        });
       }
     } else {
       console.log(state);
@@ -162,8 +171,8 @@ export const EditKabumScreen = (props) => {
     try {
       if (kabum.preguntas.length > 0) {
         console.log(kabum);
-        // axios.post('https://kabum-server.herokuapp.com/save-kabum', kabum)
-        axios.post('http://localhost:4000/edit-kabum', kabum)
+        // axios.post('http://localhost:4000/edit-kabum', kabum)
+        axios.post('https://kabum-server.herokuapp.com/save-kabum', kabum)
           .then(response => {
             Swal.fire({
               icon: 'success',
@@ -205,7 +214,8 @@ export const EditKabumScreen = (props) => {
   //funcion para mostrar la imagen en el img y guardarla en su constante
   // es llamado cuando se presiona el icono de edicion, para guardar el archivo en el json de la pregunta
   const imageHandler = (e) => {
-    let imgPost = new FormData();
+    setState({ ...state, recurso: e.target.value });
+    /*let imgPost = new FormData();
     imgPost.append(`pregunta`, preguntaActual);
     imgPost.append(`recurso${preguntaActual}`, e.target.files[0]);
 
@@ -222,7 +232,7 @@ export const EditKabumScreen = (props) => {
     //    }
     //}
     //reader.readAsDataURL(e.target.files[0]);
-    //console.log(imageArray);
+    //console.log(imageArray);*/
   };
 
   let { pregunta, a, b, c, d, tiempo, recurso } = state;
@@ -307,12 +317,16 @@ export const EditKabumScreen = (props) => {
                   </select>
                 </div>
                 <div className=" col-8 imagen">
-                  <div className="d-flex justify-content-center im">
-                    <img id="form" src={recurso} width="300px" height="205px" className="mt-3" alt="Imagen de la pregunta" />
-                  </div>
-                  <div className="logos d-flex justify-content-center">
-                    <label htmlFor="input"><span className="ml-2"><i className="fas fa-edit edit"></i></span></label>
-                    <input id="input" name="recurso" type="file" accept="image/*" onChange={imageHandler} className="d-none" />
+                  <div className="row h-100 align-items-center">
+                    <div className="col-6 h-100">
+                      <img id="form" src={recurso} width="300px" height="205px" className="mt-3" alt="Imagen de la pregunta" />
+                    </div>
+                    <div className="col-6">
+                      <div className="form-group">
+                        <label for="input">Recurso</label>
+                        <input className="form-control" id="input" name="recurso" type="text" value={recurso} onChange={imageHandler} />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
