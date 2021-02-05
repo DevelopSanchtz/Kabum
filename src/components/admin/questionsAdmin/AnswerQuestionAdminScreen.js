@@ -14,13 +14,19 @@ export const AnswerQuestionAdminScreen = (props) => {
     kabum = JSON.parse(kabum);
     pregunta = sessionStorage.getItem('question');
     pregunta = parseInt(pregunta);
+
+    //funcion que pasa a la siguiente pregunta y guarda la estadistica
     const skipQuestion = () => {
         socket.emit('termino-tiempo', null);
     }
+
     socket.on('estadisticas-pregunta', (estadisticas) => {
         sessionStorage.setItem('estadisticas', JSON.stringify(estadisticas));
         history.push('/resultadosAdmin');
     })
+
+    //funcion que verfica la sesion, esta a la escucha de la cantidad de 
+    //personas que ya respondieron la pregunta e inicializa el timer 
     useEffect(() => {
         if (!localStorage.getItem('sesion-admin')) {
             props.history.push('/loginAdmin');
@@ -31,6 +37,9 @@ export const AnswerQuestionAdminScreen = (props) => {
         setTimer(startTimer());
     }, [contestados, tiempo])
 
+    //funcion timer que obtiene de la pregunta el tiempo que le fue asignado
+    //aumenta el contador tiempo y revisa si ya cumplio con el limite
+    //caso verdadero se detiene, caso contrario sigue aumentando
     const startTimer = () => {
         return setTimeout(() => {
             if (tiempo === Number(kabum.preguntas[pregunta].tiempo)) {
@@ -40,6 +49,7 @@ export const AnswerQuestionAdminScreen = (props) => {
             }
         }, 1000)
     }
+    //funcion para detener el timer, manda como respuesta en socket que ya finalizo
     const stopTimer = () => {
         socket.emit('termino-tiempo', null);
         clearTimeout(timer);

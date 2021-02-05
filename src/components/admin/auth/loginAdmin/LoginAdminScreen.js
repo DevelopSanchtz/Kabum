@@ -5,11 +5,17 @@ import Swal from 'sweetalert2'
 export const LoginAdminScreen = ({ history }) => {
 
     const [pass, setPass] = useState('');
+
+    //revisa si hay una sesion iniciada
     useEffect(() => {
         if (localStorage.getItem('sesion-admin')) {
             history.push('/kabums');
         }
     }, [history]);
+
+    //compara la contrasena con el valor del string
+    //caso verdadero se almacena la sesion y navega a la ruta /kabums
+    //caso contrario muestra un swal de error
     const handleLogin = (event) => {
         event.preventDefault();
         if (pass === 'KabumTec2017') {
@@ -23,6 +29,7 @@ export const LoginAdminScreen = ({ history }) => {
             });
         }
     }
+    //almacena en pass el valor del event
     const handleChange = (e) => {
         setPass(e.target.value);
     }

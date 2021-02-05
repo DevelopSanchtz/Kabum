@@ -9,6 +9,9 @@ export class pdfGenerate extends PureComponent {
         this.state = {}
     }
 
+    //funcion para generar el pdf
+    //libreria utilizada jsPDF
+
     jsPdfGenerator = () => {
 
         let doc = new jsPDF('p', 'pt');
