@@ -27,13 +27,11 @@ export const Navbar = () => {
                 confirmButtonText: "Aceptar"
             }).then(function () {
                 const id = Math.random().toString(36).substr(2) + Math.random().toString(36).substr(2);
-                const state = {
-                    titulo: text,
-                    id: id,
-                    preguntas: [],
-                    preguntaActual: 0
-                };
-                history.push('/create', state);
+                sessionStorage.setItem('kabum-id', id);
+                sessionStorage.setItem('kabum-name', text);
+                sessionStorage.setItem('kabum-preguntas', JSON.stringify([]));
+                sessionStorage.setItem('kabum-preguntaActual', 0);
+                history.push('/create');
             })
         }
     }

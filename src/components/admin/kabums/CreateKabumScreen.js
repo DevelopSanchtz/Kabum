@@ -12,12 +12,18 @@ export const CreateKabumScreen = (props) => {
     if (!localStorage.getItem('sesion-admin')) {
         props.history.push('/loginAdmin');
     }
-
+    console.log('rerender');
     //constantes que almacenan las preguntas segun el estado detectado en el front, una vez almacenada toda la info, se genera el json
     const id = sessionStorage.getItem('kabum-id');
-    const titulo = sessionStorage.setItem('kabum-name', titulo);
-    const preguntas = sessionStorage.setItem('kabum-preguntas', preguntas);
-    const preguntaActual = sessionStorage.setItem('kabum-preguntaActual', preguntaActual);
+    const titulo = sessionStorage.getItem('kabum-name');
+    let preguntas = sessionStorage.getItem('kabum-preguntas');
+    preguntas = JSON.parse(preguntas);
+
+    const { imageArray, setImageArray } = useState([]);
+
+    let preguntaActual = sessionStorage.getItem('kabum-preguntaActual');
+    preguntaActual = parseInt(preguntaActual);
+
     const [estado1, setEstado1] = useState(preguntaActual < preguntas.length ? false : true);
     const [estado2, setEstado2] = useState(preguntaActual < preguntas.length ? false : true);
     const [estado3, setEstado3] = useState(preguntaActual < preguntas.length ? false : true);
@@ -29,17 +35,20 @@ export const CreateKabumScreen = (props) => {
         preguntaActual: preguntaActual
     });
 
+    console.log(preguntas.length, preguntaActual);
+    //console.log(preguntas[preguntaActual].pregunta);
+
     //state que almacena cada parte que corresponde a la pregunta general
     const
         [state, setState] = useState(
             {
-                pregunta: '',
+                pregunta: preguntaActual < preguntas.length ? preguntas[preguntaActual].pregunta : '',
                 a: '',
                 b: '',
                 c: '',
                 d: '',
                 correcta: '',
-                tiempo: '',
+                tiempo: '5',
                 recurso: '',
                 tipo_recurso: 'imagen'
             });
@@ -58,7 +67,9 @@ export const CreateKabumScreen = (props) => {
             // }
         }
     };
-
+    const handleChangePregunta = (event) => {
+        setState({ ...state, pregunta: event.target.value });
+    }
     //guarda la respuesta correcta en el state
     //utiliza los estados de las preguntas para conocer cual es la correcta
     //y debe ser almacenada, puede ser una respuesta correcta o mas 
@@ -70,8 +81,8 @@ export const CreateKabumScreen = (props) => {
                     setEstado1(false);
                 } else {
                     setEstado1(true);
-                    if (state.correcta.includes(name)) {
-                        state.correcta.pop(name);
+                    if (state.correcta === (name)) {
+                        setState({ ...state, correcta: '' });
                         state[name] = '';
                     }
                 }
@@ -81,8 +92,8 @@ export const CreateKabumScreen = (props) => {
                     setEstado2(false);
                 } else {
                     setEstado2(true);
-                    if (state.correcta.includes(name)) {
-                        state.correcta.pop(name);
+                    if (state.correcta === (name)) {
+                        setState({ ...state, correcta: '' });
                         state[name] = '';
                     }
                 }
@@ -92,8 +103,8 @@ export const CreateKabumScreen = (props) => {
                     setEstado3(false);
                 } else {
                     setEstado3(true);
-                    if (state.correcta.includes(name)) {
-                        state.correcta.pop(name);
+                    if (state.correcta === (name)) {
+                        setState({ ...state, correcta: '' });
                         state[name] = '';
                     }
                 }
@@ -103,21 +114,23 @@ export const CreateKabumScreen = (props) => {
                     setEstado4(false);
                 } else {
                     setEstado4(true);
-                    if (state.correcta.includes(name)) {
-                        state.correcta.pop(name);
+                    if (state.correcta === (name)) {
+                        setState({ ...state, correcta: '' });
                         state[name] = '';
                     }
                 }
                 break;
             default:
         }
+        console.log(state);
         setState({ ...state, [name]: value })
+        console.log(state);
     };
 
     // almacena los valores que conforman a toda la pregunta
     // en los constantes declarados a partir de la linea 16
     const handleSubmit = (e) => {
-        if (state.pregunta !== "" && state.a !== "" && state.b !== "" && state.c !== "" && state.d !== "" && state.correcta !== "" && state.tiempo !== "" && state.recurso !== "") {
+        if (state.pregunta !== "" && state.a !== "" && state.b !== "" && state.c !== "" && state.d !== "" && state.correcta !== "" && state.tiempo !== "") {
             e.preventDefault()
             document.getElementById('form').reset();
             Swal.fire({
@@ -125,11 +138,11 @@ export const CreateKabumScreen = (props) => {
                 title: 'Pregunta añadida'
             });
             preguntas.push(state);
-            preguntaActual++;
-            preguntas = sessionStorage.setItem('kabum-preguntas', preguntas);
-            preguntaActual = sessionStorage.setItem('kabum-preguntaActual', preguntaActual);
-            setKabum(...kabum, { preguntas: preguntas, preguntaActualL: preguntaActual });
+            sessionStorage.setItem('kabum-preguntas', JSON.stringify(preguntas));
+            sessionStorage.setItem('kabum-preguntaActual', (preguntaActual + 1));
+            setKabum({ ...kabum, preguntas: preguntas, preguntaActual: preguntaActual + 1 });
         } else {
+            console.log(state);
             Swal.fire({
                 icon: 'error',
                 title: 'Añade preguntas o verifica que todos los campos se encuentren llenos'
@@ -142,10 +155,15 @@ export const CreateKabumScreen = (props) => {
         e.preventDefault();
         try {
             if (kabum.preguntas.length > 0) {
+                console.log(kabum);
                 // axios.post('https://kabum-server.herokuapp.com/save-kabum', kabum)
                 axios.post('http://localhost:4000/save-kabum', kabum)
-                    .then(error => {
-                        console.error(error);
+                    .then(response => {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Exito',
+                            text: response.data
+                        });
                     })
             } else {
                 Swal.fire({
@@ -200,21 +218,34 @@ export const CreateKabumScreen = (props) => {
     // caso contrario disminuye
     const navigateQuestions = (e) => {
         if (e === 'right') {
-            preguntaActual++;
+            sessionStorage.setItem('kabum-preguntaActual', preguntaActual + 1);
+            setKabum({ ...kabum, preguntaActual: preguntaActual + 1 });
         } else if (e === 'left') {
-            preguntaActual--;
+            sessionStorage.setItem('kabum-preguntaActual', preguntaActual - 1);
+            setKabum({ ...kabum, preguntas: preguntas, preguntaActual: preguntaActual - 1 });
         }
     };
     //funcion para mostrar la imagen en el img y guardarla en su constante
     // es llamado cuando se presiona el icono de edicion, para guardar el archivo en el json de la pregunta
     const imageHandler = (e) => {
-        const reader = new FileReader();
-        reader.onload = () => {
-            if (reader.readyState === 2) {
-                setState({ recurso: reader.result });
-            }
-        }
-        reader.readAsDataURL(e.target.files[0]);
+        let imgPost = new FormData();
+        imgPost.append(`pregunta`, preguntaActual);
+        imgPost.append(`recurso${preguntaActual}`, e.target.files[0]);
+
+        fetch('http://localhost:4000/save-image', {
+            method: 'POST',
+            body: imgPost
+        }).then(res => res.json())
+            .then(response => console.log('Success:', response))
+            .catch(error => console.error('Error:', error));
+        //const reader = new FileReader();
+        //reader.onload = () => {
+        //    if (reader.readyState === 2) {
+        //        setImageArray([...imageArray, reader.result])
+        //    }
+        //}
+        //reader.readAsDataURL(e.target.files[0]);
+        //console.log(imageArray);
     };
 
     const { pregunta, a, b, c, d, tiempo, recurso } = state;
@@ -234,6 +265,12 @@ export const CreateKabumScreen = (props) => {
             }
         })
     };
+    const doNothing = (event) => {
+        event.preventDefault();
+    }
+    const handleChangeTiempo = (event) => {
+        setState({ ...state, tiempo: event.target.value });
+    }
     return (
         <>
             {/* Navbar */}
@@ -258,7 +295,7 @@ export const CreateKabumScreen = (props) => {
             </nav>
             {/* termina navbar */}
             <div className="container-fluid mt-3">
-                <form name="form" id="form">
+                <form name="form" id="form" onSubmit={doNothing}>
                     <div className="row">
                         <div className="col-12 mb-2 text-center d-flex justify-content-between">
                             <div>
@@ -276,14 +313,14 @@ export const CreateKabumScreen = (props) => {
                         <div className="col-12">
                             <div className="row">
                                 <div className="col-12">
-                                    <input id="form" className="form-control titulo" type="text" name="pregunta" value={pregunta} onChange={handleChangeInput} placeholder="¿Como se llama el Chino?"></input>
+                                    <input id="form" className="form-control titulo" type="text" name="pregunta" value={pregunta} onChange={handleChangePregunta} placeholder="¿Como se llama el Chino?"></input>
                                 </div>
                             </div>
                             {/* input de duracion de pregunta e img para vista previa de imagen */}
                             <div className="row p-2 mt-5 ml-5 justify-content-center align-items-center">
                                 <div className="col-4">
                                     <label >Duración en segundos</label>
-                                    <select className="selector d-flex justify-content-center text-align-center" name="tiempo" value={preguntaActual < preguntas.length ? preguntas[preguntaActual].tiempo : tiempo} onChange={handleChangeInput}>
+                                    <select className="selector d-flex justify-content-center text-align-center" name="tiempo" value={preguntaActual < preguntas.length ? preguntas[preguntaActual].tiempo : tiempo} onChange={handleChangeTiempo}>
                                         <option>5</option>
                                         <option>10</option>
                                         <option>15</option>
