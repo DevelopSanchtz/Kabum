@@ -14,11 +14,13 @@ export const KabumCard = (props) => {
   let pin = pin1 + "" + pin2 + "" + pin3 + "" + pin4 + "" + pin5 + "" + pin6;
   const { kabum, borrarKabum } = props;
   const { id, nombre, preguntas } = kabum;
+  //coloca items en el localstorage para empezar a jugar
   const jugarKabum = () => {
     sessionStorage.setItem('pin-kabum', pin);
     sessionStorage.setItem('kabum', JSON.stringify(kabum));
     history.push('/start');
   }
+  //regresa un card para cada kabum que exista
   return (
     <div className="col-12">
       <div className="card">

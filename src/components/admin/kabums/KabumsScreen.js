@@ -10,7 +10,11 @@ export const KabumsScreen = () => {
     const [kabumList, setKabumList] = useState([]);
     const [unfilteredKabums, setUnfilteredKabums] = useState([]);
     const sesion = localStorage.getItem('sesion-admin');
+
     useEffect(() => {
+        //revisa si el sesion es igual a true
+        //si es true hace una llamada a la api para mostrar los kabums que hay almacenados
+        //si no es true lo redirecciona a la ruta loginadmin
         if (sesion) {
             // fetch('https://kabum-server.herokuapp.com/get-kabum-fromserver')
             fetch('http://localhost:4000/get-kabum-fromserver')
@@ -24,6 +28,7 @@ export const KabumsScreen = () => {
             history.push('/loginadmin');
         }
     }, [history, sesion]);
+    //sirve para filtrar los kabums en la barra del buscador
     const filterKabums = (event) => {
         const filterText = event.target.value;
         let newKabumsList = []
