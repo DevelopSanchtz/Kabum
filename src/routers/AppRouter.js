@@ -10,6 +10,7 @@ import { PinScreen } from '../components/user/login/PinScreen';
 import { AppInitialRouters } from '../routers/AppInitialRouters';
 import { LoginAdminScreen } from '../components/admin/auth/loginAdmin/LoginAdminScreen'
 import { CreateKabumScreen } from '../components/admin/kabums/CreateKabumScreen';
+import { EditKabumScreen } from '../components/admin/kabums/EditKabumScreen';
 import { StartScreen } from '../components/admin/start/StartScreen';
 import { ShowPlayersScreen } from '../components/user/players/ShowPlayersScreen';
 import { Responder } from '../components/user/players/responder';
@@ -43,6 +44,7 @@ export const AppRouter = () => {
                     <Route exact path="/pin" component={PinScreen} />
                     <Route exact path="/loginadmin" component={LoginAdminScreen} />
                     <Route exact path="/create" component={CreateKabumScreen} />
+                    <Route exact path="/edit" component={EditKabumScreen} />
                     <Route exact path="/start" component={StartScreen} />
                     <Route exact path="/nameKabum" component={NameKabumsScreen} />
                     <Route exact path="/question" component={QuestionScreen} />

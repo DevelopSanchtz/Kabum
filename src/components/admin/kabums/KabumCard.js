@@ -20,6 +20,13 @@ export const KabumCard = (props) => {
     sessionStorage.setItem('kabum', JSON.stringify(kabum));
     history.push('/start');
   }
+  const editKabum = () => {
+    sessionStorage.setItem('kabum-id', id);
+    sessionStorage.setItem('kabum-name', nombre);
+    sessionStorage.setItem('kabum-preguntas', JSON.stringify(preguntas));
+    sessionStorage.setItem('kabum-preguntaActual', preguntas.length);
+    history.push('/edit');
+  }
   //Retorna el contenedor de cada kabum
   //regresa un card para cada kabum que exista
   return (
@@ -47,7 +54,7 @@ export const KabumCard = (props) => {
                 </div>
                 {/* <div className="row justify-content-end"> <p> <span>3 </span> Jugadores</p> </div> */}
                 <div className="row justify-content-end">
-                  <Link to="/create" className="btn btn-outline-primary"> Editar </Link>
+                  <button onClick={editKabum} className="btn btn-outline-primary"> Editar </button>
                   <button onClick={jugarKabum} className="btn btn-success ml-2"> Jugar </button>
                 </div>
               </div>
