@@ -141,6 +141,17 @@ export const CreateKabumScreen = (props) => {
             sessionStorage.setItem('kabum-preguntas', JSON.stringify(preguntas));
             sessionStorage.setItem('kabum-preguntaActual', (preguntaActual + 1));
             setKabum({ ...kabum, preguntas: preguntas, preguntaActual: preguntaActual + 1 });
+            setState({
+                pregunta: '',
+                a: '',
+                b: '',
+                c: '',
+                d: '',
+                correcta: '',
+                tiempo: '5',
+                recurso: '',
+                tipo_recurso: ''
+            });
         } else {
             console.log(state);
             Swal.fire({
