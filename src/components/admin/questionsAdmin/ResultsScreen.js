@@ -96,13 +96,13 @@ export const ResultsScreen = (props) => {
                     <div className="col-lg-3">
                         <div className="resultados-totales2">
                             <img className="animal-resultados" src={logo2} alt=""></img>
-                            <h4 className="text-center numero-respuestas-total">{estadisticas.b}</h4>
+                            <h4 className="text-center numero-respuestas-total">{estadisticas.c}</h4>
                         </div>
                     </div>
                     <div className="col-lg-3">
                         <div className="resultados-totales3">
                             <img className="animal-resultados" src={logo3} alt=""></img>
-                            <h4 className="text-center numero-respuestas-total">{estadisticas.c}</h4>
+                            <h4 className="text-center numero-respuestas-total">{estadisticas.b}</h4>
                         </div>
                     </div>
                     <div className="col-lg-3">

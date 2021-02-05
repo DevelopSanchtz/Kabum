@@ -9,11 +9,15 @@ import socket from '../../socket';
 
 export const Responder = (props) => {
     const history = useHistory();
-    const kabum = JSON.parse(sessionStorage.getItem('player-kabum'));
-    const pin = sessionStorage.getItem('player-pin');
-    const tag = sessionStorage.getItem('player-name');
-    const id = sessionStorage.getItem('player-id');
     const [contesto, setContesto] = useState(false);
+    let kabum;
+    kabum = JSON.parse(sessionStorage.getItem('player-kabum'));
+    let pin;
+    pin = sessionStorage.getItem('player-pin');
+    let tag;
+    tag = sessionStorage.getItem('player-name');
+    let id;
+    id = sessionStorage.getItem('player-id');
     let pregunta;
     pregunta = sessionStorage.getItem('player-question');
     pregunta = parseInt(pregunta);
@@ -25,7 +29,44 @@ export const Responder = (props) => {
             clearInterval(time);
         }
     }, 10);
+    console.log('rerender');
 
+    useEffect(() => {
+        socket.on('pregunta', (jugadores) => {
+            let player = {};
+            jugadores.forEach(jugador => {
+                if (jugador.id === id) {
+                    player = jugador;
+                    return;
+                }
+            });
+            console.log(sessionStorage.getItem('answer'), kabum.preguntas[pregunta].correcta, pregunta);
+            if (sessionStorage.getItem('answer') === kabum.preguntas[pregunta].correcta) {
+                sessionStorage.setItem('player', JSON.stringify(player));
+                history.push('/correcto');
+            } else {
+                sessionStorage.setItem('player', JSON.stringify(player));
+                history.push('/incorrecto');
+            }
+        });
+        socket.on('contestar-auto', () => {
+            if (sessionStorage.getItem('contesto') === 'false') {
+                setContesto(true);
+                sessionStorage.setItem('contesto', true);
+                let player = {};
+                const correcta = kabum.preguntas[pregunta].correcta
+                const data = {
+                    id: id,
+                    puntos: 0,
+                    respuesta: '',
+                    correcta: correcta
+                };
+                socket.emit('enviar-pregunta', data);
+                sessionStorage.setItem('player', JSON.stringify(player));
+                history.push('/incorreto');
+            }
+        });
+    }, [answer, pregunta, kabum, id, history]);
     const preguntaElegida = (respuesta) => {
         clearInterval(time);
         setContesto(true);
@@ -46,44 +87,6 @@ export const Responder = (props) => {
         };
         socket.emit('enviar-pregunta', data);
     }
-    socket.on('contestar-auto', () => {
-        if (sessionStorage.getItem('contesto') === 'false') {
-            setContesto(true);
-            sessionStorage.setItem('contesto', true);
-            let player = {};
-            let state = {
-                jugador: player
-            }
-            const correcta = kabum.preguntas[pregunta].correcta
-            const data = {
-                id: id,
-                puntos: 0,
-                respuesta: '',
-                correcta: correcta
-            };
-            socket.emit('enviar-pregunta', data);
-            sessionStorage.setItem('player', JSON.stringify(player));
-            history.push('/incorrecto');
-        }
-    });
-    useEffect(() => {
-        socket.on('pregunta', (jugadores) => {
-            let player = {};
-            jugadores.forEach(jugador => {
-                if (jugador.id === id) {
-                    player = jugador;
-                    return;
-                }
-            });
-            if (sessionStorage.getItem('answer') === kabum.preguntas[pregunta].correcta) {
-                sessionStorage.setItem('player', JSON.stringify(player));
-                history.push('/correcto');
-            } else {
-                sessionStorage.setItem('player', JSON.stringify(player));
-                history.push('/incorrecto');
-            }
-        });
-    }, [answer, pregunta, kabum, id, history]);
     return (
         <div className="container-responder">
             {contesto ? <div className="pantalla-espera"><div className="loading">ESPERA</div></div> : <></>}

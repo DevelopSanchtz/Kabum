@@ -13,9 +13,6 @@ export const Scoreboard = () => {
   kabum = JSON.parse(kabum);
   const changeQuestion = () => {
     sessionStorage.setItem('question', pregunta + 1);
-    let state = {
-      pregunta: pregunta + 1
-    };
     sessionStorage.setItem('question', (pregunta + 1));
     history.push('/question');
   }
