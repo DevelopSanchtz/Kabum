@@ -24,7 +24,6 @@ import { PodioUserScreen2 } from '../components/user/players/PodioUserScreen2';
 import { PodioUserScreen3 } from '../components/user/players/PodioUserScreen3';
 import { Pantallaconsolacion } from '../components/user/players/Pantallaconsolacion';
 import { Resultados } from '../components/admin/resultados/resultados';
-import { pdfGenerate } from '../components/services/pdfReturn'
 
 
 
@@ -59,8 +58,7 @@ export const AppRouter = () => {
                     <Route exact path="/podiosegundo" component={PodioUserScreen2} />
                     <Route exact path="/podiotercero" component={PodioUserScreen3} />
                     <Route exact path="/consolacion" component={Pantallaconsolacion} />
-                    <Route exact path="/podiumAdmin" component={Resultados} />
-                    <Route exact path="/DwnldPdf" component={pdfGenerate} />    
+                    <Route exact path="/podiumAdmin" component={Resultados} />   
                     <Route path="/" component={AppInitialRouters} />
                 </Switch>
             </div>
