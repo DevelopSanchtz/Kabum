@@ -39,6 +39,7 @@ export const Navbar = () => {
     }
     const cerrarSesion = () => {
         localStorage.removeItem('sesion-admin');
+        //Redirecciona a la pantalla para iniciar sesion
         history.push('/loginAdmin');
     }
     return (
