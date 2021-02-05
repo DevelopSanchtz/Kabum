@@ -175,43 +175,7 @@ export const CreateKabumScreen = (props) => {
             console.error(error);
         }
     };
-    // const callEditKabum = async e => {
-    //     let kabum2 = {
-    //         id: 3,
-    //         nombre: 'pruebasBackend',
-    //         preguntas:
-    //             [
-    //                 {
-    //                     "pregunta": "¿Qué desaolla303dor hizo esta pruebaX48vez?",
-    //                     "a": "ArmandoDev",
-    //                     "b": "MarcoDev",
-    //                     "c": "WeroDev",
-    //                     "d": "KtDev",
-    //                     "correcta": "a",
-    //                     "tiempo": "10",
-    //                     "recurso": "www.imagen.com",
-    //                     "tipo_recurso": "img"
-    //                 }
-    //             ]
-    //     }
-    //     e.preventDefault();
-    //     try {
-    //         axios.post('http://localhost:4000/edit-kabum', kabum)
-    //             .then(
-    //                 res => {
-    //                     console.log(res.data);
-    //                     Swal.fire({
-    //                         icon: 'success',
-    //                         text: 'exito guardando'
-    //                     });
-    //                 },
-    //                 err => {
-    //                     console.log(err);
-    //                 })
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }
+    
 
     //funcion para navegar entre las preguntas creadas en el kabum
     // si da clic a la derecha aumenta el contador de pregunta actual

@@ -7,6 +7,7 @@ import logo from './../../../assets/images/logo-nuevo-kabum.png';
 export const NameKabumsScreen = (props) => {
     const history = useHistory();
     let kabum;
+    //revisa las props para poner un item que contenga la info de los kabums
     if (props.location.props) {
         kabum = props.location.props.kabum;
         sessionStorage.setItem('kabum', kabum);
@@ -15,10 +16,12 @@ export const NameKabumsScreen = (props) => {
         kabum = sessionStorage.getItem('kabum');
         kabum = JSON.parse(kabum);
     }
+    //pone un item en el localstorage para las preguntas
     const startKabum = () => {
         sessionStorage.setItem('question', 0)
         history.push('/question');
     }
+    //revisa si hay una sesion activa para el admin en kabum
     useEffect(() => {
         if (!localStorage.getItem('sesion-admin')) {
             history.push('/loginAdmin');

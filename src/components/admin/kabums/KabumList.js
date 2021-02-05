@@ -11,6 +11,8 @@ export const KabumList = (props) => {
     setKabums(kabums);
     setUnfilteredKabums(unfilteredKabums);
   }, []);
+  //sirve para borrar los kabums mientras arroja modals en pantalla
+  //si selecciona botones de confirmar hace llamada a la api para borrar los kabums
   const borrarKabum = (id) => {
     Swal.fire({
       title: "Eliminar",
@@ -23,6 +25,7 @@ export const KabumList = (props) => {
       if (result.isConfirmed) {
         const body = new FormData();
         body.append('id', id);
+        //llamada a la api
         fetch('http://localhost:4000/delete-kabum', {
           method: "DELETE",
           body: body,
