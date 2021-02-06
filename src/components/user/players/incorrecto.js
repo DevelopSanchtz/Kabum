@@ -26,31 +26,22 @@ export const Incorrecto = (props) => {
             sessionStorage.setItem('answer', '');
             history.push('/responder');
         });
-        socket.on('podio', (jugadores) => {
-            let n = jugadores.length;
-            for (let i = 0; i < n - 1; i++)
-                for (let j = 0; j < n - i - 1; j++)
-                    if (jugadores[j].puntos < jugadores[j + 1].puntos) {
-                        let temp = jugadores[j];
-                        jugadores[j] = jugadores[j + 1];
-                        jugadores[j + 1] = temp;
-                    }
-            for (let i = 0; i < jugadores.length; i++) {
-                if (jugadores[i].id === id) {
-                    switch (i) {
-                        case 0:
-                            history.push('/podioprimero');
-                            return;
-                        case 1:
-                            history.push('/podiosegundo');
-                            return;
-                        case 2:
-                            history.push('/podiotercero');
-                            return;
-                        default:
-                            history.push('/consolacion');
-                            return;
-                    }
+        socket.on('podio', (data) => {
+            if (data.id === id) {
+                switch(data.place) {
+                    case '1':
+                        history.push('/podioprimero');
+                        break;
+                    case '2':
+                        history.push('/podiosegundo');
+                        break;
+                    case '3':
+                        history.push('/podiotercero');
+                        break;
+                    case '0':
+                        history.push('/consolacion');
+                        break;
+                    default:
                 }
             }
         });
