@@ -73,7 +73,7 @@ export const KabumsScreen = () => {
                             <div className="p-2">
                                 <div className="dropdown">
                                     <button className="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Mas recientes
+                                        Más recientes
                                     </button>
                                     <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
                                         <button className="dropdown-item" type="button">preguntas</button>

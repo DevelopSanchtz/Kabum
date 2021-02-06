@@ -37,7 +37,7 @@ export const Scoreboard = () => {
   return (
     <div>
       <header className="text-center mt-4">
-        <h1>Scoreboard</h1>
+        <h1>Puntuaciones</h1>
       </header>
       <div className="fondo_scoreboard">
         <div className="margen-table">
