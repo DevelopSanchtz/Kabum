@@ -35,7 +35,7 @@ export const AnswerQuestionAdminScreen = (props) => {
             setContestados(contestados + 1);
         });
         setTimer(startTimer());
-    }, [])
+    }, [tiempo])
 
     //funcion timer que obtiene de la pregunta el tiempo que le fue asignado
     //aumenta el contador tiempo y revisa si ya cumplio con el limite

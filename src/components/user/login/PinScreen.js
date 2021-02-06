@@ -24,7 +24,7 @@ export const PinScreen = (props) => {
                 Swal.fire({
                     title: "Error",
                     icon: "error",
-                    text: "El pin ingresado es incorrecto",
+                    text: response.msg,
                     confirmButtonText: "Aceptar",
                 });
             } else {

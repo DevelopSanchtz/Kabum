@@ -161,8 +161,8 @@ export const CreateKabumScreen = (props) => {
         try {
             if (kabum.preguntas.length > 0) {
                 console.log(kabum);
-                // axios.post('http://localhost:4000/save-kabum', kabum)
-                axios.post('https://kabum-server.herokuapp.com/save-kabum', kabum)
+                // axios.post('https://kabum-server.herokuapp.com/save-kabum', kabum)
+                axios.post('http://localhost:4000/save-kabum', kabum)
                     .then(response => {
                         Swal.fire({
                             icon: 'success',
@@ -205,6 +205,7 @@ export const CreateKabumScreen = (props) => {
     // es llamado cuando se presiona el icono de edicion, para guardar el archivo en el json de la pregunta
     const imageHandler = (e) => {
         setState({ ...state, recurso: e.target.value });
+        console.log(state);
     };
 
     let { pregunta, a, b, c, d, tiempo, recurso } = state;

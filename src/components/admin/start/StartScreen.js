@@ -53,6 +53,7 @@ export const StartScreen = (props) => {
 
     const iniciarJuego = () => {
         if (online.length > 1) {
+            socket.emit('bloquear-juego', null);
             sessionStorage.setItem('kabum', JSON.stringify(kabum));
             history.push('/nameKabum');
         } else {
@@ -84,9 +85,9 @@ export const StartScreen = (props) => {
                         <div className="row justify-content-center">
                             <h6 className="pin-start mt-1">PIN</h6>
                         </div>
-                        
+
                         <div className="row justify-content-center ">
-                           {/* Muestra el pin del juego */} 
+                            {/* Muestra el pin del juego */}
                             <h1 className="numero-pin">{pin}</h1>
                         </div>
                     </div>
@@ -97,7 +98,7 @@ export const StartScreen = (props) => {
                         </div>
                     </div>
 
-                {/* Contenedor donde irá la lista de las etiquetas de los jugadores que van ingresando */}
+                    {/* Contenedor donde irá la lista de las etiquetas de los jugadores que van ingresando */}
                     <div className="container container-jugadores mt-2">
                         <div className="row justify-content-center">
                             {
