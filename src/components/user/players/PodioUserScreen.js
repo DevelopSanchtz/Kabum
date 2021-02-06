@@ -7,6 +7,7 @@ export const PodioUserScreen = () => {
     const tag = sessionStorage.getItem('player-name');
     let jugador = sessionStorage.getItem('player');
     jugador = JSON.parse(jugador);
+    let puntosentero = Math.round(jugador.puntos);
     return (
         <div className="container-podio-usuario">
             <div className="barra">
@@ -21,7 +22,7 @@ export const PodioUserScreen = () => {
                         <p>{tag}</p>
                     </div>
                     <div className="p-3" id="color">
-                        <p>{jugador.puntos}</p>
+                        <p>{puntosentero}</p>
                     </div>
                 </div>
             </div>

@@ -52,14 +52,14 @@ export const Scoreboard = () => {
                       return (
                         <tr className="tr-fisrt text-center tamaño-tabla" >
                           <td>{jugador.nombre}</td>
-                          <td>{jugador.puntos}</td>
+                          <td>{Math.round(jugador.puntos)}</td>
                         </tr>
                       );
                     } else {
                       return (
                         <tr className="text-center tamaño-tabla">
                           <td className="tabla-top text-center">{jugador.nombre}</td>
-                          <td className="tabla-top text-center">{jugador.puntos}</td>
+                          <td className="tabla-top text-center">{Math.round(jugador.puntos)}</td>
                         </tr>
                       );
                     }

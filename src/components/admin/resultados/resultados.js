@@ -16,6 +16,10 @@ export const Resultados = () => {
     let estadisticas = sessionStorage.getItem('estadisticas');
     estadisticas = JSON.parse(estadisticas);
     let players = estadisticas.jugadores;
+    let puntosenteroUno = Math.round(players[0].puntos);
+    let puntosenteroDos = Math.round(players[1].puntos);
+    let puntosenteroTres = Math.round(players[2].puntos);
+
     let n = players.length;
     for (let i = 0; i < n - 1; i++)
         for (let j = 0; j < n - i - 1; j++)
@@ -1098,13 +1102,13 @@ export const Resultados = () => {
                                     <h2 id="titulo">{players[1].nombre}</h2>
                                 </div>
                                 <img className="medallas" src={img2do} alt=""></img>
-                                <h2 id="titulo">{players[1].puntos}</h2>
+                                <h2 id="titulo">{Math.round(players[1].puntos)}</h2>
                             </div> :
                             <></>
                         }
                         <div className="item2" id="item22">
                             <img className="medallas1" src={img1er} alt=""></img>
-                            <h2 id="titulo">{players[0].puntos}</h2>
+                            <h2 id="titulo">{Math.round(players[0].puntos)}</h2>
                         </div>
                         {players.length > 2 ?
                             <div className="item2" id="item33">
@@ -1112,7 +1116,7 @@ export const Resultados = () => {
                                     <h2 id="titulo">{players[2].nombre}</h2>
                                 </div>
                                 <img className="medallas" src={img3er} alt=""></img>
-                                <h2 id="titulo">{players[2].puntos}</h2>
+                                <h2 id="titulo">{Math.round(players[2].puntos)}</h2>
                             </div> :
                             <></>
                         }
