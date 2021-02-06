@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import socket from '../../socket';
 import logo from './../../../assets/images/burrito1.png'
 import logo2 from './../../../assets/images/conejito1.png'
 import logo3 from './../../../assets/images/gatito1.png'
 import logo4 from './../../../assets/images/perrito1.png'
 import './show-screen.scss'
-import socket from '../../socket';
 
 export const Responder = (props) => {
     const history = useHistory();
@@ -29,9 +29,10 @@ export const Responder = (props) => {
             clearInterval(time);
         }
     }, 10);
-    console.log('rerender');
-
     useEffect(() => {
+        socket.on('correcta', (correcta) => {
+            sessionStorage.setItem('correcta', correcta);
+        });
         socket.on('pregunta', (jugadores) => {
             let player = {};
             jugadores.forEach(jugador => {
@@ -40,8 +41,7 @@ export const Responder = (props) => {
                     return;
                 }
             });
-            console.log(sessionStorage.getItem('answer'), kabum.preguntas[pregunta].correcta, pregunta);
-            if (sessionStorage.getItem('answer') === kabum.preguntas[pregunta].correcta) {
+            if (sessionStorage.getItem('correcta') && sessionStorage.getItem('correcta') === 'true') {
                 sessionStorage.setItem('player', JSON.stringify(player));
                 history.push('/correcto');
             } else {

@@ -19,15 +19,15 @@ export const AnswerQuestionAdminScreen = (props) => {
     const skipQuestion = () => {
         socket.emit('termino-tiempo', null);
     }
-
-    socket.on('estadisticas-pregunta', (estadisticas) => {
-        sessionStorage.setItem('estadisticas', JSON.stringify(estadisticas));
-        history.push('/resultadosAdmin');
-    })
-
+    console.log('rerender');
     //funcion que verfica la sesion, esta a la escucha de la cantidad de 
     //personas que ya respondieron la pregunta e inicializa el timer 
     useEffect(() => {
+        socket.on('estadisticas-pregunta', (estadisticas) => {
+            console.log('Se reciben las estadisticas');
+            sessionStorage.setItem('estadisticas', JSON.stringify(estadisticas));
+            history.push('/resultadosAdmin');
+        })
         if (!localStorage.getItem('sesion-admin')) {
             props.history.push('/loginAdmin');
         }
@@ -35,7 +35,7 @@ export const AnswerQuestionAdminScreen = (props) => {
             setContestados(contestados + 1);
         });
         setTimer(startTimer());
-    }, [contestados, tiempo])
+    }, [])
 
     //funcion timer que obtiene de la pregunta el tiempo que le fue asignado
     //aumenta el contador tiempo y revisa si ya cumplio con el limite
