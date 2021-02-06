@@ -171,8 +171,8 @@ export const EditKabumScreen = (props) => {
     try {
       if (kabum.preguntas.length > 0) {
         console.log(kabum);
-        // axios.post('https://kabum-server.herokuapp.com/save-kabum', kabum)
-        axios.post('http://localhost:4000/edit-kabum', kabum)
+        // axios.post('http://localhost:4000/edit-kabum', kabum)
+        axios.post('https://kabum-server.herokuapp.com/save-kabum', kabum)
           .then(response => {
             Swal.fire({
               icon: 'success',
