@@ -49,7 +49,7 @@ export const LoginAdminScreen = ({ history }) => {
                                         <label>Contraseña:</label>
                                         <input onChange={handleChange} value={pass} name="pass" type="password" className="form-control" placeholder="Ingrese la contraseña"></input>
                                     </div>
-                                    <button type="button" className="btn btn-login-admin btn-border btn-block">Iniciar sesión</button>
+                                    <button type="submit" className="btn btn-login-admin btn-border btn-block">Iniciar sesión</button>
                                 </form>
                             </div>
                             <div className="col-4"></div>
