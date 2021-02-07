@@ -37,7 +37,7 @@ export const Scoreboard = () => {
   return (
     <div>
       <header className="text-center mt-4">
-        <h1>Scoreboard</h1>
+        <h1>Puntuaciones</h1>
       </header>
       <div className="fondo_scoreboard">
         <div className="margen-table">
@@ -52,14 +52,14 @@ export const Scoreboard = () => {
                       return (
                         <tr className="tr-fisrt text-center tamaño-tabla" >
                           <td>{jugador.nombre}</td>
-                          <td>{jugador.puntos}</td>
+                          <td>{Math.round(jugador.puntos)}</td>
                         </tr>
                       );
                     } else {
                       return (
                         <tr className="text-center tamaño-tabla">
                           <td className="tabla-top text-center">{jugador.nombre}</td>
-                          <td className="tabla-top text-center">{jugador.puntos}</td>
+                          <td className="tabla-top text-center">{Math.round(jugador.puntos)}</td>
                         </tr>
                       );
                     }

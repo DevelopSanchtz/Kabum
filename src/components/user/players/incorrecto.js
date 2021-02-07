@@ -60,7 +60,7 @@ export const Incorrecto = (props) => {
                         <p>{tag}</p>
                     </div>
                     <div className="p-3" id="color">
-                        <p>{jugador.puntos}</p>
+                        <p>{Math.round(jugador.puntos)}</p>
                     </div>
                 </div>
             </div>

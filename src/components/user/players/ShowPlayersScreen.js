@@ -39,7 +39,7 @@ export const ShowPlayersScreen = (props) => {
                 </div>
             </div>
             <div className="inicio-texto">
-                <p>Solo esperemos mas participantes</p>
+                <p>Sólo esperemos más participantes</p>
                 <p>¿Puedes ver tu nombre?</p>
             </div>
         </div>

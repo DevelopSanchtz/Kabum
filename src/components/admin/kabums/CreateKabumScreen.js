@@ -166,7 +166,7 @@ export const CreateKabumScreen = (props) => {
                     .then(response => {
                         Swal.fire({
                             icon: 'success',
-                            title: 'Exito',
+                            title: 'Éxito',
                             text: response.data
                         });
                     })
@@ -273,7 +273,7 @@ export const CreateKabumScreen = (props) => {
                         <div className="col-12">
                             <div className="row">
                                 <div className="col-12">
-                                    <input id="form" className="form-control titulo" type="text" name="pregunta" value={pregunta} onChange={handleChangePregunta} placeholder="¿Como se llama el Chino?"></input>
+                                    <input id="form" className="form-control titulo" type="text" name="pregunta" value={pregunta} onChange={handleChangePregunta} placeholder="Escribe aquí tu pregunta"></input>
                                 </div>
                             </div>
                             {/* input de duracion de pregunta e img para vista previa de imagen */}

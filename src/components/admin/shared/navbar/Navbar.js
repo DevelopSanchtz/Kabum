@@ -11,13 +11,14 @@ export const Navbar = () => {
         event.preventDefault();
         const { value: text } = await Swal.fire({
             input: 'text',
-            inputLabel: 'Titulo Kabum',
-            inputPlaceholder: 'Ingrese el titulo del kabum',
+            inputLabel: 'Título Kabum',
+            inputPlaceholder: 'Ingrese el título del kabum',
             inputAttributes: {
-                'aria-label': 'Escribe el titulo aquí'
+                'aria-label': 'Escribe el título aquí'
             },
             confirmButtonText: "Agregar",
-            showCancelButton: "Cancelar"
+            showCancelButton: true,
+            cancelButtonText: "Cancelar"
         });
         if (text) {
             Swal.fire({

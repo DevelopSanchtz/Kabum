@@ -6,6 +6,7 @@ export const Pantallaconsolacion = () => {
     const tag = sessionStorage.getItem('player-name');
     let jugador = sessionStorage.getItem('player');
     jugador = JSON.parse(jugador);
+    let puntosentero = Math.round(jugador.puntos);
     return (
         <div className="container-podio-usuario">
             <div className="barra">
@@ -20,13 +21,13 @@ export const Pantallaconsolacion = () => {
                         <p>{tag}</p>
                     </div>
                     <div className="p-3" id="color">
-                        <p>{jugador.puntos}</p>
+                        <p>{puntosentero}</p>
                     </div>
                 </div>
             </div>
             <div className="informacion">
-                <p id="txt-correcto">Suerta para la proxima</p>
-                <p id="txt-suerte">¡Continúa intentandolo!</p>
+                <p id="txt-correcto">Suerte para la próxima</p>
+                <p id="txt-suerte">¡Continúa intentándolo!</p>
             </div>
         </div>
     )

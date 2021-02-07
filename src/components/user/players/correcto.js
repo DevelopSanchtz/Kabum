@@ -15,6 +15,7 @@ export const Correcto = (props) => {
     let jugador;
     jugador = sessionStorage.getItem('player');
     jugador = JSON.parse(jugador);
+    let puntosentero = Math.round(jugador.puntos);
     useEffect(() => {
         socket.on('juego-terminado', () => {
             socket.emit('disconnect-reply', null);
@@ -60,7 +61,7 @@ export const Correcto = (props) => {
                         <p>{tag}</p>
                     </div>
                     <div className="p-3" id="color">
-                        <p>{jugador.puntos}</p>
+                        <p>{puntosentero}</p>
                     </div>
                 </div>
             </div>
