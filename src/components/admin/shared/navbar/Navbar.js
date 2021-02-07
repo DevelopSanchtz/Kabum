@@ -17,7 +17,8 @@ export const Navbar = () => {
                 'aria-label': 'Escribe el título aquí'
             },
             confirmButtonText: "Agregar",
-            showCancelButton: "Cancelar"
+            showCancelButton: true,
+            cancelButtonText: "Cancelar"
         });
         if (text) {
             Swal.fire({
