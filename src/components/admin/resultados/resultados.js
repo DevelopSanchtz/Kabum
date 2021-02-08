@@ -1124,7 +1124,7 @@ export const Resultados = () => {
                 </div>
                 <Link onClick={() => avanzarScoreboard()} className="siguiente-pregunta">Siguiente </Link>
 
-                <Link onClick={() => jsPdfGenerator()} className="generar-pdf">Reporte</Link>
+                {/* <Link onClick={() => jsPdfGenerator()} className="generar-pdf">Reporte</Link> */}
 
             </div>
         </div>

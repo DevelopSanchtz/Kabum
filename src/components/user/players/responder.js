@@ -63,7 +63,8 @@ export const Responder = (props) => {
                 };
                 socket.emit('enviar-pregunta', data);
                 sessionStorage.setItem('player', JSON.stringify(player));
-                history.push('/incorreto');
+                sessionStorage.setItem('correcta', false);
+                history.push('/incorrecto');
             }
         });
     }, [answer, pregunta, kabum, id, history]);
