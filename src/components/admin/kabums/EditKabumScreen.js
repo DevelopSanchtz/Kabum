@@ -178,6 +178,8 @@ export const EditKabumScreen = (props) => {
               icon: 'success',
               title: 'Exito',
               text: response.data
+            }).then(() => {
+              history.push('/kabums');
             });
           })
       } else {

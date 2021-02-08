@@ -168,6 +168,8 @@ export const CreateKabumScreen = (props) => {
                             icon: 'success',
                             title: 'Éxito',
                             text: response.data
+                        }).then(() => {
+                            history.push('/kabums');
                         });
                     })
             } else {
