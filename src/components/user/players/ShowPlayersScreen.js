@@ -17,11 +17,12 @@ export const ShowPlayersScreen = (props) => {
         }
     });
     socket.on('juego-terminado', () => {
+        socket.emit('disconnect-reply', null);
         history.push('/login');
     });
     socket.on('primera-pregunta', (kabum) => {
         sessionStorage.setItem('player-kabum', JSON.stringify(kabum));
-        sessionStorage.setItem('contesto',false);
+        sessionStorage.setItem('contesto', false);
         sessionStorage.setItem('answer', '');
         sessionStorage.setItem('player-question', 0);
         history.push('/responder');

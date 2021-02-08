@@ -43,7 +43,7 @@ export const ResultsScreen = (props) => {
                     //Redirecciona al administrador a la pantalla de kabums
                     history.push("/kabums");
                     socket.emit('terminar', null);
-                })
+                });
             }
         });
 
