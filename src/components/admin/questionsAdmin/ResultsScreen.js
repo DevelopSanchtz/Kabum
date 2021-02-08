@@ -39,9 +39,10 @@ export const ResultsScreen = (props) => {
                 Swal.fire({
                     title: "Juego terminado",
                     icon: "success",
-                }).then((resultado) => {
+                }).then(() => {
                     //Redirecciona al administrador a la pantalla de kabums
                     history.push("/kabums");
+                    socket.emit('terminar', null);
                 })
             }
         });
