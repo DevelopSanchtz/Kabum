@@ -27,6 +27,7 @@ export const StartScreen = (props) => {
                 //función para terminar el juego y redireccionar a los jugadores al inicio
                 socket.emit('terminar', null);
                 sessionStorage.removeItem('pin-kabum');
+                sessionStorage.setItem('will-reload', true);
                 //Redirecciona al administrador a la pantalla de kabums
                 history.push('/kabums');
             }

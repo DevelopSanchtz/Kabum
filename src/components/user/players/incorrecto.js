@@ -18,6 +18,7 @@ export const Incorrecto = (props) => {
     useEffect(() => {
         socket.on('juego-terminado', () => {
             socket.emit('disconnect-reply', null);
+            sessionStorage.setItem('will-reload', true);
             history.push('/login');
         });
         socket.on('pregunta-siguiente', () => {

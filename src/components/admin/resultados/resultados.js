@@ -16,9 +16,6 @@ export const Resultados = () => {
     let estadisticas = sessionStorage.getItem('estadisticas');
     estadisticas = JSON.parse(estadisticas);
     let players = estadisticas.jugadores;
-    let puntosenteroUno = Math.round(players[0].puntos);
-    let puntosenteroDos = Math.round(players[1].puntos);
-    let puntosenteroTres = Math.round(players[2].puntos);
 
     let n = players.length;
     for (let i = 0; i < n - 1; i++)

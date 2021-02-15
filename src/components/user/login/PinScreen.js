@@ -35,6 +35,7 @@ export const PinScreen = (props) => {
                     confirmButtonText: "Aceptar",
                     timer: "3000"
                 }).then(function () {
+                    sessionStorage.setItem('will-reload', true);
                     history.push('/showplayers');
                 });
             }

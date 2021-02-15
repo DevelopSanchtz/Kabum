@@ -10,23 +10,26 @@ export const ShowPlayersScreen = (props) => {
     const id = sessionStorage.getItem('player-id');
 
     const history = useHistory();
-    socket.on('dejar-sala', idBorrado => {
-        if (id === idBorrado) {
+    useEffect(() => {
+        socket.on('dejar-sala', idBorrado => {
+            if (id === idBorrado) {
+                socket.emit('disconnect-reply', null);
+                history.push('/login');
+            }
+        });
+        socket.on('juego-terminado', () => {
             socket.emit('disconnect-reply', null);
+            sessionStorage.setItem('will-reload', true);
             history.push('/login');
-        }
-    });
-    socket.on('juego-terminado', () => {
-        socket.emit('disconnect-reply', null);
-        history.push('/login');
-    });
-    socket.on('primera-pregunta', (kabum) => {
-        sessionStorage.setItem('player-kabum', JSON.stringify(kabum));
-        sessionStorage.setItem('contesto', false);
-        sessionStorage.setItem('answer', '');
-        sessionStorage.setItem('player-question', 0);
-        history.push('/responder');
-    });
+        });
+        socket.on('primera-pregunta', (kabum) => {
+            sessionStorage.setItem('player-kabum', JSON.stringify(kabum));
+            sessionStorage.setItem('contesto', false);
+            sessionStorage.setItem('answer', '');
+            sessionStorage.setItem('player-question', 0);
+            history.push('/responder');
+        });
+    }, [])
     return (
         <div className="contenedor-show">
             <div className="barra">

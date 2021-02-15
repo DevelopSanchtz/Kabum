@@ -12,6 +12,10 @@ export const KabumsScreen = () => {
     const sesion = localStorage.getItem('sesion-admin');
 
     useEffect(() => {
+        if (sessionStorage.getItem('will-reload') && sessionStorage.getItem('will-reload') === 'true') {
+            sessionStorage.setItem('will-reload', false);
+            window.location.reload();
+        }
         //revisa si el sesion es igual a true
         //si es true hace una llamada a la api para mostrar los kabums que hay almacenados
         //si no es true lo redirecciona a la ruta loginadmin

@@ -31,6 +31,7 @@ export const Scoreboard = () => {
       icon: "success",
     }).then((resultado) => {
       socket.emit('terminar', null);
+      sessionStorage.setItem('will-reload', true);
       history.push("/kabums");
     })
   };

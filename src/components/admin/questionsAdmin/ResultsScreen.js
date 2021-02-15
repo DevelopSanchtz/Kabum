@@ -41,8 +41,9 @@ export const ResultsScreen = (props) => {
                     icon: "success",
                 }).then(() => {
                     //Redirecciona al administrador a la pantalla de kabums
-                    history.push("/kabums");
                     socket.emit('terminar', null);
+                    sessionStorage.setItem('will-reload', true);
+                    history.push("/kabums");
                 });
             }
         });
